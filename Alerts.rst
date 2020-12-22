@@ -89,13 +89,13 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
     alertcondition(message, freq)
 
 ``message``
-   A "series string" representing the message text sent when the alert triggers.
-   Because this argument can be of "series" form, it can be generated at runtime and differ bar to bar, making it dynamic.
+    A "series string" representing the message text sent when the alert triggers.
+    Because this argument can be of "series" form, it can be generated at runtime and differ bar to bar, making it dynamic.
 
 ``freq``
    An "input int" specifying the triggering frequency of the alert. Valid arguments are:
 
-|    ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
+   ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
 |    ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an `alert()` call is made during that script iteration.
 |    ``alert.freq_all``: All calls trigger the alert.
 
