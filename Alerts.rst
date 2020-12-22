@@ -112,8 +112,8 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
 If a script alert is created from this script:
 
 - The alert will trigger on each realtime bar where ``close > open``.
-- Because no argument is specified for the ``freq`` parameter, the default value of ``alert.freq_once_per_bar`` will used, 
-  so the alert will trigger only once per bar, at the bar's close.
+- Because no argument is specified for the ``freq`` parameter in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call', 
+  the default value of ``alert.freq_once_per_bar`` will be used and the alert will trigger only once per bar, at the bar's close.
 - The message sent with the alert will be: "Up bar close at: x" where "x" is the up bar's close price.
 
 Note that:
@@ -134,14 +134,17 @@ while also allowing the selection of only long or short entry events. You could 
 
     //@version=4
     study("Multiple alerts using `alert()`")
-    detectLongs  = input(true, "Detect Longs")
-    detectShorts = input(true, "Detect Shorts")
+    i_detectLongs  = input(true, "Detect Longs")
+    i_detectShorts = input(true, "Detect Shorts")
 
     r = rsi(close, 20)
+    // Detect crosses.
     xUp = crossover( r, 50)
     xDn = crossunder(r, 50)
-    enterLong  = detectLongs and xUp
-    enterShort = detectShorts and xDn
+    // Only generate entries when the trade's direction is allowed in inputs.
+    enterLong  = i_detectLongs and xUp
+    enterShort = i_detectShorts and xDn
+    // Trigger the alerts only when the compound condition is met.
     if enterLong
         alert("Long")
     else if enterShort
@@ -171,10 +174,6 @@ Order fill events
 
 `alertcondition()` events
 -------------------------
-
-
-Alert conditions
-----------------
 
 The `alertcondition <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function
 allows you to create custom *alert conditions* in Pine studies. One study may contain more than one ``alertcondition`` call.
@@ -231,34 +230,4 @@ choose one of the specific alert conditions defined in the study's code.
 When the alert fires, you will see the following message:
 
 .. image:: images/Alertcondition_2.png
-
-Modifying an alert
-^^^^^^^^^^^^^^^^^^
-
-When an alert is created, TradingView saves the following information with the
-alert so that it can run independently in the cloud:
-
-- The study's code
-- The study's current *Setting/Inputs* (including modifications made by the user)
-- The chart's main symbol and timeframe.
-
-If you want any changes to this information to
-be reflected in an existing alert's behavior, you will need to either delete the 
-alert and create a new one in the new context, or use the following steps to modify the alert.
-
-If you have updated the study's code or its *Settings/Inputs*, you may:
-
-- Click on the the alert's line in the *Manage Alerts* list to bring up the chart and timeframe your alert is configured with.
-- Use the cog on the alert's line in the *Manage Alerts* list to bring up the *Edit Alert* dialog box.
-- Select from the *Condition* dropdown menu the new version of the study you want to use. It will be the lowest instance of the study in the menu. Note that if you have changed the study's *Settings/Inputs*, you will see those new values next to the study's new version in the dropdown menu.
-- Click *OK*.
-
-If you wish to change the symbol or the timeframe the alert is running on, you may:
-
-- Set your chart to the new symbol and/or timeframe you wish to apply to the alert.
-- Use the cog on the alert's line in the *Manage Alerts* list to bring up the *Edit Alert* dialog box.
-- Select from the *Condition* dropdown menu the symbol and timeframe you wish the alert to be configured with, which should correspond to the chart you are currently on.
-- Make a new selection from the *Condition* dropdown menu, this time being the study containing the alertcondition you want the alert to run on.
-- Click *OK*.
-
 
