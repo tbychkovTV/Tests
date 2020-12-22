@@ -82,7 +82,7 @@ or on both. The script user creating an alert on a strategy decides which type o
 `alert()` events
 ^^^^^^^^^^^^^^^^
 
-The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function has the following signature:
+The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function has the following signature::
 
     alertcondition(message, freq)
 
