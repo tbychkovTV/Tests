@@ -16,7 +16,8 @@ The different types of alerts available on TradingView are documented in the Hel
 Some of those (*generic alerts*, *order fill alerts* and *drawing alerts*) are created from symbols or 
 scripts loaded on the chart and do not require specific coding in Pine scripts. Any TradingView user can create such alerts from their charts.
 
-For script users to create other types of alerts such as *script alerts* triggering on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__  function calls 
+For script users to create other types of alerts such as *script alerts* triggering on 
+`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__  function calls 
 and *alertcondition() alerts*, Pine scripts must contain specific code. 
 Additionally, while script users can create *script alerts* on order fill events from the charts UI on any strategy loaded on their chart, 
 Pine coders can specify explicit order fill alert messages in their script for each type of order filled by the broker emulator.
@@ -37,8 +38,9 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
 was the first feature allowing Pine programmers to create alerts. Then came order fill alerts for strategies, which trigger when the broker simulator creates order fill events. 
 These require no special code for script users to create them, but by way of the `alert_message` parameter for order-generating ``strategy.*`` functions, 
 programmers can complement order fill alerts by defining a custom alert message for any number of order fulfillment events. 
-Finally, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function was introduced, which creates alert events funnelled into the *script alerts* that users 
-can create from the charts UI, and which may also include alerts on order fill events when the *script alert* is created from a strategy.
+Finally, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ 
+function was introduced, which creates alert events funnelled into the *script alerts* that users can create from the charts UI, 
+and which may also include alerts on order fill events when the *script alert* is created from a strategy.
 
 
 Which type of alert is best?
@@ -48,7 +50,8 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
 Contrary to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__, it allows for dynamic alert messages.
 
 While `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls can be generated on any logic programmable in Pine, 
-including when orders are **sent** to the broker emulator in strategies, they cannot be coded to trigger when orders are **executed** (or *filled*) because after orders are sent to the broker emulator, 
+including when orders are **sent** to the broker emulator in strategies, 
+they cannot be coded to trigger when orders are **executed** (or *filled*) because after orders are sent to the broker emulator, 
 control over their execution is transferred to the broker emulator. When a script user wants to generate alerts on order fill events, 
 he must include those events when creating a *script alert* on a strategy in the "Create Alert" dialog box. The message sent with order fill events, can, however, 
 be controled by using the ``alert-message`` parameter in order-generating ``strategy.*()`` function calls.
@@ -61,7 +64,8 @@ but they can also be used as a quick way to generate distinct alerts available f
 Script alerts
 -------------
 
-When a script user creates a *script alert* using the *Create Alert* dialog box, the events that can trigger the alert will vary depending on whether it is created from a study or a strategy.
+When a script user creates a *script alert* using the *Create Alert* dialog box, 
+the events that can trigger the alert will vary depending on whether it is created from a study or a strategy.
 
 .. note:: Pine studies are often referred to as "indicators" in the charts user interface and in the Help Center's user documentation.
 
@@ -70,8 +74,8 @@ A *script alert* created from a **study** will trigger when:
 - The code's logic allows an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute.
 - The frequency specified in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call allows the alert to trigger.
 
-A *script alert* created from a **strategy** can trigger on order fill events, on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, or on both. 
-The script user creating an alert on a strategy decides which type of alerts he wishes to include in his *script alert*.
+A *script alert* created from a **strategy** can trigger on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, on order fill events, 
+or on both. The script user creating an alert on a strategy decides which type of alerts he wishes to include in his *script alert*.
 
 
 
@@ -90,18 +94,74 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
 
 ``freq``
    An "input int" specifying the triggering frequency of the alert. Valid arguments are:
-|        ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
-|        ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an `alert()` call is made during that script iteration.
-|        ``alert.freq_all``: All calls trigger the alert.
 
+|    ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
+|    ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an `alert()` call is made during that script iteration.
+|    ``alert.freq_all``: All calls trigger the alert.
 
+The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function can be used in both studies and strategies. 
+For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a script alert configured on "alert() function events", 
+the script's logic must allow the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute, 
+**and** the frequency determined by the ``freq`` parameter must allow the alert to trigger. Let's look at an example::
 
+    //@version=4
+    study("`alert()`")
+    if close > open
+        alert("Up bar close at: " + tostring(close))
 
-- can be used in studies and strats.
-- trigger when they execute in the code.
-- frequency
-- creating multi-alert scenarios by controlling which alert() call triggers an alert.
+If a script alert is created from this script:
 
+- The alert will trigger on each realtime bar where ``close > open``.
+- Because no argument is specified for the ``freq`` parameter, the default value of ``alert.freq_once_per_bar`` will used, 
+  so the alert will trigger only once per bar, at the bar's close.
+- The message sent with the alert will be: "Up bar close at: x" where "x" is the up bar's close price.
+
+Note that:
+
+- Contrary to an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call which is always placed 
+  column 0, so in the script's global scope, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed 
+  in an `xxx <https://www.tradingview.com/pine-script-reference/v4/#>`__ branch's local scope so that it only executes when the triggering condition is met.
+- An `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
+  call would not allow the message's string to be dynamically generated to include the closing price using ``tostring(close)``.
+
+If you want to allow your script's users to create alerts on distinct conditions from a script using 
+`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, you will need to provide them with the means to select the scenarios 
+from your script's Inputs and include those selections in your alert triggering conditions in your code.
+
+Suppose, for our next example, that you have an RSI script detecting crosses of two levels slightly above and below the centerline, 
+to provide for a no-trade buffer zone around the centerline, to reduce noise. You want to provide the option of triggering alerts on a cross of either line, 
+while also allowing the selection of only long or short entry events. You could code it like this::
+
+    //@version=4
+    study("Multiple alerts using `alert()`")
+    detectLongs  = input(true, "Detect Longs")
+    detectShorts = input(true, "Detect Shorts")
+
+    r = rsi(close, 20)
+    xUp = crossover( r, 50)
+    xDn = crossunder(r, 50)
+    enterLong  = detectLongs and xUp
+    enterShort = detectShorts and xDn
+    if enterLong
+        alert("Long")
+    else if enterShort
+        alert("Short")
+
+    plotchar(enterLong,  "enterLong",  "▲", location.bottom, color.lime, size = size.tiny)
+    plotchar(enterShort, "enterShort", "▼", location.top,    color.red,  size = size.tiny)
+    hline(50)
+    plot(r)
+
+Note how:
+
+- We create a compund condition which is met only when the user's selection allows for an entry in that direction. 
+  A long entry on a crossover of the centerline this only triggers the alert when long entries have been enabled in the script's Inputs.
+- If a user of this script wanted to create two distinct script alerts from this script, i.e., one triggering only on longs, 
+  and one only on shorts, then he would need to:
+    1. Select only "Detect Longs" in the Inputs.
+    2. Create a script alert on the script.
+    3. Select only "Detect Shorts" in the Inputs.
+    4. Create another script alert on the script.
 
 
 Order fill events
