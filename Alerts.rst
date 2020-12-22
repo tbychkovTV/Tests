@@ -84,8 +84,6 @@ or on both. The script user creating an alert on a strategy decides which type o
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function has the following signature:
 
-.. code-block:: text
-
     alertcondition(message, freq)
 
 ``message``
