@@ -23,7 +23,7 @@ This Pine User Manual page covers the different ways Pine programmers can code t
 
 - How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create alert events in studies or strategies, which can then be included in *script alerts* when users create them.
 - How to add custom alert messages to be included in *script alerts* triggering on order fill events.
-- How to use `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ alerts which can be used in studies only, to create events triggering *alertcondition() alerts*.
+- How to use the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function to create, in studies only, alert events which can then be used to create *alertcondition() alerts* types of alerts from the charts user interface.
 
 
 Background
