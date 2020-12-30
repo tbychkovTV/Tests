@@ -21,7 +21,7 @@ Pine coders can specify explicit order fill alert messages in their script for e
 
 This Pine User Manual page covers the different ways Pine programmers can code their scripts to create alert events from which script users will in turn be able to create alerts. We will cover:
 
-- How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create alert events in studies or strategies, which can then be included in **script alerts** when users create them.
+- How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create alert events in studies or strategies, which can then be included in *script alerts* when users create them.
 - How to add custom alert messages to be included in *script alerts* triggering on order fill events.
 - How to use `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ alerts which can be used in studies only, to create events triggering *alertcondition() alerts*.
 
