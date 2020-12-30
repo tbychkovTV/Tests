@@ -50,7 +50,8 @@ including when orders are **sent** to the broker emulator in strategies,
 they cannot be coded to trigger when orders are **executed** (or *filled*) because after orders are sent to the broker emulator, it controls their execution. 
 When a script user wants to generate alerts on order fill events, 
 he must include those events when creating a *script alert* on a strategy in the "Create Alert" dialog box. The message sent with order fill events can, however, 
-be controlled by using the ``alert-message`` parameter in order-generating ``strategy.*()`` function calls.
+be controlled by using the ``alert-message`` parameter in order-generating ``strategy.*()`` function calls. A combination of `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls and the use of ``alert-message`` arguments in order-generating ``strategy.*()`` function calls should allow Pine coders to generate 
+alert events on any required event in their script's execution.
 
 `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ remain in Pine mostly for backward compatibility, 
 but they can also be used as a quick way to generate distinct alerts available for selection as individual items in the "Create Alert" dialog box's "Condition" field.
