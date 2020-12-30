@@ -35,8 +35,8 @@ was the first feature allowing Pine programmers to create alerts. Then came orde
 Order fill events require no special code for script users to create alerts on them, 
 but by way of the ``alert_message`` parameter for order-generating ``strategy.*()`` functions, 
 programmers can complement order fill alerts by defining a custom alert message for any number of order fulfillment events. 
-Finally, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ 
-function was introduced, which creates alert events used in *script alerts*.
+The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ 
+function is the most recent addition to Pine.
 
 
 Which type of alert is best?
