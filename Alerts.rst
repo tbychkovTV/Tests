@@ -35,15 +35,15 @@ was the first feature allowing Pine programmers to create alerts. Then came orde
 These require no special code for script users to create them, but by way of the ``alert_message`` parameter for order-generating ``strategy.*()`` functions, 
 programmers can complement order fill alerts by defining a custom alert message for any number of order fulfillment events. 
 Finally, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ 
-function was introduced, which creates alert events funneled into the *script alerts* that users can create from the charts UI, 
-and which may also include alerts on order fill events when the *script alert* is created from a strategy.
+function was introduced, which creates alert events used in *script alerts*.
 
 
 Which type of alert is best?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function will generally be easier and more flexible to work with. 
-Contrary to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__, it allows for dynamic alert messages.
+Contrary to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__, 
+it allows for dynamic alert messages and works in both studies and strategies.
 
 While `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls can be generated on any logic programmable in Pine, 
 including when orders are **sent** to the broker emulator in strategies, 
