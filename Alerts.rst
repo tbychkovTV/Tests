@@ -53,8 +53,8 @@ he must include those events when creating a *script alert* on a strategy in the
 be controlled by using the ``alert-message`` parameter in order-generating ``strategy.*()`` function calls. A combination of `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls and the use of ``alert-message`` arguments in order-generating ``strategy.*()`` function calls should allow Pine coders to generate 
 alert events on any required event in their script's execution.
 
-`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ remain in Pine mostly for backward compatibility, 
-but they can also be used as a quick way to generate distinct alerts available for selection as individual items in the "Create Alert" dialog box's "Condition" field.
+The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function remains in Pine for backward compatibility, 
+but it can also be used advantageously to generate distinct alerts available for selection as individual items in the "Create Alert" dialog box's "Condition" field.
 
 
 
