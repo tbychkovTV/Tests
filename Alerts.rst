@@ -41,7 +41,7 @@ function was introduced, which creates alert events used in *script alerts*.
 Which type of alert is best?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function will generally be easier and more flexible to work with. 
+For Pine coders, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function will generally be easier and more flexible to work with. 
 Contrary to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__, 
 it allows for dynamic alert messages and works in both studies and strategies.
 
