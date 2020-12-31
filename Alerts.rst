@@ -117,13 +117,18 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
     study("`alert()`")
     if close > open
         alert("Up bar close at: " + tostring(close))
-
+    else if close < open
+        alert("Down bar close at: " + tostring(close))
+    else
+        alert("No movement at: " + tostring(close))
+        
 If a script alert is created from this script:
 
-- The alert will trigger on each realtime bar where ``close > open``.
+- The alert will trigger on each realtime bar because all possible outcomes of price movement for a bar are covered.
 - Because no argument is specified for the ``freq`` parameter in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call', 
   the default value of ``alert.freq_once_per_bar`` will be used and the alert will trigger only once per bar, at the bar's close.
-- The message sent with the alert will be: "Up bar close at: x" where "x" is the up bar's close price.
+- The message sent with the alert is composed of two parts: a fixed string naming the condition detected and the closing price of the bar, 
+  which will of course vary bar to bar.
 
 Note that:
 
