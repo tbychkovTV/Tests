@@ -77,8 +77,6 @@ Script alerts
 When a script user creates a *script alert* using the *Create Alert* dialog box, 
 the events that can trigger the alert will vary depending on whether it is created from a study or a strategy.
 
-.. note:: Pine studies are often referred to as "indicators" in the charts user interface and in the Help Center's user documentation.
-
 A *script alert* created from a **study** will trigger when:
 
 - The code's logic allows an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute.
@@ -87,6 +85,7 @@ A *script alert* created from a **study** will trigger when:
 A *script alert* created from a **strategy** can trigger on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, on order fill events, 
 or both. The script user creating an alert on a strategy decides which type of alerts he wishes to include in his *script alert*.
 
+.. note:: Pine studies are often referred to as "indicators" in the charts user interface and in the Help Center's user documentation.
 
 
 `alert()` events
