@@ -138,7 +138,8 @@ Note that:
   If an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed in the script's global scope at column 0, 
   it will execute on all bars.
 - An `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
-  call would not allow the message's string to be dynamically generated to include the closing price using ``tostring(close)``.
+  call could not accept the same string we use for our alert's mesage. Strings used as arguments to the ``message`` parameter in 
+  `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls cannot vary bar to bar.
 
 When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
