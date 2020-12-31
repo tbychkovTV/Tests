@@ -38,6 +38,7 @@ Then came order fill alerts for strategies, which trigger when the broker emulat
 Order fill events require no special code for script users to create alerts on them, 
 but by way of the ``alert_message`` parameter for order-generating ``strategy.*()`` functions, 
 programmers can complement order fill alerts by defining a custom alert message for any number of order fulfillment events. 
+
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ 
 function is the most recent addition to Pine. It more or less supercedes 
 `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ and when used in strategies, 
