@@ -9,7 +9,7 @@ Alerts
 Introduction
 ------------
 
-TradingView alerts run 24x7 on our servers and do not require users to be logged in to execute. Alerts are created from the charts user interface. TradingView users will find all the information necessary to understand how alerts work and how to create them in the Help Center's `About TradingView alerts <https://www.tradingview.com/?solution=43000520149>`__ page.
+TradingView alerts run 24x7 on our servers and do not require users to be logged in to execute. Alerts are created from the charts user interface (*UI*). TradingView users will find all the information necessary to understand how alerts work and how to create them in the Help Center's `About TradingView alerts <https://www.tradingview.com/?solution=43000520149>`__ page.
 
 Some of the alerts types available to users (*generic alerts*, *order fill alerts* and *drawing alerts*) are created from symbols or 
 scripts loaded on the chart and do not require specific coding in Pine scripts. Any TradingView user can create such alerts from their charts.
@@ -21,9 +21,9 @@ Pine coders can specify explicit order fill alert messages in their script for e
 
 This Pine User Manual page covers the different ways Pine programmers can code their scripts to create alert events from which script users will in turn be able to create alerts. We will cover:
 
-- How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create alert events in studies or strategies, which can then be included in *script alerts* when users create them.
+- How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create alert events in studies or strategies, which can then be included in *script alerts* created from the charts UI.
 - How to add custom alert messages to be included in *script alerts* triggering on the order fill events of strategies.
-- How to use the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function to generate, in studies only, alert events which can then be used to create *alertcondition() alerts* from the charts user interface.
+- How to use the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function to generate, in studies only, alert events which can then be used to create *alertcondition() alerts* from the charts UI.
 
 
 Background
