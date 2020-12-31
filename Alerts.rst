@@ -85,7 +85,7 @@ A *script alert* created from a **study** will trigger when:
 - The frequency specified in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call allows the alert to trigger.
 
 A *script alert* created from a **strategy** can trigger on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, on order fill events, 
-or on both. The script user creating an alert on a strategy decides which type of alerts he wishes to include in his *script alert*.
+or both. The script user creating an alert on a strategy decides which type of alerts he wishes to include in his *script alert*.
 
 
 
@@ -128,12 +128,14 @@ If a script alert is created from this script:
 
 Note that:
 
-- Contrary to an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call which is always placed 
-  column 0, so in the script's global scope, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed 
-  in an `xxx <https://www.tradingview.com/pine-script-reference/v4/#>`__ branch's local scope so that it only executes when the triggering condition is met.
+- Contrary to an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call which is always placed at column 0, 
+  so in the script's global scope, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed 
+  in an `if <https://www.tradingview.com/pine-script-reference/v4/#op_if>`__ branch's local scope so that it only executes when the triggering condition is met.
 - An `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
   call would not allow the message's string to be dynamically generated to include the closing price using ``tostring(close)``.
 
+When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
+`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
 If you want to allow your script's users to create alerts on distinct conditions from a script using 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, you will need to provide them with the means to select the scenarios 
 from your script's Inputs and include those selections in your alert triggering conditions in your code.
