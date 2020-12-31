@@ -58,8 +58,10 @@ they cannot be coded to trigger when orders are **executed** (or *filled*) becau
 the emulator controls their execution and does not report fill events back to the script directly. 
 
 When a script user wants to generate an alert on a strategy's order fill events, 
-he must include those events when creating a *script alert* on the strategy in the "Create Alert" dialog box. The message sent with order fill events can, 
-however, be controlled by programmers through use of the ``alert_message`` parameter in order-generating ``strategy.*()`` function calls. 
+he must include those events when creating a *script alert* on the strategy in the "Create Alert" dialog box. 
+No special code is required in scripts for users to be able to do this. 
+The message sent with order fill events can, 
+however, be customized by programmers through use of the ``alert_message`` parameter in order-generating ``strategy.*()`` function calls. 
 A combination of `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls and the use of custom 
 ``alert_message`` arguments in order-generating ``strategy.*()`` calls should allow Pine coders to generate 
 alert events on most conditions occurring in their script's execution.
