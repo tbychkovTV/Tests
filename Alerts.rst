@@ -132,9 +132,11 @@ If a script alert is created from this script:
 
 Note that:
 
-- Contrary to an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call which is always placed at column 0, 
-  so in the script's global scope, the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed 
-  in an `if <https://www.tradingview.com/pine-script-reference/v4/#op_if>`__ branch's local scope so that it only executes when the triggering condition is met.
+- Contrary to an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call which is always placed at column 0 
+  (in the script's global scope), the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed 
+  in the local scope of an `if <https://www.tradingview.com/pine-script-reference/v4/#op_if>`__ branch so it only executes when the triggering condition is met. 
+  If an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed in the script's global scope at column 0, 
+  it will execute on all bars.
 - An `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
   call would not allow the message's string to be dynamically generated to include the closing price using ``tostring(close)``.
 
