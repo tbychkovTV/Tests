@@ -147,9 +147,9 @@ If you want to allow your script's users to create alerts on distinct conditions
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, you will need to provide them with the means to select the scenarios 
 from your script's Inputs and include those selections in your alert triggering conditions in your code.
 
-Suppose, for our next example, that you have an RSI script detecting crosses of two levels slightly above and below the centerline, 
-to provide for a no-trade buffer zone around the centerline, to reduce noise. You want to provide the option of triggering alerts on a cross of either line, 
-while also allowing the selection of only long or short entry events. You could code it like this::
+Suppose, for our next example, that you have an RSI script detecting crosses of its centerline. 
+You want to provide the option of triggering alerts on only longs, only shorts, or both.
+You could code your script like this::
 
     //@version=4
     study("Multiple alerts using `alert()`")
