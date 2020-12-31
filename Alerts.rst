@@ -41,8 +41,8 @@ programmers can complement order fill alerts by defining a custom alert message 
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ 
 function is the most recent addition to Pine. It more or less supercedes 
-`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ and when used in strategies, 
-provides a useful complements to order fill alert events.
+`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__, and when used in strategies, 
+provides a useful complement to order fill alert events.
 
 
 Which type of alert is best?
