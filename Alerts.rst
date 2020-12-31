@@ -19,7 +19,9 @@ require specific Pine code to be present in a script before script users can cre
 Additionally, while script users can create *script alerts* triggering on order fill events from the charts UI on any strategy loaded on their chart, 
 Pine coders can specify explicit order fill alert messages in their script for each type of order filled by the broker emulator. 
 
-This page covers the different ways Pine programmers can code their scripts to create alert events from which script users will in turn be able to create alerts. We will cover:
+This page covers the different ways Pine programmers can code their scripts to create alert events 
+from which script users will in turn be able to create alerts from the charts UI. 
+We will cover:
 
 - How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create alert events in studies or strategies, which can then be included in *script alerts* created from the charts UI.
 - How to add custom alert messages to be included in *script alerts* triggering on the order fill events of strategies.
