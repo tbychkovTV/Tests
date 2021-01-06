@@ -284,17 +284,37 @@ Generic placeholders
 Order fill events placeholders
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``{{strategy.position_size}}``
-    Returns the value of the same keyword in Pine, i.e., the size of the current position.
+``{{strategy.market_position}}``
+    Returns the current position of the strategy in string form: “long”, “flat”, or “short”.
+
+``{{strategy.market_position_size}}``
+    Returns the size of the current position as an absolute value, i.e. a non-negative number.
+
 ``{{strategy.order.action}}``
     Returns the string “buy” or “sell” for the executed order.
 
-{{strategy.order.contracts}} - returns the number of contracts of the executed order.
-{{strategy.order.price}} - returns the price at which the order was executed.
-{{strategy.order.id}} - returns the ID of the executed order (the string used as the first parameter in one of the function calls generating orders: strategy.entry, strategy.exit or strategy.order).
-{{strategy.order.comment}} - returns the comment of the executed order (the string used in the comment parameter in one of the function calls generating orders: strategy.entry, strategy.exit or strategy.order). If no comment is specified, then the value of strategy.order.id will be used.
-{{strategy.order.alert_message}} - returns the value of the alert_message parameter which can be used in the strategy's Pine code when calling one of the functions used to place orders: strategy.entry, strategy.exit or strategy.order. This feature is only supported in Pine v4.
-{{strategy.market_position}} - returns the current position of the strategy in string form: “long”, “flat”, or “short”.
-{{strategy.market_position_size}} - returns the size of the current position as an absolute value, i.e. a non-negative number.
-{{strategy.prev_market_position}} - returns the previous position of the strategy in string form: “long”, “flat”, or “short”.
-{{strategy.prev_market_position_size}} - returns the size of the previous position as an absolute value, i.e. a non-negative number.
+``{{strategy.order.alert_message}}``
+    This placeholder is useful when building the alert message from the "Create Alert" dialog box. 
+    It returns the value of the ``alert_message`` parameter used in the ``strategy.*()`` function triggering the alert.
+
+``{{strategy.order.comment}}``
+    Returns the comment of the executed order (the string used in the ``comment`` parameter of the ``strategy.*()`` function triggering the alert).
+    If no comment is specified, then the value of ``strategy.order.id`` will be used.
+
+``{{strategy.order.contracts}}``
+    Returns the number of contracts of the executed order.
+
+``{{strategy.order.id}}``
+    Returns the id of the executed order (the string used in the ``id`` parameter of the ``strategy.*()`` function triggering the alert).
+
+``{{strategy.order.price}}``
+    Returns the price at which the order was executed.
+
+``{{strategy.position_size}}``
+    Returns the value of the same keyword in Pine, i.e., the size of the current position.
+
+``{{strategy.prev_market_position}}``
+    Returns the previous position of the strategy in string form: “long”, “flat”, or “short”.
+
+``{{strategy.prev_market_position_size}}``
+    Returns the size of the previous position as an absolute value, i.e. a non-negative number.
