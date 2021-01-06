@@ -289,17 +289,21 @@ These placeholders can be used in studies (with ) or in the ``alert_message`` ar
 ``{{exchange}}``
     Exchange of the symbol used in alert (NASDAQ, NYSE, MOEX, etc). Note that for delayed symbols, the exchange will end with “_DL” or “_DLY.” For example, “NYMEX_DL.”
 
-``{{close}}``, ``{{open}}``, ``{{high}}``, ``{{low}}``, ``{{time}}``, ``{{volume}}``
+``{{open}}``, ``{{high}}``, ``{{low}}``, ``{{close}}``, ``{{volume}}``
     Corresponding values of the bar on which the alert has been triggered. 
     Note that alerts on indicators, non-standard charts and drawings depends on a resolution, while simple price alerts (e.g., price crossing some value) are always calculated on 1-minute bars. {{time}} is in UTC, formatted as yyyy-MM-ddTHH:mm:ssZ. For example, 2019-08-27T09:56:00Z. Other values are fixed-point numbers with a decimal point separating the integral and fractional parts. For example, 1245.25.
 
+``{{time}}``
+    Returns the time at the beginning of the bar. TIme is UTC, formatted as ``yyyy-MM-ddTHH:mm:ssZ``, so for example: ``2019-08-27T09:56:00Z``.
+
 ``{{timenow}}``
-    Current fire time of the alert, formatted in the same way as {{time}}. Return time to the nearest second, regardless of the resolution.
+    Current time when the alert triggers, formatted in the same way as ``{{time}}``. The precision is to the nearest second, regardless of the resolution.
 
 ``{{plot_0}}``, ``{{plot_1}}``, [...] ``{{plot_19}}``
-    Corresponding output series of an indicator used in the alert. Note that the plots are numbered from zero. The highest plot ID is 19 (you can access only 20 first output series). Output series are the values of an indicator you can see on a chart. For example, the built-in volume indicator has two output series: Volume and Volume MA. You can create an alert on it and type in a message box something like this:
-
-Volume: {{plot_0}}, Volume average: {{plot_1}}
+    Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
+    For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following::
+    
+    Volume: {{plot_0}}, Volume average: {{plot_1}}
 
 ``{{interval}}``
     Returns the interval (i.e. timeframe/resolution) of the chart that the alert is created on. Note that, for technical reasons, in some cases, this placeholder will return “1” instead of the timeframe on the chart. Regular price-based alerts (with conditions such as “AAPL Crossing 120” or “AMZN Greater Than 3600”) are all based on the symbol’s last value, so the timeframe of the chart is not relevant for the alert. Because of that, all price-based alerts are actually calculated on the 1m timeframe and the placeholder will always return “1” accordingly. Additionally, Range charts are also calculated based on 1m data so the {{interval}} placeholder will always return “1” on any alert created on a Range chart. With alerts created on drawings and indicators, this placeholder will function as expected.
