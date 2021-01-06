@@ -201,7 +201,7 @@ before a script's logic can detect it.
 
 Pine coders can customize the alert message sent when specific orders are executed. While this is not a pre-requisite for *order fill events* to trigger correctly, 
 custom alert messages can be useful because they allow custom syntax to be included with alerts in order to route actual orders to a third-party execution engine, for example. 
-This is done by means of the ``alert_message`` parameter in functions which can generate orders: 
+Specifying custom alert messages for specific *order fill events* is done by means of the ``alert_message`` parameter in functions which can generate orders: 
 `strategy.close() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}close>`__, 
 `strategy.entry() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}entry>`__, 
 `strategy.exit() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}exit>`__, 
