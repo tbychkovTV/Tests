@@ -302,7 +302,7 @@ These placeholders can be used in studies (with ) or in the ``alert_message`` ar
 ``{{plot_0}}``, ``{{plot_1}}``, [...] ``{{plot_19}}``
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
     For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following::
-    
+
     Volume: {{plot_0}}, Volume average: {{plot_1}}
 
 ``{{interval}}``
