@@ -303,6 +303,8 @@ These placeholders can be used in studies (with ) or in the ``alert_message`` ar
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
     For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following::
 
+.. code-block::
+
     alertcondition(volume > sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
 
 ``{{interval}}``
