@@ -112,26 +112,39 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
 |    ``alert.freq_all``: All calls trigger the alert.
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function can be used in both studies and strategies. 
-For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a script alert configured on "alert() function events", 
+For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a *script alert* configured on "alert() function events", 
 the script's logic must allow the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute, 
-**and** the frequency determined by the ``freq`` parameter must allow the alert to trigger. Let's look at an example::
+**and** the frequency determined by the ``freq`` parameter must allow the alert to trigger. Let's look at an example where we detect crosses of the RSI centerline::
 
     //@version=4
-    study("`alert()`")
-    if close > open
-        alert("Up bar close at: " + tostring(close))
-    else if close < open
-        alert("Down bar close at: " + tostring(close))
-    else
-        alert("No movement at: " + tostring(close))
-        
-If a script alert is created from this script:
+    study("All `alert()` calls")
+    r = rsi(close, 20)
 
-- The alert will trigger on each realtime bar because all possible outcomes of price movement for a bar are covered.
-- Because no argument is specified for the ``freq`` parameter in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call', 
-  the default value of ``alert.freq_once_per_bar`` will be used and the alert will trigger only once per bar, at the bar's close.
-- The message sent with the alert is composed of two parts: a fixed string naming the condition detected and the closing price of the bar, 
-  which will of course vary bar to bar.
+    // Detect crosses.
+    xUp = crossover( r, 50)
+    xDn = crossunder(r, 50)
+    // Generate an alert on crosses.
+    if xUp
+        alert("Go long (RSI is " + tostring(r, "#.00)"))
+    else if xDn
+        alert("Go short (RSI is " + tostring(r, "#.00)"))
+
+    plotchar(xUp, "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
+    plotchar(xDn, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
+    hline(50)
+    plot(r)
+
+If a *script alert* is created from this script:
+
+- When RSI crosses the centerline up, the *script alert* will trigger with the "Long" message. 
+  When RSI crosses the centerline down, the *script alert* will trigger with the "Short" message.
+- Because no argument is specified for the ``freq`` parameter in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call, 
+  the default value of ``alert.freq_once_per_bar`` will be used, so the alert will only trigger the first time one of the 
+  `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls is executed during the realtime bar.
+- The message sent with the alert is composed of two parts: a constant string and then the result of the 
+  `tostring() <https://www.tradingview.com/pine-script-reference/v4/#fun_tostring>`__ call which will include the value of RSI at the moment where the 
+  `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is executed by the script. An alert message for a cross up would look like: 
+  "Go long (RSI is 53.41)".
 
 Note that:
 
@@ -254,6 +267,10 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
    It can, however, contain placeholders which will be replaced at runtime by dynamic values that may change bar to bar. See this page's `Placeholders`_ section. 
    If a ``title`` argument is used and no ``message`` argument is supplied, the ``title`` argument will be used as the default message.
 
+
+On one condition
+^^^^^^^^^^^^^^^^
+
 Here is an example of code creating an alert condition::
 
     //@version=4
@@ -282,6 +299,9 @@ Note that:
 - Because our script now contains two `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls, 
   two distinct items will appear in the "Condition" dropdown menu of the "Create Alert" dialog box. To distinguish them, we use a different ``title`` argument in both calls.
 
+
+On compound conditions
+^^^^^^^^^^^^^^^^^^^^^^
 
 Placeholders
 ^^^^^^^^^^^^
