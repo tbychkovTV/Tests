@@ -192,7 +192,7 @@ we could have used the following code to generate our alert events::
 On selective 'alert()' calls
 """"""""""""""""""""""""""""
 
-When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
+When users create a *script alert* on *alert() function events*, the alert will trigger on any call the script makes to the 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
 If you want to allow your script's users to select which conditions in your script will trigger alerts, 
 you will need to provide them with the means to signify their choice in your script's inputs, 
