@@ -416,17 +416,18 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
 ``{{plot("[plot_title]")}}``
     This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in a 
     `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call. 
-    Note that double quotes **must** be used to wrap the plot's ``title`` inside the placeholder. 
+    Note that double quotes **must** be used inside the placeholder to wrap the argument used for the ``title`` parameter 
+    in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call. 
     This requires that we use single quotes to wrap the ``message`` string::
 
 .. code-block::
 
     //@version=4
     study("")
-    myRsi = rsi(close, 14)
-    xUp = crossover(myRsi, 50)
-    plot(myRsi, "rsiLine")
-    alertcondition(xUp, message = 'RSI is bullish at: {{plot("rsiLine")}}')
+    r = rsi(close, 14)
+    xUp = crossover(r, 50)
+    plot(r, "RSI")
+    alertcondition(xUp, message = 'RSI is bullish at: {{plot("RSI")}}')
 
 ``{{interval}}``
     Returns the timeframe of the chart the alert is created on. 
