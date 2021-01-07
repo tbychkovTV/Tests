@@ -117,6 +117,7 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
 **and** the frequency determined by the ``freq`` parameter must allow the alert to trigger.
 
 
+|
 **All 'alert()' calls**
 
 Let's look at an example where we detect crosses of the RSI centerline::
