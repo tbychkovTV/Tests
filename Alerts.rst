@@ -219,9 +219,13 @@ On historical bars, a script executes on the close of bars. That is when
 -------------------------
 
 The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function
-allows you to create custom *alert conditions* in Pine studies. One study may contain more than one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call.
-While the presence of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls in a Pine **strategy** script will not cause a compilation error,
-alerts cannot be created from them.
+allows programmers to create individual alerts in Pine studies. 
+One study may contain more than one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call. 
+Each call to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
+in a script will create a corresponding alert selectable in the "Condition" dropdown menu of the "Create Alert" dialog box.
+
+While the presence of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls 
+in a Pine **strategy** script will not cause a compilation error, alerts cannot be created from them.
 
 The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function has the following signature:
 
@@ -230,10 +234,9 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
     alertcondition(condition, title, message)
 
 ``condition``
-   is a series of boolean (``true`` or ``false``) values used to trigger the alert.
-   ``true`` means the alert condition is met and the alert
-   should trigger. ``false`` means the alert condition is not met and the alert should not
-   trigger. It is a required argument.
+   is a series of boolean (``true`` or ``false``) values used to trigger the alert. It is a required argument. 
+   When the value is ``true`` the alert will trigger. 
+   When the value is ``false`` the alert will not trigger.
 
 ``title``
    is an optional argument that sets the name of the alert condition as it will appear in TradingView's *Create Alert* dialog box.
@@ -303,6 +306,10 @@ They will be replaced with dynamic values when the alert triggers.
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
     For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following::
 
+.. code-block::
+
+    alertcondition(volume > sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
+
 ``{{plot("[plot_title]")}}``
     This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in the 
     `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call::
@@ -315,10 +322,6 @@ They will be replaced with dynamic values when the alert triggers.
     xUp = crossover(myRsi, 50)
     plot(myRsi, "rsiLine")
     alertcondition(xUp, message = 'RSI is bullish at: {{plot("rsiLine")}}')
-
-.. code-block::
-
-    alertcondition(volume > sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
 
 ``{{interval}}``
     Returns the interval (i.e. timeframe/resolution) of the chart that the alert is created on. 
