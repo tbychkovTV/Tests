@@ -242,22 +242,21 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
    Is an optional argument that sets the name of the alert condition as it will appear in the *Create Alert* dialog box's "Condition" field in the charts UI.
 
 ``message``
-   Is a  "const string" optional argument that specifies the text message to display when the alert fires. 
+   Is a  "const string" optional argument that specifies the text message to display when the alert triggers. 
    The text will appear in the *Message* field of the *Create Alert* dialog box, from where script users can then modify it when creating an alert. 
-   **This string being "const string", it must be know at compilation time and thus cannot vary bar to bar. 
+   **This string being "const string", it must be know at compilation time and thus cannot vary bar to bar.** 
    It can, however, contain placeholders which will be replaced at runtime by dynamic values that may change bar to bar. See this page's `Placeholders`_ section.
 
 Here is an example of code creating an alert condition::
 
     //@version=4
-    study("Example of alertcondition")
-    src = input(close)
-    ma_1 = sma(src, 20)
-    ma_2 = sma(src, 10)
-    c = cross(ma_1, ma_2)
-    alertcondition(c, title='Red crosses blue', message='Red and blue have crossed!')
-    plot(ma_1, color=color.red)
-    plot(ma_2, color=color.blue)
+    study("Volume", format=format.volume)
+    ma = sma(volume,20)
+    c_bar = open > close ? color.red : color.green
+    xUp = crossover(volume, ma)
+    plot(volume, "Volume", c_bar, style = plot.style_columns, transp = 65)
+    plot(ma, "Volume MA", style = plot.style_area, transp = 65)
+    alertcondition(xUp, message = "Volume crossed its MA20")
 
 The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function makes the alert available in the *Create Alert*
 dialog box. Please note that the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_` **does NOT start alerts programmatically**;
