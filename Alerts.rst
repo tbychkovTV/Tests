@@ -306,7 +306,9 @@ They will be replaced with dynamic values when the alert triggers.
 ``{{plot("[plot_title]")}}``
     This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in the 
     `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call::
-    
+
+.. code-block::
+
     //@version=4
     study("")
     myRsi = rsi(close, 14)
