@@ -26,7 +26,8 @@ This page covers the different ways Pine programmers can code their scripts to c
 from which script users will in turn be able to create alerts from the charts UI. 
 We will cover:
 
-- How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create *alert() events* in studies or strategies, which can then be included in *script alerts* created from the charts UI.
+- How to use the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function to create *alert() function events* in studies or strategies, 
+  which can then be included in *script alerts* created from the charts UI.
 - How to add custom alert messages to be included in *script alerts* triggering on the *order fill events* in strategies.
 - How to use the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function to generate, in studies only, *alertcondition() events* which can then be used to create *alertcondition() alerts* from the charts UI.
 
@@ -102,8 +103,8 @@ or both. The script user creating an alert on a strategy decides which type of a
 .. note:: Pine studies are often referred to as "indicators" in the charts UI and in the Help Center's user documentation.
 
 
-'alert()' events
-^^^^^^^^^^^^^^^^
+'alert()' function events
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function has the following signature:
 
@@ -125,7 +126,7 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
     ``alert.freq_all``: All calls trigger the alert.
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function can be used in both studies and strategies. 
-For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a *script alert* configured on "alert() function events", 
+For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a *script alert* configured on *alert() function events*, 
 the script's logic must allow the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute, 
 **and** the frequency determined by the ``freq`` parameter must allow the alert to trigger.
 
