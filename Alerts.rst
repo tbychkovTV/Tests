@@ -27,7 +27,15 @@ We will cover:
 - How to add custom alert messages to be included in *script alerts* triggering on the *order fill events* in strategies.
 - How to use the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function to generate, in studies only, *alertcondition() events* which can then be used to create *alertcondition() alerts* from the charts UI.
 
-**Keep in mind that alerts only trigger in the realtime bar. This page's content therefore applies to realtime bars only.**
+Keep in mind that:
+
+- No alert-related Pine code can create a running alert in the charts UI; 
+  it merely creates alert events which may in turn be used by script users to create running alerts from the charts UI.
+- Alerts only trigger in the realtime bar. The operational scope of Pine code dealing with any type of alert is therefore restricted to realtime bars only.
+- When an alert is created in the charts UI, TradingView saves a mirror image of the script and its inputs along with the chart’s main symbol and timeframe 
+  to run the alert on its server. Subsequent changes to your script's inputs or the chart will thus not affect running alerts previously created from them. 
+  If you want any changes to your context to be reflected in a running alert’s behavior, 
+  you will need to either delete the alert and create a new one in the new context, or modify the alert.
 
 
 Background
@@ -252,8 +260,6 @@ allows programmers to create individual *alertcondition events* in Pine studies.
 One study may contain more than one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call. 
 Each call to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
 in a script will create a corresponding alert selectable in the "Condition" dropdown menu of the "Create Alert" dialog box. 
-`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ calls in a script **do NOT create a running alert in the charts UI**; 
-they merely create an *alertcondition event* which may in turn be used to create an alert from the charts UI.
 
 While the presence of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls 
 in a Pine **strategy** script will not cause a compilation error, alerts cannot be created from them.
