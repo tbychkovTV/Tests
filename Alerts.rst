@@ -153,8 +153,8 @@ If a *script alert* is created from this script:
   `tostring() <https://www.tradingview.com/pine-script-reference/v4/#fun_tostring>`__ call which will include the value of RSI at the moment where the 
   `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is executed by the script. An alert message for a cross up would look like: 
   "Go long (RSI is 53.41)".
-- There is no way with this script that allows a script user to restrict alert events to longs only, because a *script alert* always triggers on any occurrence of a call to 
-  `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__, as long as the frequency used in the call allows for it.
+- Because a *script alert* always triggers on any occurrence of a call to `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__, 
+  as long as the frequency used in the call allows for it, this script does not allow a script user to restrict his *script alert* to longs only, for example.
 
 Note that:
 
