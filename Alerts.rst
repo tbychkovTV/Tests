@@ -33,7 +33,7 @@ Keep in mind that:
   it merely creates alert events which can in turn be used by script users to create running alerts from the charts UI.
 - Alerts only trigger in the realtime bar. The operational scope of Pine code dealing with any type of alert is therefore restricted to realtime bars only.
 - When an alert is created in the charts UI, TradingView saves a mirror image of the script and its inputs along with the chart’s main symbol and timeframe 
-  to run the alert on its server. Subsequent changes to your script's inputs or the chart will thus not affect running alerts previously created from them. 
+  to run the alert on its servers. Subsequent changes to your script's inputs or the chart will thus not affect running alerts previously created from them. 
   If you want any changes to your context to be reflected in a running alert’s behavior, 
   you will need to either delete the alert and create a new one in the new context, or modify the alert.
 
