@@ -350,7 +350,7 @@ These placeholders can be used in the ``message`` argument of `alertcondition() 
 They will be replaced with dynamic values when the alert triggers. They are the only way to include dynamic values in 
 `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ messages.
 
-.. note:: Users creating *alertcondition() alerts* from the "Create Alert" dialog box are also able to use these placeholders in the dialog box's "Message" field.
+Note that users creating *alertcondition() alerts* from the "Create Alert" dialog box in the charts UI are also able to use these placeholders in the dialog box's "Message" field.
     
 
 ``{{ticker}}``
