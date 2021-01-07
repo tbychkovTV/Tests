@@ -237,6 +237,10 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
    Is a series of boolean (``true`` or ``false``) values used to trigger the alert. It is a required argument. 
    When the value is ``true`` the alert will trigger. 
    When the value is ``false`` the alert will not trigger.
+   Contrary to `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function calls, 
+   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
+   must start at column zero of a line, so cannot be placed in conditional blocks. 
+   The ``condition`` argument is what determines when the alert will trigger.
 
 ``title``
    Is an optional argument that sets the name of the alert condition as it will appear in the *Create Alert* dialog box's "Condition" field in the charts UI.
@@ -257,6 +261,19 @@ Here is an example of code creating an alert condition::
     plot(volume, "Volume", c_bar, style = plot.style_columns, transp = 65)
     plot(ma, "Volume MA", style = plot.style_area, transp = 65)
     alertcondition(xUp, message = "Volume crossed its MA20")
+
+If we wanted to include the value of the volume when the cross occurs, we could not simply add its value to the ``message`` string using ``tostring(volume)``, 
+as we could in an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call or in an ``alert_message`` argument in a strategy. 
+We can, however, include it using a placeholder. This shows two alternatives::
+
+    alertcondition(xUp, "Alert1", message = "Volume crossed its MA20. Volume is: {{volume}}")
+    alertcondition(xUp, "Alert2", message = 'Volume crossed its MA20. Volume is: {{plot("Volume")}}')
+
+Note that:
+- The first line uses the ``{{volume}}`` placeholder.
+- The second line uses the ``title`` of the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call used in our script to plot the volume. 
+  Using this method we can include any value that is plotted by our study.
+- Double quotes are used to wrap the plot's ``title`` inside the ``{{plot("Volume")}}`` placeholder. This requires that we use single quotes to wrap the ``message`` string.
 
 The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function makes the alert available in the *Create Alert*
 dialog box. Please note that the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_` **does NOT start alerts programmatically**;
@@ -312,7 +329,9 @@ They will be replaced with dynamic values when the alert triggers.
 
 ``{{plot("[plot_title]")}}``
     This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in a 
-    `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call::
+    `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call. 
+    Note that double quotes **must** be used to wrap the plot's ``title`` inside the placeholder. 
+    This requires that we use single quotes to wrap the ``message`` string::
 
 .. code-block::
 
