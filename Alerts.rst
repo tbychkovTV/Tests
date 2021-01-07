@@ -219,10 +219,12 @@ On historical bars, a script executes on the close of bars. That is when
 -------------------------
 
 The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function
-allows programmers to create individual alerts in Pine studies. 
+allows programmers to create individual *alertcondition events* in Pine studies. 
 One study may contain more than one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call. 
 Each call to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
-in a script will create a corresponding alert selectable in the "Condition" dropdown menu of the "Create Alert" dialog box.
+in a script will create a corresponding alert selectable in the "Condition" dropdown menu of the "Create Alert" dialog box. 
+`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_` calls in a script **do NOT create a running alert in the charts UI**; 
+they merely create an *alertcondition event* which may in turn be used to create an alert from the charts UI.
 
 While the presence of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls 
 in a Pine **strategy** script will not cause a compilation error, alerts cannot be created from them.
@@ -277,8 +279,7 @@ Note that:
   Using this method we can include any value that is plotted by our study.
 - Double quotes are used to wrap the plot's ``title`` inside the ``{{plot("Volume")}}`` placeholder. This requires that we use single quotes to wrap the ``message`` string.
 
-The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function makes the alert available in the *Create Alert*
-dialog box. Please note that the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_` **does NOT start alerts programmatically**;
+;
 it only gives you the opportunity to create an alert from it
 in the *Create Alert* dialog box. Alerts must always be created manually.
 An alert created from an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ in the script's
