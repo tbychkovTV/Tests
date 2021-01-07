@@ -180,6 +180,14 @@ Note that:
   `tostring() <https://www.tradingview.com/pine-script-reference/v4/#fun_tostring>`__ call. 
   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ messages must be constant strings.
 
+Because `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ messages can be constructed dynamically at runtime, 
+we could have used the following code to generate our alert events::
+
+    // Generate an alert on crosses.
+    if xUp or xDn
+        firstPart = (xUp ? "Go long" : "Go short") + " (RSI is "
+        alert(firstPart + tostring(r, "#.00)"))
+
 
 On selective 'alert()' calls
 """"""""""""""""""""""""""""
