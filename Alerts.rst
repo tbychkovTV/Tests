@@ -231,10 +231,8 @@ Note how:
   A long entry on a crossover of the centerline only triggers the alert when long entries have been enabled in the script's Inputs.
 - If a user of this script wanted to create two distinct script alerts from this script, i.e., one triggering only on longs, 
   and one only on shorts, then he would need to:
-    1. Select only "Detect Longs" in the Inputs.
-    2. Create a script alert on the script.
-    3. Select only "Detect Shorts" in the Inputs.
-    4. Create another script alert on the script.
+    1. Select only "Detect Longs" in the inputs and create a first *script alert* on the script.
+    2. Select only "Detect Shorts" in the Inputs and create another *script alert* on the script.
 
 
 Order fill events
