@@ -349,5 +349,5 @@ They will be replaced with dynamic values when the alert triggers.
 
 ``{{interval}}``
     Returns the timeframe of the chart the alert is created on. 
-    Note that Range charts are calculated based on 1m data so the placeholder will always return "1" on any alert created on a Range chart.
+    Note that Range charts are calculated based on 1m data, so the placeholder will always return "1" on any alert created on a Range chart.
 
