@@ -17,7 +17,7 @@ Some of the alert types available on TradingView (*generic alerts*, *order fill 
 scripts loaded on the chart and do not require specific coding in Pine scripts. Any user can create these types of alerts from the charts UI.
 
 Other types of alerts 
-(*script alerts* triggering on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__  function calls, and *alertcondition() alerts*) 
+(*script alerts* triggering on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__  function events, and *alertcondition() alerts*) 
 require specific Pine code to be present in a script to create an *alert event* before script users can create alerts from them using the charts UI. 
 Additionally, while script users can create *script alerts* triggering on *order fill events* from the charts UI on any strategy loaded on their chart, 
 Pine coders can specify explicit order fill alert messages in their script for each type of order filled by the broker emulator. 
