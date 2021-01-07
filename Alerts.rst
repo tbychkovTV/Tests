@@ -119,9 +119,6 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
 **and** the frequency determined by the ``freq`` parameter must allow the alert to trigger.
 
 
-|
-**All 'alert()' calls**
-
 All 'alert()' calls
 """""""""""""""""""
 
@@ -170,6 +167,9 @@ Note that:
   call could not accept the same string we use for our alert's mesage. Strings used as arguments to the ``message`` parameter in 
   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls cannot vary bar to bar.
 
+
+Selective 'alert()' calls
+"""""""""""""""""""""""""
 
 When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
