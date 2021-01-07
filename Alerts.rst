@@ -242,6 +242,39 @@ In strategies
 While *cript alerts* on strategies will use *order fill events* to trigger alerts when the broker emulator fills orders, 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ can be used advantageously to generate other alert events in straegies.
 
+This strategy code produces *alert() function events* when RSI moves against the trade for three consecutive bars::
+
+    //@version=4
+    strategy("Strategy with selective `alert()` calls")
+    r = rsi(close, 20)
+
+    // Detect crosses.
+    xUp = crossover( r, 50)
+    xDn = crossunder(r, 50)
+    // Create alert event and place order on crosses.
+    if xUp
+        strategy.entry("Long", strategy.long)
+    else if xDn
+        strategy.entry("Short", strategy.short)
+
+    // Create alert events when RSI diverges from our trade's direction.
+    inLongTrade  = strategy.position_size > 0
+    inShortTrade = strategy.position_size < 0
+    if inLongTrade and falling(r, 3)
+        alert("WARNING: Falling RSI", alert.freq_once_per_bar_close)
+    if inShortTrade and rising(r, 3)
+        alert("WARNING: Rising RSI", alert.freq_once_per_bar_close)
+
+    plotchar(xUp, "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
+    plotchar(xDn, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
+    plotchar(inLongTrade and falling(r, 3), "WARNING: Falling RSI", "•", location.top,    color.red,  size = size.tiny)
+    plotchar(inShortTrade and rising(r, 3), "WARNING: Rising RSI",  "•", location.bottom, color.lime, size = size.tiny)
+    hline(50)
+    plot(r)
+
+If a user created a *script alert* from this strategy and included both *order fill events* and *alert() function events* in his alert, 
+the alert would trigger whenever an order is executed, or when one of the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls 
+was executed by the script on the realtime bar's closing iteration, i.e., when `barstate.isrealtime <https://www.tradingview.com/pine-script-reference/v4/#var_barstate{dot}isrealtime>`__ `barstate.isconfirmed <https://www.tradingview.com/pine-script-reference/v4/#var_barstate{dot}isconfirmed>`__ are both true.
 
 
 Order fill events
