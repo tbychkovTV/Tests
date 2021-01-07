@@ -244,7 +244,7 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
 ``message``
    Is a  "const string" optional argument that specifies the text message to display when the alert triggers. 
    The text will appear in the *Message* field of the *Create Alert* dialog box, from where script users can then modify it when creating an alert. 
-   **This string being "const string", it must be know at compilation time and thus cannot vary bar to bar.** 
+   **This string being "const string", it must be known at compilation time and thus cannot vary bar to bar.** 
    It can, however, contain placeholders which will be replaced at runtime by dynamic values that may change bar to bar. See this page's `Placeholders`_ section.
 
 Here is an example of code creating an alert condition::
@@ -311,7 +311,7 @@ They will be replaced with dynamic values when the alert triggers.
     alertcondition(volume > sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
 
 ``{{plot("[plot_title]")}}``
-    This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in the 
+    This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in a 
     `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call::
 
 .. code-block::
