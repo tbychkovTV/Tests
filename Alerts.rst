@@ -77,17 +77,18 @@ Script alerts
 -------------
 
 When a script user creates a *script alert* using the *Create Alert* dialog box, 
-the events that can trigger the alert will vary depending on whether it is created from a study or a strategy.
+the events able to trigger the alert will vary depending on whether the alert is created from a study or a strategy.
 
 A *script alert* created from a **study** will trigger when:
 
-- The code's logic allows an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute.
+- The study contains `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls.
+- The code's logic allows a specific `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute.
 - The frequency specified in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call allows the alert to trigger.
 
-A *script alert* created from a **strategy** can trigger on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, on order fill events, 
+A *script alert* created from a **strategy** can trigger on *alert() events*, on *order fill events*, 
 or both. The script user creating an alert on a strategy decides which type of alerts he wishes to include in his *script alert*.
 
-.. note:: Pine studies are often referred to as "indicators" in the charts user interface and in the Help Center's user documentation.
+.. note:: Pine studies are often referred to as "indicators" in the charts UI and in the Help Center's user documentation.
 
 
 `alert()` events
@@ -236,13 +237,11 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
     alertcondition(condition, title, message)
 
 ``condition``
-   Is a series of boolean (``true`` or ``false``) values used to trigger the alert. It is a required argument. 
-   When the value is ``true`` the alert will trigger. 
-   When the value is ``false`` the alert will not trigger.
+   A "series bool" value (``true`` or ``false``) which determines when the alert will trigger. It is a required argument. 
+   When the value is ``true`` the alert will trigger. When the value is ``false`` the alert will not trigger. 
    Contrary to `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function calls, 
-   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
-   must start at column zero of a line, so cannot be placed in conditional blocks. 
-   The ``condition`` argument is what determines when the alert will trigger.
+   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls 
+   must start at column zero of a line, so cannot be placed in conditional blocks.
 
 ``title``
    Is an optional argument that sets the name of the alert condition as it will appear in the *Create Alert* dialog box's "Condition" field in the charts UI. 
