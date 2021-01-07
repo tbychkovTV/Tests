@@ -91,7 +91,7 @@ or both. The script user creating an alert on a strategy decides which type of a
 .. note:: Pine studies are often referred to as "indicators" in the charts UI and in the Help Center's user documentation.
 
 
-`alert()` events
+'alert()' events
 ^^^^^^^^^^^^^^^^
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function has the following signature:
@@ -216,7 +216,7 @@ Let's look at the following strategy, a modification of the code from the built-
 On historical bars, a script executes on the close of bars. That is when 
 
 
-`alertcondition()` events
+'alertcondition()' events
 -------------------------
 
 The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function
