@@ -199,12 +199,11 @@ you will need to provide them with the means to signify their choice in your scr
 and code the appropriate logic in your script. This way, script users will be able to create multiple *script alerts* from a single script, 
 each behaving differently as per the choices made in the script's inputs prior to creating the alert in the charts UI.
 
-Suppose, for our next example, that you have an RSI script detecting crosses of its centerline. 
-You want to provide the option of triggering alerts on only longs, only shorts, or both.
+Suppose, for our next example, that we want to provide the option of triggering alerts on only longs, only shorts, or both.
 You could code your script like this::
 
     //@version=4
-    study("Multiple alerts using `alert()`")
+    study("Selective `alert()` calls")
     i_detectLongs  = input(true, "Detect Longs")
     i_detectShorts = input(true, "Detect Shorts")
 
@@ -213,16 +212,16 @@ You could code your script like this::
     xUp = crossover( r, 50)
     xDn = crossunder(r, 50)
     // Only generate entries when the trade's direction is allowed in inputs.
-    enterLong  = i_detectLongs and xUp
+    enterLong  = i_detectLongs  and xUp
     enterShort = i_detectShorts and xDn
     // Trigger the alerts only when the compound condition is met.
     if enterLong
-        alert("Long")
+        alert("Go long (RSI is " + tostring(r, "#.00)"))
     else if enterShort
-        alert("Short")
+        alert("Go short (RSI is " + tostring(r, "#.00)"))
 
-    plotchar(enterLong,  "enterLong",  "▲", location.bottom, color.lime, size = size.tiny)
-    plotchar(enterShort, "enterShort", "▼", location.top,    color.red,  size = size.tiny)
+    plotchar(enterLong,  "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
+    plotchar(enterShort, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
     hline(50)
     plot(r)
 
