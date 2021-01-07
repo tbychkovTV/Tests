@@ -270,6 +270,7 @@ We can, however, include it using a placeholder. This shows two alternatives::
     alertcondition(xUp, "Alert2", message = 'Volume crossed its MA20. Volume is: {{plot("Volume")}}')
 
 Note that:
+
 - The first line uses the ``{{volume}}`` placeholder.
 - The second line uses the ``title`` of the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call used in our script to plot the volume. 
   Using this method we can include any value that is plotted by our study.
