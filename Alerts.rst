@@ -9,10 +9,12 @@ Alerts
 Introduction
 ------------
 
-TradingView alerts run 24x7 on our servers and do not require users to be logged in to execute. Alerts are created from the charts user interface (*UI*). TradingView users will find all the information necessary to understand how alerts work and how to create them in the Help Center's `About TradingView alerts <https://www.tradingview.com/?solution=43000520149>`__ page.
+TradingView alerts run 24x7 on our servers and do not require users to be logged in to execute. Alerts are created from the charts user interface (*UI*). 
+You will find all the information necessary to understand how alerts work and how to create them in the 
+Help Center's `About TradingView alerts <https://www.tradingview.com/?solution=43000520149>`__ page.
 
-Some of the alert types available to users (*generic alerts*, *order fill alerts* and *drawing alerts*) are created from symbols or 
-scripts loaded on the chart and do not require specific coding in Pine scripts. Any TradingView user can create such alerts from the charts UI.
+Some of the alert types available on TradingView (*generic alerts*, *order fill alerts* and *drawing alerts*) are created from symbols or 
+scripts loaded on the chart and do not require specific coding in Pine scripts. Any user can create these types of alerts from the charts UI.
 
 Other types of alerts (*alertcondition() alerts* and *script alerts* triggering on `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__  function calls) 
 require specific Pine code to be present in a script to create an *alert event* before script users can create alerts from them using the charts UI. 
