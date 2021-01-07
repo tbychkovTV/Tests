@@ -223,7 +223,7 @@ allows programmers to create individual *alertcondition events* in Pine studies.
 One study may contain more than one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call. 
 Each call to `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
 in a script will create a corresponding alert selectable in the "Condition" dropdown menu of the "Create Alert" dialog box. 
-`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_` calls in a script **do NOT create a running alert in the charts UI**; 
+`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ calls in a script **do NOT create a running alert in the charts UI**; 
 they merely create an *alertcondition event* which may in turn be used to create an alert from the charts UI.
 
 While the presence of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls 
