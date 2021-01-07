@@ -160,12 +160,13 @@ Note that:
 
 - Contrary to an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call which is always placed at column 0 
   (in the script's global scope), the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed 
-  in the local scope of an `if <https://www.tradingview.com/pine-script-reference/v4/#op_if>`__ branch so it only executes when the triggering condition is met. 
-  If an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is placed in the script's global scope at column 0, 
-  it will execute on all bars.
+  in the local scope of an `if <https://www.tradingview.com/pine-script-reference/v4/#op_if>`__ branch so it only executes when our triggering condition is met. 
+  If an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call was placed in the script's global scope at column 0, 
+  it would execute on all bars, which would likely not be the desired behavior.
 - An `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
-  call could not accept the same string we use for our alert's mesage. Strings used as arguments to the ``message`` parameter in 
-  `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls cannot vary bar to bar.
+  call cannot accept the same string we use for our alert's mesage because of its use of the 
+  `tostring() <https://www.tradingview.com/pine-script-reference/v4/#fun_tostring>`__ call. 
+  `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ messages must be constant strings.
 
 
 On selective 'alert()' calls
