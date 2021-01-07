@@ -347,7 +347,7 @@ Placeholders
 ^^^^^^^^^^^^
 
 These placeholders can be used in the ``message`` argument of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ calls. 
-They will be replaced with dynamic values when the alert triggers. They are the only way to include dynamic values in 
+They will be replaced with dynamic values when the alert triggers. They are the only way to include dynamic values (values that can vary bar to bar) in 
 `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ messages.
 
 Note that users creating *alertcondition() alerts* from the "Create Alert" dialog box in the charts UI are also able to use these placeholders in the dialog box's "Message" field.
