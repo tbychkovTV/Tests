@@ -416,9 +416,9 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
 ``{{plot("[plot_title]")}}``
     This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in a 
     `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call. 
-    Note that double quotes **must** be used inside the placeholder to wrap the argument used for the ``title`` parameter 
+    Note that double quotes (``"``) **must** be used inside the placeholder to wrap the argument used for the ``title`` parameter 
     in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call. 
-    This requires that we use single quotes to wrap the ``message`` string::
+    This requires that we use single quotes (`````) to wrap the ``message`` string::
 
 .. code-block::
 
