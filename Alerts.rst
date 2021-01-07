@@ -279,24 +279,8 @@ Note that:
   which must include the ``title`` of the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call used in our script to plot the volume. 
   Using this method we can include any value that is plotted by our study.
 - Double quotes are used to wrap the plot's ``title`` inside the ``{{plot("Volume")}}`` placeholder. This requires that we use single quotes to wrap the ``message`` string.
-
-;
-it only gives you the opportunity to create an alert from it
-in the *Create Alert* dialog box. Alerts must always be created manually.
-An alert created from an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ in the script's
-code does not display anything on the chart, except the message when it triggers.
-
-To create an alert based on an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_, one should apply a Pine study
-containing at least one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ call to the current chart, open the *Create Alert*
-dialog box, select the study as the main condition for the alert, and then
-choose one of the specific alert conditions defined in the study's code.
-
-.. image:: images/Alertcondition_1.png
-
-
-When the alert fires, you will see the following message:
-
-.. image:: images/Alertcondition_2.png
+- Because our script would now contain two `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls 
+  two distinct items will appear in the "Condition" dropdown menu of the "Create Alert" dialog box. To distinguish them, we use a different ``title`` argument in both calls.
 
 
 Placeholders
