@@ -114,7 +114,13 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function can be used in both studies and strategies. 
 For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a *script alert* configured on "alert() function events", 
 the script's logic must allow the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to execute, 
-**and** the frequency determined by the ``freq`` parameter must allow the alert to trigger. Let's look at an example where we detect crosses of the RSI centerline::
+**and** the frequency determined by the ``freq`` parameter must allow the alert to trigger.
+
+
+All 'alert()' calls
+“““““““““““““““““““
+
+Let's look at an example where we detect crosses of the RSI centerline::
 
     //@version=4
     study("All `alert()` calls")
@@ -136,8 +142,8 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
 
 If a *script alert* is created from this script:
 
-- When RSI crosses the centerline up, the *script alert* will trigger with the "Long" message. 
-  When RSI crosses the centerline down, the *script alert* will trigger with the "Short" message.
+- When RSI crosses the centerline up, the *script alert* will trigger with the "Go long..." message. 
+  When RSI crosses the centerline down, the *script alert* will trigger with the "Go short..." message.
 - Because no argument is specified for the ``freq`` parameter in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call, 
   the default value of ``alert.freq_once_per_bar`` will be used, so the alert will only trigger the first time one of the 
   `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls is executed during the realtime bar.
@@ -145,6 +151,8 @@ If a *script alert* is created from this script:
   `tostring() <https://www.tradingview.com/pine-script-reference/v4/#fun_tostring>`__ call which will include the value of RSI at the moment where the 
   `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is executed by the script. An alert message for a cross up would look like: 
   "Go long (RSI is 53.41)".
+- There is no way with this script that allows a script user to restrict alert events to longs only, because a *script alert* always triggers on any occurrence of a call to 
+  `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__, as long as the frequency used in the call allows for it.
 
 Note that:
 
@@ -156,6 +164,7 @@ Note that:
 - An `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ 
   call could not accept the same string we use for our alert's mesage. Strings used as arguments to the ``message`` parameter in 
   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls cannot vary bar to bar.
+
 
 When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
