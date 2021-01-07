@@ -119,8 +119,8 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
 **and** the frequency determined by the ``freq`` parameter must allow the alert to trigger.
 
 
-All 'alert()' calls
-"""""""""""""""""""
+On all 'alert()' calls
+""""""""""""""""""""""
 
 Let's look at an example where we detect crosses of the RSI centerline::
 
@@ -168,8 +168,8 @@ Note that:
   `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls cannot vary bar to bar.
 
 
-Selective 'alert()' calls
-"""""""""""""""""""""""""
+On selective 'alert()' calls
+""""""""""""""""""""""""""""
 
 When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
