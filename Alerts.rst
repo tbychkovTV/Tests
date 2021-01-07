@@ -218,12 +218,12 @@ On historical bars, a script executes on the close of bars. That is when
 `alertcondition()` events
 -------------------------
 
-The `alertcondition <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function
-allows you to create custom *alert conditions* in Pine studies. One study may contain more than one ``alertcondition`` call.
-While the presence of ``alertcondition`` calls in a Pine **strategy** script will not cause a compilation error,
+The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function
+allows you to create custom *alert conditions* in Pine studies. One study may contain more than one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ call.
+While the presence of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ calls in a Pine **strategy** script will not cause a compilation error,
 alerts cannot be created from them.
 
-The ``alertcondition`` function has the following signature:
+The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function has the following signature:
 
 .. code-block:: text
 
@@ -255,15 +255,15 @@ Here is an example of code creating an alert condition::
     plot(ma_1, color=color.red)
     plot(ma_2, color=color.blue)
 
-The ``alertcondition`` function makes the alert available in the *Create Alert*
-dialog box. Please note that the ``alertcondition`` **does NOT start alerts programmatically**;
+The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`__ function makes the alert available in the *Create Alert*
+dialog box. Please note that the `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_` **does NOT start alerts programmatically**;
 it only gives you the opportunity to create an alert from it
 in the *Create Alert* dialog box. Alerts must always be created manually.
-An alert created from an ``alertcondition`` in the script's
+An alert created from an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ in the script's
 code does not display anything on the chart, except the message when it triggers.
 
-To create an alert based on an ``alertcondition``, one should apply a Pine study
-containing at least one ``alertcondition`` call to the current chart, open the *Create Alert*
+To create an alert based on an `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_, one should apply a Pine study
+containing at least one `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ call to the current chart, open the *Create Alert*
 dialog box, select the study as the main condition for the alert, and then
 choose one of the specific alert conditions defined in the study's code.
 
@@ -276,12 +276,13 @@ When the alert fires, you will see the following message:
 
 
 Placeholders
-------------
+^^^^^^^^^^^^
 
-Generic placeholders
-^^^^^^^^^^^^^^^^^^^^
+These placeholders can be used in the ``message`` argument of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ calls. 
+They will be replaced with dynamic values when the alert triggers.
 
-These placeholders can be used in studies (with ) or in the ``alert_message`` argument of strategies.
+.. note:: Users creating *alertcondition() alerts* from the "Create Alert" dialog box are also able to use these placeholders in the dialog box's "Message" field.
+    
 
 ``{{ticker}}``
     Ticker of the symbol used in alert (AAPL, BTCUSD, etc.).
@@ -290,8 +291,7 @@ These placeholders can be used in studies (with ) or in the ``alert_message`` ar
     Exchange of the symbol used in alert (NASDAQ, NYSE, MOEX, etc). Note that for delayed symbols, the exchange will end with “_DL” or “_DLY.” For example, “NYMEX_DL.”
 
 ``{{open}}``, ``{{high}}``, ``{{low}}``, ``{{close}}``, ``{{volume}}``
-    Corresponding values of the bar on which the alert has been triggered. 
-    Note that alerts on indicators, non-standard charts and drawings depends on a resolution, while simple price alerts (e.g., price crossing some value) are always calculated on 1-minute bars. {{time}} is in UTC, formatted as yyyy-MM-ddTHH:mm:ssZ. For example, 2019-08-27T09:56:00Z. Other values are fixed-point numbers with a decimal point separating the integral and fractional parts. For example, 1245.25.
+    Corresponding values of the bar on which the alert has been triggered.
 
 ``{{time}}``
     Returns the time at the beginning of the bar. TIme is UTC, formatted as ``yyyy-MM-ddTHH:mm:ssZ``, so for example: ``2019-08-27T09:56:00Z``.
@@ -303,50 +303,22 @@ These placeholders can be used in studies (with ) or in the ``alert_message`` ar
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
     For example, the built-in "Volume" indicator has two output series: Volume and Volume MA, so you could use the following::
 
+``{{plot("[plot_title]")}}``
+    This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in the 
+    `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call::
+    
+    //@version=4
+    study("")
+    myRsi = rsi(close, 14)
+    xUp = crossover(myRsi, 50)
+    plot(myRsi, "rsiLine")
+    alertcondition(xUp, message = 'RSI is bullish at: {{plot("rsiLine")}}')
+
 .. code-block::
 
     alertcondition(volume > sma(volume,20), "Volume alert", "Volume ({{plot_0}}) > average ({{plot_1}})")
 
 ``{{interval}}``
-    Returns the interval (i.e. timeframe/resolution) of the chart that the alert is created on. Note that, for technical reasons, in some cases, this placeholder will return “1” instead of the timeframe on the chart. Regular price-based alerts (with conditions such as “AAPL Crossing 120” or “AMZN Greater Than 3600”) are all based on the symbol’s last value, so the timeframe of the chart is not relevant for the alert. Because of that, all price-based alerts are actually calculated on the 1m timeframe and the placeholder will always return “1” accordingly. Additionally, Range charts are also calculated based on 1m data so the {{interval}} placeholder will always return “1” on any alert created on a Range chart. With alerts created on drawings and indicators, this placeholder will function as expected.
+    Returns the interval (i.e. timeframe/resolution) of the chart that the alert is created on. 
+    Note that Range charts are calculated based on 1m data so the placeholder will always return “1” on any alert created on a Range chart.
 
-
-Order fill events placeholders
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-These placeholders can only be used in strategies:
-
-``{{strategy.market_position}}``
-    Returns the current position of the strategy in string form: “long”, “flat”, or “short”.
-
-``{{strategy.market_position_size}}``
-    Returns the size of the current position as an absolute value, i.e. a non-negative number.
-
-``{{strategy.order.action}}``
-    Returns the string “buy” or “sell” for the executed order.
-
-``{{strategy.order.alert_message}}``
-    This placeholder is useful when building the alert message from the "Create Alert" dialog box. 
-    It returns the value of the ``alert_message`` parameter used in the ``strategy.*()`` function triggering the alert.
-
-``{{strategy.order.comment}}``
-    Returns the comment of the executed order (the string used in the ``comment`` parameter of the ``strategy.*()`` function triggering the alert).
-    If no comment is specified, then the value of ``strategy.order.id`` will be used.
-
-``{{strategy.order.contracts}}``
-    Returns the number of contracts of the executed order.
-
-``{{strategy.order.id}}``
-    Returns the id of the executed order (the string used in the ``id`` parameter of the ``strategy.*()`` function triggering the alert).
-
-``{{strategy.order.price}}``
-    Returns the price at which the order was executed.
-
-``{{strategy.position_size}}``
-    Returns the value of the same keyword in Pine, i.e., the size of the current position.
-
-``{{strategy.prev_market_position}}``
-    Returns the previous position of the strategy in string form: “long”, “flat”, or “short”.
-
-``{{strategy.prev_market_position_size}}``
-    Returns the size of the previous position as an absolute value, i.e. a non-negative number.
