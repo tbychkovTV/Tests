@@ -245,13 +245,15 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
    The ``condition`` argument is what determines when the alert will trigger.
 
 ``title``
-   Is an optional argument that sets the name of the alert condition as it will appear in the *Create Alert* dialog box's "Condition" field in the charts UI.
+   Is an optional argument that sets the name of the alert condition as it will appear in the *Create Alert* dialog box's "Condition" field in the charts UI. 
+   If no argument is supplied, "Alert" will be used.
 
 ``message``
    Is a  "const string" optional argument that specifies the text message to display when the alert triggers. 
    The text will appear in the *Message* field of the *Create Alert* dialog box, from where script users can then modify it when creating an alert. 
    **This string being "const string", it must be known at compilation time and thus cannot vary bar to bar.** 
-   It can, however, contain placeholders which will be replaced at runtime by dynamic values that may change bar to bar. See this page's `Placeholders`_ section.
+   It can, however, contain placeholders which will be replaced at runtime by dynamic values that may change bar to bar. See this page's `Placeholders`_ section. 
+   If a ``title`` argument is used and no ``message`` argument is supplied, the ``title`` argument will be used as the default message.
 
 Here is an example of code creating an alert condition::
 
