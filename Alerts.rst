@@ -194,9 +194,10 @@ On selective 'alert()' calls
 
 When users create a *script alert* on `alert() events`, the alert will trigger on any call the script makes to the 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function. 
-If you want to allow your script's users to create alerts on distinct conditions from a script using 
-`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls, you will need to provide them with the means to select the scenarios 
-from your script's Inputs and include those selections in your alert triggering conditions in your code.
+If you want to allow your script's users to select which conditions in your script will trigger alerts, 
+you will need to provide them with the means to signify their choice in your script's inputs, 
+and code the appropriate logic in your script. This way, script users will be able to create multiple *script alerts* from a single script, 
+each behaving differently as per the choices the user has made in the script's inputs prior to creating the alert in the charts UI.
 
 Suppose, for our next example, that you have an RSI script detecting crosses of its centerline. 
 You want to provide the option of triggering alerts on only longs, only shorts, or both.
