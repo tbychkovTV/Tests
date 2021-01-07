@@ -235,6 +235,15 @@ Note how:
     2. Select only "Detect Shorts" in the Inputs and create another *script alert* on the script.
 
 
+In strategies
+"""""""""""""
+
+`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function calls can be used in strategies the same way as in studies. 
+While *cript alerts* on strategies will use *order fill events* to trigger alerts when the broker emulator fills orders, 
+`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ can be used advantageously to generate other alert events in straegies.
+
+
+
 Order fill events
 ^^^^^^^^^^^^^^^^^
 
@@ -338,7 +347,8 @@ Placeholders
 ^^^^^^^^^^^^
 
 These placeholders can be used in the ``message`` argument of `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ calls. 
-They will be replaced with dynamic values when the alert triggers.
+They will be replaced with dynamic values when the alert triggers. They are the only way to include dynamic values in 
+`alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun_alertcondition>`_ messages.
 
 .. note:: Users creating *alertcondition() alerts* from the "Create Alert" dialog box are also able to use these placeholders in the dialog box's "Message" field.
     
