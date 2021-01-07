@@ -258,7 +258,7 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
 Here is an example of code creating an alert condition::
 
     //@version=4
-    study("Volume", format=format.volume)
+    study("Volume", format = format.volume)
     ma = sma(volume,20)
     c_bar = open > close ? color.red : color.green
     xUp = crossover(volume, ma)
