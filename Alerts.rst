@@ -197,7 +197,7 @@ When users create a *script alert* on *alert() function events*, the alert will 
 If you want to allow your script's users to select which conditions in your script will trigger alerts, 
 you will need to provide them with the means to signify their choice in your script's inputs, 
 and code the appropriate logic in your script. This way, script users will be able to create multiple *script alerts* from a single script, 
-each behaving differently as per the choices the user has made in the script's inputs prior to creating the alert in the charts UI.
+each behaving differently as per the choices made in the script's inputs prior to creating the alert in the charts UI.
 
 Suppose, for our next example, that you have an RSI script detecting crosses of its centerline. 
 You want to provide the option of triggering alerts on only longs, only shorts, or both.
