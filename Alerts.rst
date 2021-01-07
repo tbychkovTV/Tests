@@ -2,7 +2,7 @@ Alerts
 ======
 
 .. contents:: :local:
-    :depth: 2
+    :depth: 3
 
 
 
@@ -121,6 +121,9 @@ the script's logic must allow the `alert() <https://www.tradingview.com/pine-scr
 
 |
 **All 'alert()' calls**
+
+All 'alert()' calls
+"""""""""""""""""""
 
 Let's look at an example where we detect crosses of the RSI centerline::
 
