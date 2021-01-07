@@ -274,7 +274,11 @@ This strategy code produces *alert() function events* when RSI moves against the
 
 If a user created a *script alert* from this strategy and included both *order fill events* and *alert() function events* in his alert, 
 the alert would trigger whenever an order is executed, or when one of the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls 
-was executed by the script on the realtime bar's closing iteration, i.e., when `barstate.isrealtime <https://www.tradingview.com/pine-script-reference/v4/#var_barstate{dot}isrealtime>`__ `barstate.isconfirmed <https://www.tradingview.com/pine-script-reference/v4/#var_barstate{dot}isconfirmed>`__ are both true.
+was executed by the script on the realtime bar's closing iteration, i.e., when 
+`barstate.isrealtime <https://www.tradingview.com/pine-script-reference/v4/#var_barstate{dot}isrealtime>`__ and 
+`barstate.isconfirmed <https://www.tradingview.com/pine-script-reference/v4/#var_barstate{dot}isconfirmed>`__ are both true. 
+The *alert() function events* in the script would only trigger the alert when the realtime bar closes because ``alert.freq_once_per_bar_close`` 
+is the argument used for the ``freq`` parameter in the `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ calls.
 
 
 Order fill events
