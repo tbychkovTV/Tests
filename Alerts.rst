@@ -144,7 +144,7 @@ Let's look at an example where we detect crosses of the RSI centerline::
     // Detect crosses.
     xUp = crossover( r, 50)
     xDn = crossunder(r, 50)
-    // Generate an alert on crosses.
+    // Trigger an alert on crosses.
     if xUp
         alert("Go long (RSI is " + tostring(r, "#.00)"))
     else if xDn
@@ -184,7 +184,7 @@ Note that:
 Lastly, because `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ messages can be constructed dynamically at runtime, 
 we could have used the following code to generate our alert events::
 
-    // Generate an alert on crosses.
+    // Trigger an alert on crosses.
     if xUp or xDn
         firstPart = (xUp ? "Go long" : "Go short") + " (RSI is "
         alert(firstPart + tostring(r, "#.00)"))
@@ -258,7 +258,7 @@ This strategy code produces *alert() function events* when RSI moves against the
     else if xDn
         strategy.entry("Short", strategy.short)
 
-    // Create alert events when RSI diverges from our trade's direction.
+    // Trigger an alert when RSI diverges from our trade's direction.
     divInLongTrade  = strategy.position_size > 0 and falling(r, 3)
     divInShortTrade = strategy.position_size < 0 and rising( r, 3)
     if divInLongTrade 
@@ -301,13 +301,8 @@ Specifying custom alert messages for specific *order fill events* is done by mea
 `strategy.exit() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}exit>`__, , and 
 `strategy.order() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}order>`__.
 
-Keep in mind that depending on the conditions specified in the ``strategy.*()`` function calls used when generating orders, 
-there can be a delay between the time when orders are **issued** and when they are **executed** by the broker emulator running in the background of all strategies. 
-
-Note that when the ``alert_message`` parameter is used in a strategy, script users must explicitly include the ``{{strategy.order.alert_message}}`` 
-placeholder in the "Create Alert" dialog box's "Message" field when creating *script alerts* on *order fill events*.
-
-Let's look at the following strategy::
+Let's look at a strategy where we use the ``alert_message`` parameter in both our 
+`strategy.entry() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}entry>`__ calls::
 
     //@version=4
     strategy("Strategy using `alert_message`")
@@ -316,7 +311,7 @@ Let's look at the following strategy::
     // Detect crosses.
     xUp = crossover( r, 50)
     xDn = crossunder(r, 50)
-    // Create alert event and place order on crosses.
+    // Place order on crosses using a custom alert message for each.
     if xUp
         strategy.entry("Long", strategy.long, stop = high, alert_message = "Stop-buy executed (stop was " + tostring(high) + ")")
     else if xDn
@@ -326,6 +321,22 @@ Let's look at the following strategy::
     plotchar(xDn, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
     hline(50)
     plot(r)
+
+Note that:
+
+- We use the ``stop`` parameter in our `strategy.entry() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}entry>`__ calls, 
+  which creates stop-buy and stop-sell orders. This entails that buy orders will only execute once price is higher than the `high` on the bar where the order is placed, 
+  and sell orders will only execute once price is lower than the `low` on the bar where the order is placed.
+- The up/down arrows which we plot with `plotchar() <https://www.tradingview.com/pine-script-reference/v4/#fun_plotchar>`_ are plotted when oders are **placed**. 
+  Any number of bars may elapse before the order is actually executed, and in some cases the order will never be executed because price does not meet 
+  the required condition.
+- Because we use the same ``id`` argument for all buy orders, any new buy order placed before a previous order's condition is met will replace that order. 
+  The same applies to sell orders.
+- Although the ``alert_message`` argument will only be included in the alert message when the order is executed, it is evaluated when the order is placed.
+
+When the ``alert_message`` parameter is used in a strategy's order-generating ``strategy.*()`` function calls, 
+script users must explicitly include the ``{{strategy.order.alert_message}}`` 
+placeholder in the "Create Alert" dialog box's "Message" field when creating *script alerts* on *order fill events*.
 
 
 
