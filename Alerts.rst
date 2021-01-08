@@ -119,11 +119,11 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
 ``freq``
     An "input int" specifying the triggering frequency of the alert. Valid arguments are:
 
-    ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
+        ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
 
-    ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an `alert()` call is made during that script iteration.
+        ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an `alert()` call is made during that script iteration.
 
-    ``alert.freq_all``: All calls trigger the alert.
+        ``alert.freq_all``: All calls trigger the alert.
 
 The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function can be used in both studies and strategies. 
 For an `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call to trigger a *script alert* configured on *alert() function events*, 
@@ -251,24 +251,24 @@ This strategy code produces *alert() function events* when RSI moves against the
     // Detect crosses.
     xUp = crossover( r, 50)
     xDn = crossunder(r, 50)
-    // Create alert event and place order on crosses.
+    // Place orders on crosses.
     if xUp
         strategy.entry("Long", strategy.long)
     else if xDn
         strategy.entry("Short", strategy.short)
 
     // Create alert events when RSI diverges from our trade's direction.
-    inLongTrade  = strategy.position_size > 0
-    inShortTrade = strategy.position_size < 0
-    if inLongTrade and falling(r, 3)
+    divInLongTrade  = strategy.position_size > 0 and falling(r, 3)
+    divInShortTrade = strategy.position_size < 0 and rising( r, 3)
+    if divInLongTrade 
         alert("WARNING: Falling RSI", alert.freq_once_per_bar_close)
-    if inShortTrade and rising(r, 3)
+    if divInShortTrade
         alert("WARNING: Rising RSI", alert.freq_once_per_bar_close)
 
     plotchar(xUp, "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
     plotchar(xDn, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
-    plotchar(inLongTrade and falling(r, 3), "WARNING: Falling RSI", "•", location.top,    color.red,  size = size.tiny)
-    plotchar(inShortTrade and rising(r, 3), "WARNING: Rising RSI",  "•", location.bottom, color.lime, size = size.tiny)
+    plotchar(divInLongTrade,  "WARNING: Falling RSI", "•", location.top,    color.red,  size = size.tiny)
+    plotchar(divInShortTrade, "WARNING: Rising RSI",  "•", location.bottom, color.lime, size = size.tiny)
     hline(50)
     plot(r)
 
@@ -399,6 +399,7 @@ Note that:
 
 On compound conditions
 ^^^^^^^^^^^^^^^^^^^^^^
+
 
 Placeholders
 ^^^^^^^^^^^^
