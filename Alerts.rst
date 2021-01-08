@@ -338,8 +338,8 @@ When the ``alert_message`` parameter is used in a strategy's order-generating ``
 script users must include the ``{{strategy.order.alert_message}}`` placeholder in the "Create Alert" dialog box's "Message" field 
 when creating *script alerts* on *order fill events*. This is required so the ``alert_message`` argument used in the order-generating ``strategy.*()`` function calls 
 is used in the message of alerts triggering on each *order fill event*. When using the ``{{strategy.order.alert_message}}`` placeholder and 
-``alert_message`` in only present in some of the order-generating ``strategy.*()`` function calls in your strategy, an empty string will be used in the alert message 
-if its order-generating ``strategy.*()`` function call does not use the ``alert_message`` parameter.
+``alert_message`` is only present in some of the order-generating ``strategy.*()`` function calls in your strategy, 
+an empty string will be used in the alert message if its order-generating ``strategy.*()`` function call does not use the ``alert_message`` parameter.
 
 
 
