@@ -121,7 +121,8 @@ The `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`_
 
         ``alert.freq_once_per_bar``: Only the first call per bar triggers the alert (default value).
 
-        ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an `alert()` call is made during that script iteration.
+        ``alert.freq_once_per_bar_close``: An alert is only triggered on the close when an 
+        `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ call is executed during that script iteration.
 
         ``alert.freq_all``: All calls trigger the alert.
 
