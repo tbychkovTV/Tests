@@ -240,8 +240,8 @@ In strategies
 """""""""""""
 
 `alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ function calls can be used in strategies the same way as in studies. 
-While *cript alerts* on strategies will use *order fill events* to trigger alerts when the broker emulator fills orders, 
-`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ can be used advantageously to generate other alert events in straegies.
+While *script alerts* on strategies will use *order fill events* to trigger alerts when the broker emulator fills orders, 
+`alert() <https://www.tradingview.com/pine-script-reference/v4/#fun_alert>`__ can be used advantageously to generate other alert events in strategies.
 
 This strategy code produces *alert() function events* when RSI moves against the trade for three consecutive bars::
 
