@@ -366,8 +366,8 @@ The `alertcondition() <https://www.tradingview.com/pine-script-reference/v4/#fun
    If a ``title`` argument is used and no ``message`` argument is supplied, the ``title`` argument will be used as the default message.
 
 
-On one condition
-^^^^^^^^^^^^^^^^
+Using one condition
+^^^^^^^^^^^^^^^^^^^
 
 Here is an example of code creating an alert condition::
 
@@ -398,8 +398,8 @@ Note that:
   two distinct items will appear in the "Condition" dropdown menu of the "Create Alert" dialog box. To distinguish them, we use a different ``title`` argument in both calls.
 
 
-On compound conditions
-^^^^^^^^^^^^^^^^^^^^^^
+Using compound conditions
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Placeholders
