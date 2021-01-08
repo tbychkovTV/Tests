@@ -339,7 +339,7 @@ script users must include the ``{{strategy.order.alert_message}}`` placeholder i
 when creating *script alerts* on *order fill events*. This is required so the ``alert_message`` argument used in the order-generating ``strategy.*()`` function calls 
 is used in the message of alerts triggering on each *order fill event*. When using the ``{{strategy.order.alert_message}}`` placeholder and the 
 ``alert_message`` parameter is present in only some of the order-generating ``strategy.*()`` function calls in your strategy, 
-an empty string will replace the placeholder in the alert's message triggered by any order-generating ``strategy.*()`` function call not using the ``alert_message`` parameter.
+an empty string will replace the placeholder in the message of alerts triggered by any order-generating ``strategy.*()`` function call not using the ``alert_message`` parameter.
 
 
 
