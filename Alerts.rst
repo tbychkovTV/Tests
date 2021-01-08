@@ -297,15 +297,35 @@ custom alert messages can be useful because they allow custom syntax to be inclu
 Specifying custom alert messages for specific *order fill events* is done by means of the ``alert_message`` parameter in functions which can generate orders: 
 `strategy.close() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}close>`__, 
 `strategy.entry() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}entry>`__, 
-`strategy.exit() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}exit>`__, 
-`strategy.order() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}order>`__, and 
-`strategy.close() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}close>`__.
+`strategy.exit() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}exit>`__, , and 
+`strategy.order() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy{dot}order>`__.
 
-Order fill events In Pine strategies, there can be a delay between the moment when orders are **issued** and when they are **executed** by the broker emulator running in the background of all strategies. 
-Let's look at the following strategy, a modification of the code from the built-in "BarUpDn Strategy"::
+Keep in mind that depending on the conditions specified in the ``strategy.*()`` function calls used when generating orders, 
+there can be a delay between the time when orders are **issued** and when they are **executed** by the broker emulator running in the background of all strategies. 
 
+Note that when the ``alert_message`` parameter is used in a strategy, script users must explicitly include the ``{{strategy.order.alert_message}}`` 
+placeholder in the "Create Alert" dialog box's "Message" field when creating *script alerts* on *order fill events*.
 
-On historical bars, a script executes on the close of bars. That is when 
+Let's look at the following strategy::
+
+    //@version=4
+    strategy("Strategy using `alert_message`")
+    r = rsi(close, 20)
+
+    // Detect crosses.
+    xUp = crossover( r, 50)
+    xDn = crossunder(r, 50)
+    // Create alert event and place order on crosses.
+    if xUp
+        strategy.entry("Long", strategy.long, stop = high, alert_message = "Stop-buy executed (stop was " + tostring(high))
+    else if xDn
+        strategy.entry("Short", strategy.short, stop = low, alert_message = "Stop-sell executed (stop was " + tostring(low))
+
+    plotchar(xUp, "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
+    plotchar(xDn, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
+    hline(50)
+    plot(r)
+
 
 
 'alertcondition()' events
