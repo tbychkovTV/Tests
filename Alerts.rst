@@ -317,9 +317,9 @@ Let's look at the following strategy::
     xDn = crossunder(r, 50)
     // Create alert event and place order on crosses.
     if xUp
-        strategy.entry("Long", strategy.long, stop = high, alert_message = "Stop-buy executed (stop was " + tostring(high))
+        strategy.entry("Long", strategy.long, stop = high, alert_message = "Stop-buy executed (stop was " + tostring(high) + ")")
     else if xDn
-        strategy.entry("Short", strategy.short, stop = low, alert_message = "Stop-sell executed (stop was " + tostring(low))
+        strategy.entry("Short", strategy.short, stop = low, alert_message = "Stop-sell executed (stop was " + tostring(low) + ")")
 
     plotchar(xUp, "Go Long",  "▲", location.bottom, color.lime, size = size.tiny)
     plotchar(xDn, "Go Short", "▼", location.top,    color.red,  size = size.tiny)
