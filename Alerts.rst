@@ -469,3 +469,24 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     Returns the timeframe of the chart the alert is created on. 
     Note that Range charts are calculated based on 1m data, so the placeholder will always return "1" on any alert created on a Range chart.
 
+
+
+Avoiding repainting with alerts
+-------------------------------
+
+An alert can be considered repainting if it is coded **and** configured in such a way that it may trigger at some point during the realtime bar while it would 
+not have triggered at its close. This can happen when one or more of the following conditions are met:
+
+- The calculations used in the condition triggering the alert can vary during the realtime bar. 
+  This will be the case with any calculation using ``high``, ``low`` or ``close``, for example, which includes almost all built-in indicators. 
+  It will also be the case with the result of any `security() <https://www.tradingview.com/pine-script-reference/v4/#fun_security>`__ call using 
+  a higher timeframe than the chart's, when the higher timeframe's current bar has not closed yet.
+- The alert can trigger before the close of the realtime bar, so with any frequency other than "Once Per Bar Close".
+
+The simplest way to avoid repainting of alerts is to configure their triggering frequency so they only trigger on the close of the realtime bar. 
+There is no panacea; there will always be a trade-off between signal speed and its certainty. Avoiding repainting always entails waiting for confirmed information.
+
+Also note that in the case of strategies using the default values controlling the execution of orders on historical bars, 
+restricting alert triggers to the close of the realtime bar is the only way to ensure the strategy will behave the way it was tested on historical bars. 
+Strategies tested on OHLC information on historical bars will **not** perform the same way if they are allowed to run on every price update in the realtime bar, 
+thus compromising the reliability of test results.
