@@ -427,20 +427,15 @@ They will be replaced with dynamic values when the alert triggers. They are the 
 Note that users creating *alertcondition() alerts* from the "Create Alert" dialog box in the charts UI are also able to use these placeholders in the dialog box's "Message" field.
     
 
-``{{ticker}}``
-    Ticker of the symbol used in alert (AAPL, BTCUSD, etc.).
-
 ``{{exchange}}``
     Exchange of the symbol used in alert (NASDAQ, NYSE, MOEX, etc). Note that for delayed symbols, the exchange will end with “_DL” or “_DLY.” For example, “NYMEX_DL.”
 
+``{{interval}}``
+    Returns the timeframe of the chart the alert is created on. 
+    Note that Range charts are calculated based on 1m data, so the placeholder will always return "1" on any alert created on a Range chart.
+
 ``{{open}}``, ``{{high}}``, ``{{low}}``, ``{{close}}``, ``{{volume}}``
     Corresponding values of the bar on which the alert has been triggered.
-
-``{{time}}``
-    Returns the time at the beginning of the bar. TIme is UTC, formatted as ``yyyy-MM-ddTHH:mm:ssZ``, so for example: ``2019-08-27T09:56:00Z``.
-
-``{{timenow}}``
-    Current time when the alert triggers, formatted in the same way as ``{{time}}``. The precision is to the nearest second, regardless of the resolution.
 
 ``{{plot_0}}``, ``{{plot_1}}``, [...], ``{{plot_19}}``
     Value of the corresponding plot number. Plots are numbered from zero to 19 in order of appearance in the script, so only one of the first 20 plots can be used.
@@ -465,9 +460,14 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     plot(r, "RSI")
     alertcondition(xUp, message = 'RSI is bullish at: {{plot("RSI")}}')
 
-``{{interval}}``
-    Returns the timeframe of the chart the alert is created on. 
-    Note that Range charts are calculated based on 1m data, so the placeholder will always return "1" on any alert created on a Range chart.
+``{{ticker}}``
+    Ticker of the symbol used in alert (AAPL, BTCUSD, etc.).
+
+``{{time}}``
+    Returns the time at the beginning of the bar. TIme is UTC, formatted as ``yyyy-MM-ddTHH:mm:ssZ``, so for example: ``2019-08-27T09:56:00Z``.
+
+``{{timenow}}``
+    Current time when the alert triggers, formatted in the same way as ``{{time}}``. The precision is to the nearest second, regardless of the resolution.
 
 
 
