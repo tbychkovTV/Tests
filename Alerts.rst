@@ -428,7 +428,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     
 
 ``{{exchange}}``
-    Exchange of the symbol used in alert (NASDAQ, NYSE, MOEX, etc). Note that for delayed symbols, the exchange will end with “_DL” or “_DLY.” For example, “NYMEX_DL.”
+    Exchange of the symbol used in the alert (NASDAQ, NYSE, MOEX, etc). Note that for delayed symbols, the exchange will end with “_DL” or “_DLY.” For example, “NYMEX_DL.”
 
 ``{{interval}}``
     Returns the timeframe of the chart the alert is created on. 
@@ -449,7 +449,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     This placeholder can be used when one needs to refer to a plot using the ``title`` argument used in a 
     `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call. 
     Note that double quotation marks (``"``) **must** be used inside the placeholder to wrap the ``title`` argument. 
-    This requires that we use a single quotation mark (``'``) to wrap the ``message`` string::
+    This requires that a single quotation mark (``'``) be used to wrap the ``message`` string::
 
 .. code-block::
 
@@ -461,13 +461,13 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
     alertcondition(xUp, message = 'RSI is bullish at: {{plot("RSI")}}')
 
 ``{{ticker}}``
-    Ticker of the symbol used in alert (AAPL, BTCUSD, etc.).
+    Ticker of the symbol used in the alert (AAPL, BTCUSD, etc.).
 
 ``{{time}}``
-    Returns the time at the beginning of the bar. TIme is UTC, formatted as ``yyyy-MM-ddTHH:mm:ssZ``, so for example: ``2019-08-27T09:56:00Z``.
+    Returns the time at the beginning of the bar. Time is UTC, formatted as ``yyyy-MM-ddTHH:mm:ssZ``, so for example: ``2019-08-27T09:56:00Z``.
 
 ``{{timenow}}``
-    Current time when the alert triggers, formatted in the same way as ``{{time}}``. The precision is to the nearest second, regardless of the resolution.
+    Current time when the alert triggers, formatted in the same way as ``{{time}}``. The precision is to the nearest second, regardless of the chart's timeframe.
 
 
 
