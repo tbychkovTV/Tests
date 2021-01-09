@@ -475,7 +475,7 @@ Avoiding repainting with alerts
 -------------------------------
 
 An alert can be considered repainting if it is coded **and** configured in such a way that it may trigger at some point during the realtime bar while it would 
-not have triggered at its close. This can happen when one or more of the following conditions are met:
+not have triggered at its close. This can happen when these conditions are met:
 
 - The calculations used in the condition triggering the alert can vary during the realtime bar. 
   This will be the case with any calculation using ``high``, ``low`` or ``close``, for example, which includes almost all built-in indicators. 
