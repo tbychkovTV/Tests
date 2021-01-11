@@ -474,8 +474,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
 Avoiding repainting with alerts
 -------------------------------
 
-The most common instances of repainting traders want to avoid are cases where they must prevent an alert from triggering at some point during the realtime bar when it would 
-not have triggered at its close. This can happen when these conditions are met:
+The most common instances of repainting traders want to avoid with alerts are ones where they must prevent an alert from triggering at some point during the realtime bar when it would not have triggered at its close. This can happen when these conditions are met:
 
 - The calculations used in the condition triggering the alert can vary during the realtime bar. 
   This will be the case with any calculation using ``high``, ``low`` or ``close``, for example, which includes almost all built-in indicators. 
