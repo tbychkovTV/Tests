@@ -474,7 +474,7 @@ Note that users creating *alertcondition() alerts* from the "Create Alert" dialo
 Avoiding repainting with alerts
 -------------------------------
 
-An alert can be considered repainting if it is coded **and** configured in such a way that it may trigger at some point during the realtime bar while it would 
+The most common instances of repainting traders want to avoid are cases where they must prevent an alert from triggering at some point during the realtime bar when it would 
 not have triggered at its close. This can happen when these conditions are met:
 
 - The calculations used in the condition triggering the alert can vary during the realtime bar. 
@@ -483,8 +483,10 @@ not have triggered at its close. This can happen when these conditions are met:
   a higher timeframe than the chart's, when the higher timeframe's current bar has not closed yet.
 - The alert can trigger before the close of the realtime bar, so with any frequency other than "Once Per Bar Close".
 
-The simplest way to avoid repainting of alerts is to configure their triggering frequency so they only trigger on the close of the realtime bar. 
-There is no panacea; there will always be a trade-off between signal speed and its certainty. Avoiding repainting always entails waiting for confirmed information.
+The simplest way to avoid this type of repainting is to configure the triggering frequency of alerts so they only trigger on the close of the realtime bar. 
+There is no panacea; avoiding repainting **always** entails waiting for confirmed information, which means the trader must sacrifice immediacy to obtain reliability.
+
+Note that other types of repainting such as those documented in our :doc:`/Indicator_repainting` section may not be preventable by simply triggering alerts on the close of realtime bars.
 
 Also note that in the case of strategies using the default values controlling the execution of orders on historical bars, 
 restricting alert triggers to the close of the realtime bar is the only way to ensure the strategy will behave the way it was tested on historical bars. 
