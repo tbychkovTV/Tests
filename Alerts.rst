@@ -483,7 +483,7 @@ The most common instances of repainting traders want to avoid with alerts are on
 - The alert can trigger before the close of the realtime bar, so with any frequency other than "Once Per Bar Close".
 
 The simplest way to avoid this type of repainting is to configure the triggering frequency of alerts so they only trigger on the close of the realtime bar. 
-There is no panacea; avoiding repainting **always** entails waiting for confirmed information, which means the trader must sacrifice immediacy to obtain reliability.
+There is no panacea; avoiding this type of repainting **always** entails waiting for confirmed information, which means the trader must sacrifice immediacy to achieve reliability.
 
 Note that other types of repainting such as those documented in our :doc:`/essential/Indicator_repainting` section may not be preventable by simply triggering alerts on the close of realtime bars.
 
