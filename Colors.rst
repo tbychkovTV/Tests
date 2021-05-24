@@ -37,8 +37,8 @@ Z-order
 ^^^^^^^
 
 
-Planning color selection by script users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Planning color selection for script users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Using literal colors
