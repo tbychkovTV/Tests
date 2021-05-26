@@ -37,10 +37,6 @@ Z-order
 ^^^^^^^
 
 
-Planning color selection for script users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
 Using literal colors
 --------------------
 
@@ -56,6 +52,14 @@ Building gradients
 
 Color selection in script inputs
 --------------------------------
+
+
+Tips for script publishers
+--------------------------
+
+
+Providing color selection for script users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 
