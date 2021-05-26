@@ -78,6 +78,7 @@ There are 17 built-in colors in Pine. This table lists their names, RGB values a
 
 All these plots use the same color, expressed in different ways::
 
+:linenos:
     //@version=4
     study("", "", true)
     plot(sma(close, 10), "10", color.olive, transp = 40)
