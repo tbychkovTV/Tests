@@ -82,6 +82,9 @@ The simplest way to plot a colored line is to use::
     study("")
     plot(close, color = color.green)
 
+.. image:: images/Tables-ATR-2.png
+
+
 
 Using dynamic colors
 --------------------
