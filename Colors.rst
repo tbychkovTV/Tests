@@ -36,7 +36,7 @@ The transparency of a color defines how opaque it is: zero is fully opaque, 100 
 Using literal colors
 --------------------
 
-There are 17 built-in colors in Pine.
+There are 17 built-in colors in Pine. This table lists their names, RGB values as arguments to `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__, and hexadecimal equivalent:
 
 +---------------+---------------------------+---------+
 | Name          | RGB values                | Hex     |
