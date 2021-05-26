@@ -36,7 +36,11 @@ The transparency of a color defines how opaque it is: zero is fully opaque, 100 
 Using literal colors
 --------------------
 
+There are 17 built-in colors in Pine.
+
 +---------------+---------------------------+---------+
+| Name    | RGB values | Hex literal |
++===============+===========================+=========+
 | color.aqua    | color.rgb(0,188,212)      | #123456 |
 +---------------+---------------------------+---------+
 | color.black   | color.rgb(54,58,69)       | #123456 |
