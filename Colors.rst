@@ -39,7 +39,7 @@ Using literal colors
 There are 17 built-in colors in Pine.
 
 +---------------+---------------------------+---------+
-| Name          | RGB values                | Hex literal |
+| Name          | RGB values                | Hex     |
 +===============+===========================+=========+
 | color.aqua    | color.rgb(0,188,212)      | #123456 |
 +---------------+---------------------------+---------+
