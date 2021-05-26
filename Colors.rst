@@ -33,10 +33,6 @@ Each color in Pine is defined by four values:
 The transparency of a color defines how opaque it is: zero is fully opaque, 100 makes the color—whichever it is—invisible. Controlling transparency can be crucial in more involved color visuals, to control which colors dominate the others, for example.
 
 
-Z-order
-^^^^^^^
-
-
 Using literal colors
 --------------------
 
@@ -54,8 +50,13 @@ Color selection in script inputs
 --------------------------------
 
 
-Tips for script publishers
---------------------------
+
+Tips
+----
+
+
+Z-order
+^^^^^^^
 
 
 Providing color selection for script users
