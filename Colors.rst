@@ -80,6 +80,7 @@ All these plots use the same color, expressed in different ways::
 
 .. code-block::
     :linenos:
+    
     //@version=4
     study("", "", true)
     plot(sma(close, 10), "10", color.olive, transp = 40)
