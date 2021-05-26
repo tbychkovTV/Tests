@@ -76,11 +76,15 @@ There are 17 built-in colors in Pine. This table lists their names, RGB values a
 | color.yellow  | color.rgb(255,235,59)     | #FFEB3B |
 +---------------+---------------------------+---------+
 
-The simplest way to plot a colored line is to use::
+All these plots use the same color, expressed in different ways::
 
     //@version=4
-    study("")
-    plot(close, color = color.green)
+    study("", "", true)
+    plot(sma(close, 10), "10", color.olive, transp = 40)
+    plot(sma(close, 30), "30", #808000, transp = 40)
+    plot(sma(close, 50), "50", #80800099)
+    plot(sma(close, 70), "70", color.new(color.olive, 40))
+    plot(sma(close, 90), "90", color.rgb(128, 128, 0, 40))
 
 .. image:: images/Colors-UsingLiteralColors-1.png
 
