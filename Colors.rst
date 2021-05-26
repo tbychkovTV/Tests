@@ -89,6 +89,7 @@ All these plots use the same color: `color.olive <https://www.tradingview.com/pi
     plot(sma(close, 70), "70", color.new(color.olive, 40))
     plot(sma(close, 90), "90", color.rgb(128, 128, 0, 40))
 
+ssss
 
 .. image:: images/Colors-UsingLiteralColors-1.png
 
