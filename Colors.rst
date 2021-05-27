@@ -96,10 +96,14 @@ They are functinally equivalent:
 
 .. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar.
 
+Constant vs series colors
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 Using dynamic colors
 --------------------
+
 
 
 Building gradients
