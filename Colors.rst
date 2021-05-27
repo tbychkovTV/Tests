@@ -123,19 +123,25 @@ The type of color you use in your scripts has an impact on how users of your scr
 
 
 
-Using dynamic colors
---------------------
+Constant colors
+---------------
 
+
+
+Series color
+------------
+
+
+Creating transparencies
+^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Building gradients
-------------------
+^^^^^^^^^^^^^^^^^^
 
 
-
-
-Color selection in script inputs
---------------------------------
+Mixing colors
+^^^^^^^^^^^^^
 
 
 
