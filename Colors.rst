@@ -159,7 +159,7 @@ If your script uses a calculated color, i.e., a color whose RGBA components can 
     // This plot does not use a calculated color.
     plot(close, "Close", color.blue)
 
-The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will look like this:
+The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will not contain the color widgets that allow users to change the color of plots, even if some of the script's plots do not use calculated colors, as is the case with our second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call:
 
 .. image:: images/Colors-UsingColors-3.png
 
