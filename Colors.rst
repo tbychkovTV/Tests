@@ -92,7 +92,7 @@ They are equivalent:
     plot(sma(close, 90), "90", color.rgb(128, 128, 0, 40))
 
 
-.. image:: images/Colors-UsingLiteralColors-1.png
+.. image:: images/Colors-UsingColorsAndTransparency-1.png
 
 
 
