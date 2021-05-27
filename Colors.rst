@@ -92,7 +92,7 @@ They are functinally equivalent:
     plot(sma(close, 90), "90", color.rgb(128, 128, 0, 40))
 
 
-.. image:: images/Colors-UsingColorsAndTransparency-1.png
+.. image:: images/Colors-UsingColors-1.png
 
 .. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, if you use *series color* like in the last two lines 6 and 7, the ``transp`` parameter should not be used simultaneously; it would then have no effect because the transparency is expected to be included in any *series color* argument to the ``color`` parameter in `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ and other functions currently allowing the use of the ``transp`` parameter.
 
@@ -118,8 +118,9 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 Color selection management through script Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals. When only constant colors are used, script users will be able to modify them through the script's *Settings/Style" tab. Example::
+The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals. When only constant colors are used, script users will be able to modify them through the script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
 
+.. image:: images/Colors-UsingColors-2.png
 
 
 
