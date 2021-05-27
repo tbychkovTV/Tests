@@ -99,7 +99,7 @@ They are functinally equivalent:
 Constant vs series colors
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When we intialize color variables in our code this way::
+When we initialize color variables in our code this way::
 
     color c_ma1 = color.olive
     color c_ma2 = #808000
@@ -107,7 +107,9 @@ When we intialize color variables in our code this way::
 
 we are creating variables whose type is *constant color*. Those colors are all known at compile time. The only difference is that the first two do not carry transparency information, while the third one uses a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale of 256 values (40/100 is 102/255, but as the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
 
-Just as the *input color*
+Just as the *input color* 
+
+Impact on Style tab of *series color*
 
 
 Using dynamic colors
@@ -132,12 +134,16 @@ Z-order
 ^^^^^^^
 
 
+Choose colors that work well on light and dark chart backgrounds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
 Providing color selection for script users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+When publishing scripts, keep in mind that users often appreciate being able to change the colors used in your scripts visuals to adapt it to their particular environment. Script users may want to adapt the colors you use to the light or dark scheme they are using, to another, special chart background, or to the presence of other indicators.
 
-Choose colors that work well on light and dark chart backgrounds
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 
 
 
