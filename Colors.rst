@@ -111,14 +111,14 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 #1. Build new colors of *series color* type on the fly, as the script executes bar to bar, to implement a color gradient, for example.
 
 
-Color selection management through script Settings
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Color selection through script Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals. When only constant colors are used, script users will be able to modify them through the script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
 
 .. image:: images/Colors-UsingColors-2.png
 
-
+This is possible because we use a color that is not calculated dynamically 
 
 
 
