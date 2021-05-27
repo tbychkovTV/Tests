@@ -76,7 +76,7 @@ There are 17 built-in colors in Pine. This table lists their names, hexadecimal 
 | color.yellow  | #FFEB3B | color.rgb(255,235,59)  |
 +---------------+---------+------------------------+
 
-All these plots use the same color: `color.olive <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}olive>`__, expressed in different ways::
+All these plots use the same color: `color.olive <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}olive>`__, with a transparency of 40. They are equivalent::
 
 .. code-block:: pine
     :linenos:
