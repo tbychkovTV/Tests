@@ -39,43 +39,43 @@ Using colors
 
 There are 17 built-in colors in Pine. This table lists their names, hexadecimal equivalent, and RGB values as arguments to `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__:
 
-+---------------+---------+------------------------+
-| Name          | Hex     | RGB values             |
-+===============+=========+========================+
-| color.aqua    | #00BCD4 | color.rgb(0,188,212)   |
-+---------------+---------+------------------------+
-| color.black   | #363A45 | color.rgb(54,58,69)    |
-+---------------+---------+------------------------+
-| color.blue    | #2196F3 | color.rgb(33,150,243)  |
-+---------------+---------+------------------------+
-| color.fuchsia | #E040FB | color.rgb(224,64,251)  |
-+---------------+---------+------------------------+
-| color.gray    | #787B86 | color.rgb(120,123,134) |
-+---------------+---------+------------------------+
-| color.green   | #4CAF50 | color.rgb(76,175,80)   |
-+---------------+---------+------------------------+
-| color.lime    | #00E676 | color.rgb(0,230,118)   |
-+---------------+---------+------------------------+
-| color.maroon  | #880E4F | color.rgb(136,14,79)   |
-+---------------+---------+------------------------+
-| color.navy    | #311B92 | color.rgb(49,27,146)   |
-+---------------+---------+------------------------+
-| color.olive   | #808000 | color.rgb(128,128,0)   |
-+---------------+---------+------------------------+
-| color.orange  | #FF9800 | color.rgb(255,152,0)   |
-+---------------+---------+------------------------+
-| color.purple  | #9C27B0 | color.rgb(156,39,176)  |
-+---------------+---------+------------------------+
-| color.red     | #FF5252 | color.rgb(255,82,82)   |
-+---------------+---------+------------------------+
-| color.silver  | #B2B5BE | color.rgb(178,181,190) |
-+---------------+---------+------------------------+
-| color.teal    | #00897B | color.rgb(0,137,123)   |
-+---------------+---------+------------------------+
-| color.white   | #FFFFFF | color.rgb(255,255,255) |
-+---------------+---------+------------------------+
-| color.yellow  | #FFEB3B | color.rgb(255,235,59)  |
-+---------------+---------+------------------------+
++---------------+---------+--------------------------+
+| Name          | Hex     | RGB values               |
++===============+=========+==========================+
+| color.aqua    | #00BCD4 | color.rgb(0, 188, 212)   |
++---------------+---------+--------------------------+
+| color.black   | #363A45 | color.rgb(54, 58, 69)    |
++---------------+---------+--------------------------+
+| color.blue    | #2196F3 | color.rgb(33, 150, 243)  |
++---------------+---------+--------------------------+
+| color.fuchsia | #E040FB | color.rgb(224, 64, 251)  |
++---------------+---------+--------------------------+
+| color.gray    | #787B86 | color.rgb(120, 123, 134) |
++---------------+---------+--------------------------+
+| color.green   | #4CAF50 | color.rgb(76, 175, 80)   |
++---------------+---------+--------------------------+
+| color.lime    | #00E676 | color.rgb(0, 230, 118)   |
++---------------+---------+--------------------------+
+| color.maroon  | #880E4F | color.rgb(136,  14, 79)  |
++---------------+---------+--------------------------+
+| color.navy    | #311B92 | color.rgb(49, 27, 146)   |
++---------------+---------+--------------------------+
+| color.olive   | #808000 | color.rgb(128, 128, 0)   |
++---------------+---------+--------------------------+
+| color.orange  | #FF9800 | color.rgb(255, 152, 0)   |
++---------------+---------+--------------------------+
+| color.purple  | #9C27B0 | color.rgb(156, 39, 176)  |
++---------------+---------+--------------------------+
+| color.red     | #FF5252 | color.rgb(255, 82, 82)   |
++---------------+---------+--------------------------+
+| color.silver  | #B2B5BE | color.rgb(178, 181, 190) |
++---------------+---------+--------------------------+
+| color.teal    | #00897B | color.rgb(0, 137, 123)   |
++---------------+---------+--------------------------+
+| color.white   | #FFFFFF | color.rgb(255, 255, 255) |
++---------------+---------+--------------------------+
+| color.yellow  | #FFEB3B | color.rgb(255, 235, 59)  |
++---------------+---------+--------------------------+
 
 All these plots use the same color: `color.olive <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}olive>`__, with a transparency of 40. 
 They are functinally equivalent:
@@ -95,6 +95,33 @@ They are functinally equivalent:
 .. image:: images/Colors-UsingColors-1.png
 
 .. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, if you use *series color* like in the last two lines 6 and 7, the ``transp`` parameter should not be used simultaneously; it would then have no effect because the transparency is expected to be included in any *series color* argument to the ``color`` parameter in `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ and other functions currently allowing the use of the ``transp`` parameter.
+
+
+Constant colors
+---------------
+
+
+
+Series color
+------------
+
+
+Creating transparencies
+^^^^^^^^^^^^^^^^^^^^^^^
+
+
+Building gradients
+^^^^^^^^^^^^^^^^^^
+
+
+Mixing colors
+^^^^^^^^^^^^^
+
+
+
+
+Tips
+----
 
 
 Constant vs series colors
@@ -135,33 +162,6 @@ If your script uses a calculated color, i.e., a color whose RGBA components can 
 The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will look like this:
 
 .. image:: images/Colors-UsingColors-3.png
-
-
-Constant colors
----------------
-
-
-
-Series color
-------------
-
-
-Creating transparencies
-^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Building gradients
-^^^^^^^^^^^^^^^^^^
-
-
-Mixing colors
-^^^^^^^^^^^^^
-
-
-
-
-Tips
-----
 
 
 Z-order
