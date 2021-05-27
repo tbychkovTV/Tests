@@ -105,7 +105,7 @@ When we use these color variable intializations in our code::
     color c_ma2 = #808000
     color c_ma3 = #80800099
 
-we are creating variables whose type is *constant color*. Those colors are all known at compile time. THe only difference is that the first two do not carry transparency information, while the third one use a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale of 256 values (40/100 is 102/255, but as the transparency in hexadecimal notation is reversed, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
+we are creating variables whose type is *constant color*. Those colors are all known at compile time. The only difference is that the first two do not carry transparency information, while the third one use a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale of 256 values (40/100 is 102/255, but as the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
 
 Just as the *input color*
 
