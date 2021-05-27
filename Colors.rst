@@ -94,7 +94,8 @@ They are functinally equivalent:
 
 .. image:: images/Colors-UsingColorsAndTransparency-1.png
 
-.. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, when using *series color* like in the last two lines 6 and 7, also using the ``transp`` parameter will have no effect, as the transparency must be contained in the argument used for the argument to ``color`` in `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__, or other functions also allowing the use of a ``transp`` parameter.
+.. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, if you use *series color* like in the last two lines 6 and 7, the ``transp`` parameter should not be used simultaneously; it would then have no effect because the transparency is expected to be included in any *series color* argument to the ``color`` parameter in `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ and other functions currently allowing the use of the ``transp`` parameter.
+
 
 Constant vs series colors
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -107,9 +108,19 @@ When we initialize color variables in our code this way::
 
 we are creating variables whose type is *constant color*. Those colors are all known at compile time. The only difference is that the first two do not carry transparency information, while the third one uses a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale of 256 values (40/100 is 102/255, but as the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
 
-Just as the *input color* 
+Constant colors provide a simple way to define colors in a script. Sometimes, however, colors need to be created as the script executes on each bar because they depend on conditions that are unknown at compile time or when the script begins execution on bar zero. For those cases, Pine programmers have three options:
 
-Impact on Style tab of *series color*
+1. Use conditional coloring, where constant colors are selected from with a conditional statement.
+1. Use conditional coloring, but using *series color*. This can be useful, for example, when your logic requires a selection between discrete choices of a few different transparency levels of the same base color.
+1. Build new colors of *series color* type on the fly, as the script executes bar to bar, to implement a color gradient, for example.
+
+
+Color selection management through script Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals.
+
+
 
 
 Using dynamic colors
@@ -121,8 +132,11 @@ Building gradients
 ------------------
 
 
+
+
 Color selection in script inputs
 --------------------------------
+
 
 
 
