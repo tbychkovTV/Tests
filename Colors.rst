@@ -114,12 +114,27 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 Color selection through script Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The type of color you use in your scripts has an impact on how users of your script will be able to change the colors of your script's visuals. When only constant colors are used, script users will be able to modify them through the script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
+The type of color you use in your scripts has an impact on how users of your script will be able to change the colors of your script's visuals. As long as you don't use colors whose RGBA components have to be calculated at runtime, script users will be able to modify the colors you use by going to your script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
 
 .. image:: images/Colors-UsingColors-2.png
 
 This is possible because we use colors that can be known before the script is not calculated dynamically 
 
+If your script uses a calculated color, i.e., a color whose RGBA components can only be known at runtime, then the "Settings/Style" tab will NOT offer users a color widget to modify the colors you use in your plots. In this script, for example, our first `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call uses a calculated color and the second one doesn't::
+
+    //@version=4
+    study("Calculated colors", "", true)
+    float ma = sma(close, 20)
+    float maHeight = percentrank(ma, 100)
+    float transparency = min(80, 100 - maHeight)
+    // This plot uses a calculated color.
+    plot(ma, "MA1", color.rgb(0, 0, 0, transparency), 2)
+    // This plot does not use a calculated color.
+    plot(close, "Close", color.blue)
+
+The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will look like this:
+
+.. image:: images/Colors-UsingColors-3.png
 
 
 Constant colors
