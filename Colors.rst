@@ -99,7 +99,7 @@ They are functinally equivalent:
 Constant vs series colors
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When we use these color variable intializations in our code::
+When we intialize color variables in our code this way::
 
     color c_ma1 = color.olive
     color c_ma2 = #808000
