@@ -110,9 +110,9 @@ we are creating variables whose type is *constant color*. Those colors are all k
 
 Constant colors provide a simple way to define colors in a script. Sometimes, however, colors need to be created as the script executes on each bar because they depend on conditions that are unknown at compile time or when the script begins execution on bar zero. For those cases, Pine programmers have three options:
 
-1. Use conditional coloring, where constant colors are selected from with a conditional statement.
-1. Use conditional coloring, but using *series color*. This can be useful, for example, when your logic requires a selection between discrete choices of a few different transparency levels of the same base color.
-1. Build new colors of *series color* type on the fly, as the script executes bar to bar, to implement a color gradient, for example.
+#1. Use conditional coloring, where constant colors are selected from with a conditional statement.
+#1. Use conditional coloring, but using *series color*. This can be useful, for example, when your logic requires a selection between discrete choices of a few different transparency levels of the same base color.
+#1. Build new colors of *series color* type on the fly, as the script executes bar to bar, to implement a color gradient, for example.
 
 
 Color selection management through script Settings
