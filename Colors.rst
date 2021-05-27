@@ -106,7 +106,7 @@ When we initialize color variables in our code this way::
     color c_ma2 = #808000
     color c_ma3 = #80800099
 
-we are creating variables whose form-type is *constant color*. Note that in Pine types are specified using a *form* and a *type*, and that we often use *type* to designate the *form*-*type* pair (see the :doc:`/language/Type_system`). Those colors are all known at compile time. The only difference is that the first two do not carry transparency information, while the third one uses a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale of 256 values (40/100 is 102/255, but as the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
+we are creating variables whose form-type is *constant color*. Note that in Pine types are specified using both a *form* and a *type*, and that we often use *type* to designate the *form*-*type* pair (see the :doc:`/language/Type_system`). Constant colors are known at compile time. The only difference between our three variables is that the first two do not carry transparency information, while the third one uses a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale (40/100 is 102/255, but since the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
 
 Constant colors provide a simple way to define colors in a script. Sometimes, however, colors need to be created as the script executes on each bar because they depend on conditions that are unknown at compile time or when the script begins execution on bar zero. For those cases, Pine programmers have three options:
 
@@ -118,7 +118,9 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 Color selection management through script Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals.
+The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals. When only constant colors are used, script users will be able to modify them through the script's *Settings/Style" tab. Example::
+
+
 
 
 
