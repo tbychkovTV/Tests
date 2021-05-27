@@ -78,7 +78,7 @@ There are 17 built-in colors in Pine. This table lists their names, hexadecimal 
 +---------------+---------+------------------------+
 
 All these plots use the same color: `color.olive <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}olive>`__, with a transparency of 40. 
-They are equivalent:
+They are functinally equivalent:
 
 .. code-block:: pine
     :linenos:
@@ -93,6 +93,8 @@ They are equivalent:
 
 
 .. image:: images/Colors-UsingColorsAndTransparency-1.png
+
+.. note:: The first two `plot <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4, which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of "input integer" type, which entails it can must be known before the script is executed, and so cannot be calculate dynamically, as your script executes bar to bar.
 
 
 
