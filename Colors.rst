@@ -114,11 +114,11 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 Color selection through script Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The type of color you use in your scripts has an impact on how users of your script will be able to change the colors used in your script's visuals. When only constant colors are used, script users will be able to modify them through the script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
+The type of color you use in your scripts has an impact on how users of your script will be able to change the colors of your script's visuals. When only constant colors are used, script users will be able to modify them through the script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
 
 .. image:: images/Colors-UsingColors-2.png
 
-This is possible because we use a color that is not calculated dynamically 
+This is possible because we use colors that can be known before the script is not calculated dynamically 
 
 
 
