@@ -99,21 +99,16 @@ They are functionally equivalent::
 
 .. image:: images/Colors-UsingColors-1.png
 
-.. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, if you use *series color* like in the last two lines 6 and 7, the ``transp`` parameter should not be used simultaneously; it would then have no effect because the transparency is expected to be included in any *series color* argument to the ``color`` parameter in `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ and other functions currently allowing the use of the ``transp`` parameter.
+.. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls specify transparency using the ``transp`` parameter. This use should be avoided as the ``transp`` is slated for deprecation in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, if you use a ``color`` argument that already includes transparency information, as is done in the next three `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls, any argument used for the ``transp`` parameter would have no effect. This is also true for other functions with a ``transp`` parameter.
 
-All the examples of colors used in our previous script produce color values of form-type *constant color* because they can all be determined at compile time.
+The colors in the previous script do not vary as the script executes bar to bar. Sometimes, however, colors need to be created as the script executes on each bar because they depend on conditions that are unknown at compile time, or when the script begins execution on bar zero. For those cases, Pine programmers have two options:
 
-Note that in Pine types are specified using both a *form* and a *type*, and that we often use *type* to designate the *form*-*type* pair (see the :doc:`/language/Type_system`). Constant colors are known at compile time. The only difference between our three variables is that the first two do not carry transparency information, while the third one uses a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale (40/100 is 102/255, but since the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
-
-Constant colors provide a simple way to define colors in a script. Sometimes, however, colors need to be created as the script executes on each bar because they depend on conditions that are unknown at compile time or when the script begins execution on bar zero. For those cases, Pine programmers have three options:
-
-#1. Use conditional coloring, where constant colors are selected from with a conditional statement.
-#1. Use conditional coloring, but using *series color*. This can be useful, for example, when your logic requires a selection between discrete choices of a few different transparency levels of the same base color.
-#1. Build new colors of *series color* type on the fly, as the script executes bar to bar, to implement a color gradient, for example.
+#1. Use conditional conditional statements to select colors from a few pre-dertermined base colors.
+#1. Build new colors dynamically, by calculating them as the script executes bar to bar, to implement color gradations, for example.
 
 
-Conditional colors
-^^^^^^^^^^^^^^^^^^
+Conditional coloring
+^^^^^^^^^^^^^^^^^^^^
 
 Let's say you want to color a moving average in different colors, depending on some conditions you define. To do so, you can use a conditional statement that will select a different color for each of your states. Let's start by coloring a moving average in a bull color when it's rising, and in a bear color when it's falling::
 
@@ -163,8 +158,8 @@ When we test the value returned by the pivot function for `na <https://www.tradi
 All that's left to do next is, when we plot our lines, to insert a ternary conditional statement that will yield `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__ for the color when the pivot value changes, or the color selected in the script's inputs when the pivot level does not change.
 
 
-Calculated colors
-^^^^^^^^^^^^^^^^^
+Calculating colors
+^^^^^^^^^^^^^^^^^^
 
 Using functions like `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__, `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__ and `color.from_gradient() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}from_gradient>`__, one can build colors on the fly, as the script executes bar to bar.
 
