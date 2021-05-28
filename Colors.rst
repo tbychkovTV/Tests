@@ -120,9 +120,10 @@ Let's say you want to color a moving average in different colors, depending on s
 
     //@version=4
     study("Conditional colors", "", true)
+    i_length   = input(20, "Length", minval = 2)
     i_c_maBull = input(color.green, "Bull")
     i_c_maBear = input(color.maroon, "Bear")
-    float ma = sma(close, 20)
+    float ma = sma(close, i_length)
     // Define our states.
     bool maRising  = rising(ma, 1)
     // Build our color.
@@ -130,6 +131,13 @@ Let's say you want to color a moving average in different colors, depending on s
     plot(ma, "MA", c_ma, 2)
 
 .. image:: images/Colors-ConditionalColors-1.png
+
+Note that:
+
+- We provide users of our script a selection of colors for our bull/bear colors.
+- We define an ``maRising`` boolean variable which will hold ``true`` when the moving average is higher on the current bar than it was on the last.
+- We define a ``c_ma`` color variable that is assigned one of our two colors, depending on the value of the ``maRising`` boolean. We use the `? : ternary operator <https://www.tradingview.com/pine-script-reference/v4/#op_{question}{colon}>`__ to write our conditional statement.
+
 
 
 Calculated colors
