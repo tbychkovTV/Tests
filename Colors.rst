@@ -84,19 +84,18 @@ There are 17 built-in colors in Pine. This table lists their names, hexadecimal 
 +---------------+---------+--------------------------+
 
 All these plots use the same color: `color.olive <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}olive>`__, with a transparency of 40. 
-They are functionally equivalent:
-
-.. code-block:: pine
-    :linenos:
+They are functionally equivalent::
 
     //@version=4
     study("", "", true)
+    // ————  Use `transp` parameter.
     plot(sma(close, 10), "10", color.olive, transp = 40)
     plot(sma(close, 30), "30", #808000, transp = 40)
+    // ————  Transparency (#99) is included in the hex value.
     plot(sma(close, 50), "50", #80800099)
+    // ————  Transparency is included in the color-generating function's arguments.
     plot(sma(close, 70), "70", color.new(color.olive, 40))
     plot(sma(close, 90), "90", color.rgb(128, 128, 0, 40))
-
 
 .. image:: images/Colors-UsingColors-1.png
 
