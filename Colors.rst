@@ -173,7 +173,10 @@ Using functions like `color.new() <https://www.tradingview.com/pine-script-refer
 
 `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__ is useful when you need to build colors dynamically from varying components of RGB or transparency values. Whereas `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__ creates a color, its sister functions `color.r() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}r>`__, `color.g() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}g>`__, `color.b() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}b>`__ and `color.t() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}t>`__ can be used to extract the red, green, blue or transparency values from a color, which can then be used to generate a variant.
 
+`color.from_gradient() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}from_gradient>`__ is useful to create linear gradients between two base colors. It determines which intermediary color to use by evaluating a source value against minimum and maximum values.
+
 Let's put `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ to use to create different transparencies of a base color to color volume columns::
+
 
 
 
@@ -181,11 +184,6 @@ Let's put `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fu
 Mixing transparencies
 ---------------------
 
-
-
-
-Building gradients
-------------------
 
 
 
