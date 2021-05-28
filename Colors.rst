@@ -138,6 +138,24 @@ Note that:
 - We define an ``maRising`` boolean variable which will hold ``true`` when the moving average is higher on the current bar than it was on the last.
 - We define a ``c_ma`` color variable that is assigned one of our two colors, depending on the value of the ``maRising`` boolean. We use the `? : ternary operator <https://www.tradingview.com/pine-script-reference/v4/#op_{question}{colon}>`__ to write our conditional statement.
 
+You can also use conditional colors to avoid plotting under certain conditions. Here, we plot high and low pivots using a line, but we do not want to plot anything when a new pivot comes in, to avoid the joints that would otherwise appear in pivot transitions. To do, we test for pivot changes and use `na` as the color value so that no line is plotted::
+
+    //@version=4
+    study("Conditional colors", "", true)
+    i_legs = input(5, "Pivot Legs", minval = 1)
+    i_c_pHi = input(color.olive, "High pivots")
+    i_c_pLo = input(color.orange, "Low pivots")
+    // Intialize the pivot level variables.
+    var float pHi = na
+    var float pLo = na
+    // When a new pivot is detected, save its value.
+    pHi := nz(pivothigh(high, i_legs, i_legs), pHi)
+    pLo := nz(pivotlow( low,  i_legs, i_legs), pLo)
+    // When a new pivot is detected, do not plot a color.
+    plot(pHi, "High", change(pHi) ? na : i_c_pHi, 2, plot.style_line)
+    plot(pLo, "Low",  change(pLo) ? na : i_c_pLo, 2, plot.style_line)
+
+.. image:: images/Colors-ConditionalColors-2.png
 
 
 Calculated colors
