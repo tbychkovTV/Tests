@@ -153,11 +153,13 @@ If your script uses a calculated color, i.e., a color where at least one of its 
     float maHeight = percentrank(ma, 100)
     float transparency = min(80, 100 - maHeight)
     // This plot uses a calculated color.
-    plot(ma, "MA1", color.rgb(0, 0, 0, transparency), 2)
+    plot(ma, "MA1", color.rgb(156, 39, 176, transparency), 2)
     // This plot does not use a calculated color.
     plot(close, "Close", color.blue)
 
-The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will not show any color widgets:
+The color used in the first plot is a calculated color because its transparency can only be known at runtime. It is calculated using the relative position of the moving average in relation to its past 100 values. The greater percentage of past values are below the current value, the higher the 0-100 value of ``maHeight`` will be. Since we want the color to be the darkest when ``maHeight`` is 100, we subtract 100 from it to obtain the zero transparency then. We also cap the calculated ``transparency`` value to a maximum of 80 so that it always remains visible.
+
+Because that calculated color is used in our script, the "Settings/Style" tab will not show any color widgets:
 
 .. image:: images/Colors-ColorsSelection-2.png
 
@@ -165,7 +167,7 @@ The solution to enable script users to control the colors used is to supply them
 
     //@version=4
     study("Calculated colors", "", true)
-    i_c_ma = input(#000000, "MA")
+    i_c_ma = input(color.purple, "MA")
     i_c_close = input(color.blue, "Close")
     float ma = sma(close, 20)
     float maHeight = percentrank(ma, 100)
@@ -177,7 +179,7 @@ The solution to enable script users to control the colors used is to supply them
 
 .. image:: images/Colors-ColorsSelection-3.png
 
-Notice how our script's "Settings" now show an "Inputs" tab, where we have created two color inputs. The first one uses the hex notation to propose pure black as its default value. That base color is then used in a `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ as the base color from which we generate a calculated transparency in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call. The second input uses as its default the built-in `color.blue <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}blue>`__ color we previously used in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call, and simply use it as is in the second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call.
+Notice how our script's "Settings" now show an "Inputs" tab, where we have created two color inputs. The first one uses `color.purple <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}purple>`__ as its default value. Whether the script user changes that color or not, the resulting base color will then be used in a `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ call to generate a calculated transparency in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call. The second input uses as its default the built-in `color.blue <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}blue>`__ color we previously used in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call, and simply use it as is in the second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call.
 
 
 Z-order
