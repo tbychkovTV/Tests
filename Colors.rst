@@ -141,13 +141,11 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 Color selection through script Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The type of color you use in your scripts has an impact on how users of your script will be able to change the colors of your script's visuals. As long as you don't use colors whose RGBA components have to be calculated at runtime, script users will be able to modify the colors you use by going to your script's "Settings/Style" tab. The following screenshot shows how we used our previous script's "Settings/Style" tab to change the color of the first moving average:
+The type of color you use in your scripts has an impact on how users of your script will be able to change the colors of your script's visuals. As long as you don't use colors whose RGBA components have to be calculated at runtime, script users will be able to modify the colors you use by going to your script's "Settings/Style" tab. Our first example script on this page meets that criteria, and the following screenshot shows how we used the script's "Settings/Style" tab to change the color of the first moving average:
 
 .. image:: images/Colors-UsingColors-2.png
 
-This is possible because we use colors that can be known before the script is not calculated dynamically 
-
-If your script uses a calculated color, i.e., a color whose RGBA components can only be known at runtime, then the "Settings/Style" tab will NOT offer users a color widget to modify the colors you use in your plots. In this script, for example, our first `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call uses a calculated color and the second one doesn't::
+If your script uses a calculated color, i.e., a color where at least one of its RGBA components can only be known at runtime, then the "Settings/Style" tab will NOT offer users the usual color widgets they can use to modify your plot colors. Plots of the same script not using calculated colors will also be affected. In this script, for example, our first `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call uses a calculated color, and the second one doesn't::
 
     //@version=4
     study("Calculated colors", "", true)
@@ -159,7 +157,7 @@ If your script uses a calculated color, i.e., a color whose RGBA components can 
     // This plot does not use a calculated color.
     plot(close, "Close", color.blue)
 
-The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will not contain the color widgets that allow users to change the color of plots, even if some of the script's plots do not use calculated colors, as is the case with our second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`_ call:
+The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will not show any color widgets:
 
 .. image:: images/Colors-UsingColors-3.png
 
