@@ -103,9 +103,8 @@ They are functionally equivalent::
 
 The colors in the previous script do not vary as the script executes bar to bar. Sometimes, however, colors need to be created as the script executes on each bar because they depend on conditions that are unknown at compile time, or when the script begins execution on bar zero. For those cases, Pine programmers have two options:
 
-#1. Use conditional conditional statements to select colors from a few pre-dertermined base colors.
-
-#1. Build new colors dynamically, by calculating them as the script executes bar to bar, to implement color gradations, for example.
+#. Use conditional conditional statements to select colors from a few pre-dertermined base colors.
+#. Build new colors dynamically, by calculating them as the script executes bar to bar, to implement color gradations, for example.
 
 
 Conditional coloring
