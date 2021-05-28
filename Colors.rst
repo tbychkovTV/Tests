@@ -186,13 +186,14 @@ Z-order
 ^^^^^^^
 
 
-Handling light and dark chart backgrounds
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Making your colors usable
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
+If you write scripts intended for other traders, try to avoid colors that will not work well in some environments, whether it be for plots, labels, tables or fills. At a minimum, test your visuals to ensure they perform satisfactorily with both the light and dark TradingView themes; they are the most commonly used. Colors such as black and white, for example, should be avoided.
 
-Providing color presets
-^^^^^^^^^^^^^^^^^^^^^^^
+Build the appropriate inputs to provide script users the flexibility to adapt your script's visuals to their particular environments.
 
-When publishing scripts, keep in mind that users often appreciate being able to change the colors used in your scripts visuals to adapt it to their particular environment. Script users may want to adapt the colors you use to the light or dark scheme they are using, to another, special chart background, or to the presence of other indicators.
+Take care to build a visual hierarchy of the colors you use that matches the relative importance of your script's visual components. Good designers understand how to achieve the optimal balance of color and weight so the eye naturally focuses on the most important elements of the design, while not letting the least important ones get in the way. If you try to make everything stand out, nothing will. Providing room for some elements to stand out requires the artful toning down of the visuals surrounding it.
 
+Providing color presets instead of only one default color in your inputs will help users who are color-challenged. Our [Technical Ratings](https://www.tradingview.com/script/Jdw7wW2g-Technical-Ratings/) demonstrates one way of achieving this.
 
