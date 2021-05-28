@@ -198,7 +198,7 @@ Different type of elements drawn in Pine are placed in different regions of the 
 - tables
 - boxes
 
-The order within a script of the Pine statements that draw elements can only affect the z-index of the elements from the same group; they cannot place the element of one group in another region of the *z* axis such that it will be on top of all others, for example.
+Pine programmers can control the order of elements from the same group with the position within a script of the Pine statements that draw each elements, but they cannot place an element of one group outside its z-index region, such that it would be on top of all elements from other groups, for example.
 
 
 Making your colors usable
