@@ -34,8 +34,14 @@ The transparency of a color defines how opaque it is: zero is fully opaque, 100 
 
 
 
+
 Using colors
 ------------
+
+
+Constant colors
+^^^^^^^^^^^^^^^
+
 
 There are 17 built-in colors in Pine. This table lists their names, hexadecimal equivalent, and RGB values as arguments to `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__:
 
@@ -96,37 +102,6 @@ They are functinally equivalent:
 
 .. note:: The first two `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ calls on lines 3 and 4 which specify transparency using the ``transp`` parameter should be avoided, as they are not as flexible to use and will be deprecated in Pine v5. Using the ``transp`` parameter to define transparency is not as flexible because it requires an argument of *input integer* type, which entails it must be known before the script is executed, and so cannot be calculated dynamically, as your script executes bar to bar. Additionally, if you use *series color* like in the last two lines 6 and 7, the ``transp`` parameter should not be used simultaneously; it would then have no effect because the transparency is expected to be included in any *series color* argument to the ``color`` parameter in `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ and other functions currently allowing the use of the ``transp`` parameter.
 
-
-Constant colors
----------------
-
-
-
-Series color
-------------
-
-
-Creating transparencies
-^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Building gradients
-^^^^^^^^^^^^^^^^^^
-
-
-Mixing colors
-^^^^^^^^^^^^^
-
-
-
-
-Tips
-----
-
-
-Constant vs series colors
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
 All the examples of colors used in our previous script produce color values of form-type *constant color* because they can all be determined at compile time.
 
 Note that in Pine types are specified using both a *form* and a *type*, and that we often use *type* to designate the *form*-*type* pair (see the :doc:`/language/Type_system`). Constant colors are known at compile time. The only difference between our three variables is that the first two do not carry transparency information, while the third one uses a transparency of 40 on the 0-100 scale, which yields 99 on the 00-FF hexadecimal scale (40/100 is 102/255, but since the highest hexadecimal transparency of FF corresponds to the most opaque transparency value of zero on the 0-100 scale, we must use 255 - 102 = 153, which is 99 in hexadecimal notation).
@@ -136,6 +111,31 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 #1. Use conditional coloring, where constant colors are selected from with a conditional statement.
 #1. Use conditional coloring, but using *series color*. This can be useful, for example, when your logic requires a selection between discrete choices of a few different transparency levels of the same base color.
 #1. Build new colors of *series color* type on the fly, as the script executes bar to bar, to implement a color gradient, for example.
+
+
+Conditional colors
+^^^^^^^^^^^^^^^^^^
+
+
+Calculated colors
+^^^^^^^^^^^^^^^^^
+
+
+
+
+Mixing transparencies
+---------------------
+
+
+
+
+Building gradients
+------------------
+
+
+
+Tips
+----
 
 
 Color selection through script Settings
@@ -186,16 +186,13 @@ Z-order
 ^^^^^^^
 
 
-Choose colors that work well on light and dark chart backgrounds
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Handling light and dark chart backgrounds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Providing color selection for script users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Providing color presets
+^^^^^^^^^^^^^^^^^^^^^^^
 
 When publishing scripts, keep in mind that users often appreciate being able to change the colors used in your scripts visuals to adapt it to their particular environment. Script users may want to adapt the colors you use to the light or dark scheme they are using, to another, special chart background, or to the presence of other indicators.
-
-
-
 
 
