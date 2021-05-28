@@ -187,7 +187,7 @@ Z-index
 
 When you place elements in a script's visual space, they have relative depth on the *z* axis; some will appear on top of others. The *z-index* is a value that represents the position of elements on the *z* axis. Elements with the highest z-index appear on top.
 
-Different type of elements drawn in Pine are placed in different regions of the *z* space. Those types of elements are:
+Different types of elements drawn in Pine are placed in different regions of the *z* space. Those types of elements are:
 
 - background
 - hlines
