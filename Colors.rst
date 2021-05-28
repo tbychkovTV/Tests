@@ -161,6 +161,23 @@ The color used in the first plot is a calculated color because its transparency 
 
 .. image:: images/Colors-UsingColors-3.png
 
+The solution to enable script users to control the colors used is to supply them with custom inputs, as we do here::
+
+    //@version=4
+    study("Calculated colors", "", true)
+    i_c_ma = input(#000000, "MA")
+    i_c_close = input(color.blue, "Close")
+    float ma = sma(close, 20)
+    float maHeight = percentrank(ma, 100)
+    float transparency = min(80, 100 - maHeight)
+    // This plot uses a calculated color.
+    plot(ma, "MA1", color.new(i_c_ma, transparency), 2)
+    // This plot does not use a calculated color.
+    plot(close, "Close", i_c_close)
+
+Note that:
+
+- We have created two color inputs. The first one uses the hex notation to propose pure black as its default value. That base color is then used in a `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ as the base color from which we generate a calculated transparency in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call. The second input uses as its default the built-in `color.blue <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}blue>`__ color we previously used in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call, and simply use it as is in the second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call.
 
 Z-order
 ^^^^^^^
