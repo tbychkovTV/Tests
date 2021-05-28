@@ -236,7 +236,7 @@ Z-index
 
 When you place elements in a script's visual space, they have relative depth on the *z* axis; some will appear on top of others. The *z-index* is a value that represents the position of elements on the *z* axis. Elements with the highest z-index appear on top.
 
-Elements drawn in Pine are divided in groups. Each group has its own position in the *z* space, and within the same group, elements created last in the script's logic will appear on top of other elements from the same group. An element of one group cannot be placed outside the region of the *z* space attributed to its group, so a plot can never appear on top of a table, for example, because tables have the highest z-index.
+Elements drawn in Pine are divided in groups. Each group has its own position in the *z* space, and **within the same group**, elements created last in the script's logic will appear on top of other elements from the same group. An element of one group cannot be placed outside the region of the *z* space attributed to its group, so a plot can never appear on top of a table, for example, because tables have the highest z-index.
 
 This lists the groups of visual elements in Pine, ordered by increasing z-index, so background colors are always at the bottom of *z* space, and tables are always on top:
 
