@@ -143,7 +143,7 @@ Color selection through script Settings
 
 The type of color you use in your scripts has an impact on how users of your script will be able to change the colors of your script's visuals. As long as you don't use colors whose RGBA components have to be calculated at runtime, script users will be able to modify the colors you use by going to your script's "Settings/Style" tab. Our first example script on this page meets that criteria, and the following screenshot shows how we used the script's "Settings/Style" tab to change the color of the first moving average:
 
-.. image:: images/Colors-UsingColors-2.png
+.. image:: images/Colors-ColorsSelection-1.png
 
 If your script uses a calculated color, i.e., a color where at least one of its RGBA components can only be known at runtime, then the "Settings/Style" tab will NOT offer users the usual color widgets they can use to modify your plot colors. Plots of the same script not using calculated colors will also be affected. In this script, for example, our first `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call uses a calculated color, and the second one doesn't::
 
@@ -159,7 +159,7 @@ If your script uses a calculated color, i.e., a color where at least one of its 
 
 The color used in the first plot is a calculated color because its transparency can only be known at runtime. Because that calculated color is used in our script, the "Settings/Style" tab will not show any color widgets:
 
-.. image:: images/Colors-UsingColors-3.png
+.. image:: images/Colors-ColorsSelection-2.png
 
 The solution to enable script users to control the colors used is to supply them with custom inputs, as we do here::
 
@@ -175,9 +175,10 @@ The solution to enable script users to control the colors used is to supply them
     // This plot does not use a calculated color.
     plot(close, "Close", i_c_close)
 
-Note that:
+.. image:: images/Colors-ColorsSelection-3.png
 
-- We have created two color inputs. The first one uses the hex notation to propose pure black as its default value. That base color is then used in a `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ as the base color from which we generate a calculated transparency in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call. The second input uses as its default the built-in `color.blue <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}blue>`__ color we previously used in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call, and simply use it as is in the second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call.
+Notice how our script's "Settings" now show an "Inputs" tab, where we have created two color inputs. The first one uses the hex notation to propose pure black as its default value. That base color is then used in a `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ as the base color from which we generate a calculated transparency in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call. The second input uses as its default the built-in `color.blue <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}blue>`__ color we previously used in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call, and simply use it as is in the second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call.
+
 
 Z-order
 ^^^^^^^
