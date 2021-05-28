@@ -161,11 +161,19 @@ To undertand how this code works, one must first know that `pivothigh() <https:/
 
 When we test the value returned by the pivot function for `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__ using the `nz() <https://www.tradingview.com/pine-script-reference/v4/#fun_nz>`__ function, we allow the value returned to be assigned to the ``pHi`` or ``pLo`` variables only when it is not `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__, otherwise the previous value of the variable is simply reassigned to it, which has no impact on its value. Keep in mind that previous values of ``pHi`` and ``pLo`` are preserved bar to bar because we use the `var <https://www.tradingview.com/pine-script-reference/v4/#op_var>`__ keyword when initializing them, which causes the initialization to only occur on the first bar.
 
-
+All that's left to do next is, when we plot our lines, to insert a ternary conditional statement that will yield `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__ for the color when the pivot value changes, or the color selected in the script's inputs when the pivot level does not change.
 
 
 Calculated colors
 ^^^^^^^^^^^^^^^^^
+
+Using functions like `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__, `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__ and `color.from_gradient() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}from_gradient>`__, one can build colors on the fly, as the script executes bar to bar.
+
+`color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ is most useful when you need to generate different transparency levels from a base color.
+
+`color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__ is useful when you need to build colors dynamically from varying components of RGB or transparency values. Whereas `color.rgb() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}rgb>`__ creates a color, its sister functions `color.r() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}r>`__, `color.g() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}g>`__, `color.b() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}b>`__ and `color.t() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}t>`__ can be used to extract the red, green, blue or transparency values from a color, which can then be used to generate a variant.
+
+Let's put `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ to use to create different transparencies of a base color to color volume columns::
 
 
 
