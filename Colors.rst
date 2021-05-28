@@ -171,7 +171,25 @@ Using functions like `color.new() <https://www.tradingview.com/pine-script-refer
 
 Let's put `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ to use to create different transparencies of a base color to color volume columns::
 
+    //@version=4
+    study("Volume")
+    // We name our color constants to make them more readable.
+    var color C_GOLD   = #CCCC00ff
+    var color C_VIOLET = #AA00FFff
+    i_c_bull = input(C_GOLD,   "Bull")
+    i_c_bear = input(C_VIOLET, "Bear")
+    i_levels = input(10, "Gradient levels", minval = 1)
+    // We intialize only once on bar zero with `var`, otherwise the count would reset to zero on each bar.
+    var float riseFallCnt = 0
+    // Count the rises/falls, clamping the range to 1 to `i_levels`.
+    riseFallCnt := max(1, min(i_levels, riseFallCnt + sign(volume - nz(volume[1]))))
+    // Rescale the count on a scale of 80, reverse it and cap transparency to <80 so that colors remains visible.
+    float transparency = 80 - abs(80 * riseFallCnt / i_levels)
+    // Build the correct transparency of either the bull or bear color.
+    c_volume = color.new(close > open ? i_c_bull : i_c_bear, transparency)
+    plot(volume, "Volume", c_volume, 1, plot.style_columns)
 
+.. image:: images/Colors-CalculatingColors-1.png
 
 
 
