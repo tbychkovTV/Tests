@@ -193,7 +193,7 @@ If you write scripts intended for other traders, try to avoid colors that will n
 
 Build the appropriate inputs to provide script users the flexibility to adapt your script's visuals to their particular environments.
 
-Take care to build a visual hierarchy of the colors you use that matches the relative importance of your script's visual components. Good designers understand how to achieve the optimal balance of color and weight so the eye naturally focuses on the most important elements of the design, while not letting the least important ones get in the way. If you try to make everything stand out, nothing will. Providing room for some elements to stand out requires the artful toning down of the visuals surrounding it.
+Take care to build a visual hierarchy of the colors you use that matches the relative importance of your script's visual components. Good designers understand how to achieve the optimal balance of color and weight so the eye naturally focuses on the most important elements of the design, while not letting the least important ones get in the way. If you try to make everything stand out, nothing will. Make room for some elements to stand out by toning down the visuals surrounding it.
 
-Providing color presets instead of only one default color in your inputs will help users who are color-challenged. Our [Technical Ratings](https://www.tradingview.com/script/Jdw7wW2g-Technical-Ratings/) demonstrates one way of achieving this.
+Providing color presets in your inputs, instead of only one default color, will help users who are color-challenged. Our [Technical Ratings](https://www.tradingview.com/script/Jdw7wW2g-Technical-Ratings/) demonstrates one way of achieving this. The [Pine Color Magic and Chart Theme Simulator](https://www.tradingview.com/script/yyDYIrRQ-Pine-Color-Magic-and-Chart-Theme-Simulator/) script provides a good selection of colors to build from.
 
