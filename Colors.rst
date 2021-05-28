@@ -184,6 +184,8 @@ Let's put `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fu
 Mixing transparencies
 ---------------------
 
+TODO
+
 
 
 
