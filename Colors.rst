@@ -116,6 +116,21 @@ Constant colors provide a simple way to define colors in a script. Sometimes, ho
 Conditional colors
 ^^^^^^^^^^^^^^^^^^
 
+Let's say you want to color a moving average in different colors, depending on some conditions you define. To do so, you can use a conditional statement that will select a different color for each of your states. Let's start by coloring a moving average in a bull color when it's rising, and in a bear color when it's falling::
+
+    //@version=4
+    study("Conditional colors", "", true)
+    i_c_maBull = input(color.green, "Bull")
+    i_c_maBear = input(color.maroon, "Bear")
+    float ma = sma(close, 20)
+    // Define our states.
+    bool maRising  = rising(ma, 1)
+    // Build our color.
+    color c_ma = maRising ? i_c_maBull : i_c_maBear
+    plot(ma, "MA", c_ma, 2)
+
+.. image:: images/Colors-ConditionalColors-1.png
+
 
 Calculated colors
 ^^^^^^^^^^^^^^^^^
