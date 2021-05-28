@@ -182,8 +182,23 @@ The solution to enable script users to control the colors used is to supply them
 Notice how our script's "Settings" now show an "Inputs" tab, where we have created two color inputs. The first one uses `color.purple <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}purple>`__ as its default value. Whether the script user changes that color or not, the resulting base color will then be used in a `color.new() <https://www.tradingview.com/pine-script-reference/v4/#fun_color{dot}new>`__ call to generate a calculated transparency in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call. The second input uses as its default the built-in `color.blue <https://www.tradingview.com/pine-script-reference/v4/#var_color{dot}blue>`__ color we previously used in the `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call, and simply use it as is in the second `plot() <https://www.tradingview.com/pine-script-reference/v4/#fun_plot>`__ call.
 
 
-Z-order
+Z-index
 ^^^^^^^
+
+When you place elements in a script's visual space, they have relative depth on the *z* axis; some will appear on top of others. The *z-index* is a value that represents the position of elements on the *z* axis. Elements with the highest z-index appear on top.
+
+Different type of elements drawn in Pine are placed in different regions of the *z* space. Those types of elements are:
+
+- background
+- hlines
+- plots
+- labels
+- lines
+- fills
+- tables
+- boxes
+
+The order within a script of the Pine statements that draw elements can only affect the z-index of the elements from the same group; they cannot place the element of one group in another region of the *z* axis such that it will be on top of all others, for example.
 
 
 Making your colors usable
