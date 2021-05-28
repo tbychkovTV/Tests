@@ -138,7 +138,7 @@ Note that:
 - We define an ``maRising`` boolean variable which will hold ``true`` when the moving average is higher on the current bar than it was on the last.
 - We define a ``c_ma`` color variable that is assigned one of our two colors, depending on the value of the ``maRising`` boolean. We use the `? : ternary operator <https://www.tradingview.com/pine-script-reference/v4/#op_{question}{colon}>`__ to write our conditional statement.
 
-You can also use conditional colors to avoid plotting under certain conditions. Here, we plot high and low pivots using a line, but we do not want to plot anything when a new pivot comes in, to avoid the joints that would otherwise appear in pivot transitions. To do, we test for pivot changes and use `na` as the color value so that no line is plotted::
+You can also use conditional colors to avoid plotting under certain conditions. Here, we plot high and low pivots using a line, but we do not want to plot anything when a new pivot comes in, to avoid the joints that would otherwise appear in pivot transitions. To do so, we test for pivot changes and use `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__ as the color value when a change is detected, so that no line is plotted on that bar::
 
     //@version=4
     study("Conditional colors", "", true)
@@ -158,6 +158,10 @@ You can also use conditional colors to avoid plotting under certain conditions. 
 .. image:: images/Colors-ConditionalColors-2.png
 
 To undertand how this code works, one must first know that `pivothigh() <https://www.tradingview.com/pine-script-reference/v4/#fun_pivothigh>`__ and `pivotlow() <https://www.tradingview.com/pine-script-reference/v4/#fun_pivotlow>`__, used as they are here without an argument to the ``source`` parameter, will return a value when they find a `high <https://www.tradingview.com/pine-script-reference/v4/#var_high>`__/`low <https://www.tradingview.com/pine-script-reference/v4/#var_low>`__ pivot, otherwise they return `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__.
+
+When we test the value returned by the pivot function for `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__ using the `nz() <https://www.tradingview.com/pine-script-reference/v4/#fun_nz>`__ function, we allow the value returned by the pivot function to be assigned to the ``pHi`` or ``pLo`` variables only when it is not `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__, otherwise the previous value of the variable is simply reassigned to it, which has no impact on its value. Keep in mind that previous values of ``pHi`` and ``pLo`` are preserved bar to bar because we use the `var <https://www.tradingview.com/pine-script-reference/v4/#op_var>`__ keyword when initializing them, which causes the initialization to only occur on the first bar.
+
+
 
 
 Calculated colors
