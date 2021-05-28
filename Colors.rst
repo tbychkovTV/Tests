@@ -157,6 +157,8 @@ You can also use conditional colors to avoid plotting under certain conditions. 
 
 .. image:: images/Colors-ConditionalColors-2.png
 
+To undertand how this code works, one must first know that `pivothigh() <https://www.tradingview.com/pine-script-reference/v4/#fun_pivothigh>`__ and `pivotlow() <https://www.tradingview.com/pine-script-reference/v4/#fun_pivotlow>`__, used as they are here without an argument to the ``source`` parameter, will return a value when they find a `high <https://www.tradingview.com/pine-script-reference/v4/#var_high>`__/`low <https://www.tradingview.com/pine-script-reference/v4/#var_low>`__ pivot, otherwise they return `na <https://www.tradingview.com/pine-script-reference/v4/#var_na>`__.
+
 
 Calculated colors
 ^^^^^^^^^^^^^^^^^
