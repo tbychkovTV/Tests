@@ -14,7 +14,7 @@ Pine libraries are publications containing functions that can be reused in indic
 Creating a library
 ------------------
 
-
+A Pine library is a special kind of script that begins with the `library() <https://www.tradingview.com/pine-script-reference/v4/#fun_library>`__ declaration statement, rather than `indicator() <https://www.tradingview.com/pine-script-reference/v4/#fun_indicator>`__ or `strategy() <https://www.tradingview.com/pine-script-reference/v4/#fun_strategy>`__. 
 
 
 Using a library
