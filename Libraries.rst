@@ -79,6 +79,21 @@ Note that:
 - We have added some custom tags: "all-time", "high" and "low".
 
 
+
+Using a library
+---------------
+
+Using a library from another script is done by using the `import <https://www.tradingview.com/pine-script-reference/v5/#op_import>`__ statement::
+
+    import {username}/{libraryName}/{libraryVersion} as {alias}
+
+
+
+
+
+
+
+
 Function definitions
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -91,17 +106,3 @@ Each of the library's function intended for reuse must use the `export <https://
         table.cell(t, 0, 0, txt, bgcolor = color.yellow)
 
 
-
-Using a library
----------------
-
-
-
-When you publish a script, you control its **visibility** and **access**:
-
-- **Visibility** is controlled by choosing to publish **publicly** or **privately**. See `How do private ideas and scripts differ from public ones? <https://www.tradingview.com/?solution=43000548335>`__ in the Help Center for more details. Publish publicly when you have written a script you think can be useful to TradingViewers. Public scripts are subject to moderation. To avoid moderation, ensure your publication complies with our `House Rules <https://www.tradingview.com/?solution=43000591638>`__ and `Script Publishing Rules <https://www.tradingview.com/?solution=43000590599>`__. Publish privately when you don't want your script visible to all other users, but want to share it with a few friends.
-- **Access** determines if users will see your source code, and how they will be able to use your script. There are three access types: *open*, *protected* (reserved to paid accounts) or *invite-only* (reserved to Premium accounts). See `What are the different types of published scripts? <https://www.tradingview.com/?solution=43000482573>`__ in the Help Center for more details.
-
-
-When you publish a script
-^^^^^^^^^^^^^^^^^^^^^^^^^
