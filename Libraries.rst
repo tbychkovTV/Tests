@@ -65,6 +65,9 @@ This is an example library::
     plot(hi())
     plot(lo())
 
+Before we or other Pine coders can reuse this library, we must publish it. The "Publish Library" window looks like this:
+
+.. image:: images/Libraries-CreatingALibrary-PublishWindow.png
 
 
 Function definitions
