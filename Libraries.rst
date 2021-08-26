@@ -20,7 +20,7 @@ A library script has the following structure::
 
     //@version=5
 
-    // @description String Manipulation Functions
+    // @description <library_description>
     library("StringFunctions")
 
     // @function <f1_description>
