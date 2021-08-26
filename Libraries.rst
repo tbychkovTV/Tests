@@ -101,7 +101,23 @@ As we type the user name of the library's author, a popup appears providing sele
 
 .. image:: images/Libraries-UsingALibrary-1.png
 
-We plot the same values we used 
+This is the indicator we write which reuses the library we have created::
+
+    //@version=5
+    indicator("Using AllTimeHighLow library", "", true)
+    import PineCoders/AllTimeHighLow/1 as allTime
+
+    plot(allTime.hi())
+    plot(allTime.lo())
+    plot(allTime.hi(close))
+
+Note that:
+
+- We have chose to use ``allTime`` as the namespace for the library's functions. When you type the namespace in the Editor, a popup will appear to help you select the particular function you want to use from the library.
+- We use the library's ``hi()`` and ``lo()`` without and argument, so the default `high <https://www.tradingview.com/pine-script-reference/v5/#var_high>`__ and `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__ built-in variables will be used for their series, respectively.
+- We use a second call to ``allTime.hi()``, but specifying `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ as it argument, so that the highest close in the chart's history will also be plotted.
+
+
 
 
 Function definitions
