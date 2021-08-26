@@ -121,7 +121,7 @@ Note that:
 
 
 More on library function definitions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+------------------------------------
 
 Function definitions in libraries are slightly different than user-defined functions in indicators and strategies. 
 
