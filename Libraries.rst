@@ -69,6 +69,15 @@ Before we or other Pine coders can reuse this library, we must publish it. The "
 
 .. image:: images/Libraries-CreatingALibrary-PublishWindow.png
 
+Note that:
+
+- We leave the library's title as is (the ``title`` argument in our `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement is used.
+- A default description is built from the compiler directives we used in our library. We will publish the library wihout retouching it.
+- We chose to publish our library publicly, so it will be visible to all TradingViewers.
+- We do not have the possibility of selecting a visibility other than "Open", which means our library will be published open-source.
+- The list of categories for libraries is different than for indicators and strategies. We have selected the "Statistics and Metrics" category.
+- We have added some custom tags: "all-time", "high" and "low".
+
 
 Function definitions
 ^^^^^^^^^^^^^^^^^^^^
