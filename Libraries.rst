@@ -7,7 +7,7 @@ Libraries
 Introduction
 ------------
 
-Pine libraries are publications containing functions that can be reused in indicators and strategies. They are useful when you want to reuse functions without having to copy their code in each script that uses them.
+Pine libraries are publications containing functions that can be reused in Pine indicators, strategies, or in other libraries. They are useful to define often-reused functions without having to include their code in every script using them.
 
 A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts (saved and used from the Pine Editor) can use public or private libraries. A library can use other libraries, or even previous versions of itself.
 
@@ -16,7 +16,7 @@ A library must be published (privately or publicly) before it can be used in ano
 Creating a library
 ------------------
 
-A Pine library is a special kind of script that begins with the `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement, rather than `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ or `strategy() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy>`__. While a library must contain at least one exportable function, it can also use other Pine code like a normal indicator or strategy, which will typically serve to demonstrate how to use the library's functions. As with indicators or strategies, the chart that is active when you publish a library will appear in both its widget (the small placeholder denoting libraries in the TradingView scripts stream) and script page (the page users see when they click on the widget).
+A Pine library is a special kind of script that begins with the `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement, rather than `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ or `strategy() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy>`__. Libraries contain exportable function definitions, which constitute the only visible part of libraries when they are reused. They can also use other Pine code like a normal indicator or strategy, which will typically serve to demonstrate how to use the library's functions. As with indicators or strategies, the chart that is active when you publish a library will appear in both its widget (the small placeholder denoting libraries in the TradingView scripts stream) and script page (the page users see when they click on the widget).
 
 A library script has the following structure::
 
