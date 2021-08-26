@@ -101,7 +101,7 @@ As we type the user name of the library's author, a popup appears providing sele
 
 .. image:: images/Libraries-UsingALibrary-1.png
 
-This is the indicator we write which reuses the library we have created::
+This is an indicator that reuses our library::
 
     //@version=5
     indicator("Using AllTimeHighLow library", "", true)
