@@ -21,12 +21,12 @@ A library script has the following structure::
     //@version=5
 
     // @description <library_description>
-    library("StringFunctions")
+    library(title, shorttitle, overlay, format, precision, scale)
 
-    // @function <f1_description>
+    // @function <function_description>
     // @param <parameter> <parameter_description>
     // @returns <return_value_description>
-    export f1(string str, int n) =>
+    export <function_name>(string str, int n) =>
         <function_code>
 
     <script_code>    
