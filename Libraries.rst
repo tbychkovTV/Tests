@@ -41,6 +41,31 @@ where:
 - The ``simple`` or ``series`` forms can be used to prefix the parameter's type in order to explictly define the allowed forms to be used as an argument.
 - The <function_code> block cannot use global scope variables unless they are of "constant" form, nor ``request.*()`` functions.
 
+This is an example library::
+
+    //@version=5
+
+    // @description Provides functions calculating the all-time high/low of values.
+    library("AllTimeHighLow", "", true)
+
+    // @function Calculates the all-time high of a series.
+    // @param val Series to use.
+    // @returns The all-time high for the series.
+    export hi(float val) =>
+        var float ath = val
+        ath := math.max(ath, val)
+
+    // @function Calculates the all-time low of a series.
+    // @param val Series to use.
+    // @returns The all-time low for the series.
+    export lo(float val) =>
+        var float atl = val
+        atl := math.min(atl, val)
+
+    plot(hi(high))
+    plot(lo(low))
+
+
 
 Function definitions
 ^^^^^^^^^^^^^^^^^^^^
