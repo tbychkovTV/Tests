@@ -84,7 +84,7 @@ Note that:
 Using a library
 ---------------
 
-Using a library from another script is done by using the `import <https://www.tradingview.com/pine-script-reference/v5/#op_import>`__ statement::
+Using a library from another script is done through the `import <https://www.tradingview.com/pine-script-reference/v5/#op_import>`__ statement::
 
     import {username}/{libraryName}/{libraryVersion} as {alias}
 
