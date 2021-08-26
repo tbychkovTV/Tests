@@ -39,7 +39,7 @@ where:
 - <function_name> must be unique in the library.
 - <parameter_type> is mandatory (contrary to user-defined function parameters which do not require a type definition.
 - The ``simple`` or ``series`` forms can be used to prefix the parameter's type in order to explictly define the allowed forms to be used as an argument.
-- The <function_code> block cannot use global scope variables unless they are of "constant" form, nor ``request.*()`` functions.
+- The <function_code> block **cannot use global scope variables unless they are of "constant" form, nor ``request.*()`` functions.**
 
 This is an example library::
 
