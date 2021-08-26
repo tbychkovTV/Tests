@@ -65,7 +65,7 @@ This is an example library::
     plot(hi())
     plot(lo())
 
-Before we or other Pine coders can reuse this library, we must publish it. The "Publish Library" window looks like this:
+Before we or other Pine coders can reuse this library, we must publish it. After loading our library on the chart and setting up a clean chart showing our library plots the way we want them, we use the Pine Editor's "Publish Script" button. The "Publish Library" window comes up:
 
 .. image:: images/Libraries-CreatingALibrary-PublishWindow.png
 
