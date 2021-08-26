@@ -96,7 +96,7 @@ To use the library we published in the previous section, we could use the follow
 
     import PineCoders/AllTimeHighLow/1 as ath
 
-As we type the user name of the library's creator, a popup appears providing selections that match the available libraries:
+As we type the user name of the library's author, a popup appears providing selections that match the available libraries:
 
 .. image:: images/Libraries-UsingALibrary-1.png
 
