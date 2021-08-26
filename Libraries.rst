@@ -87,10 +87,18 @@ Using a library from another script is done by using the `import <https://www.tr
 
     import {username}/{libraryName}/{libraryVersion} as {alias}
 
+where:
 
+- The {username}/{libraryName}/{libraryVersion} path will uniquely identify the library.
+- The {alias} is the namespace you choose to refer to the library's functions.
 
+To use the library we published in the previous section, we could use the following  `import <https://www.tradingview.com/pine-script-reference/v5/#op_import>`__ statement from any type of Pine script::
 
+    import PineCoders/AllTimeHighLow/1 as ath
 
+As we type the user name of the library's creator, a popup appears providing selections that match the available libraries:
+
+.. image:: images/Libraries-UsingALibrary-1.png
 
 
 
