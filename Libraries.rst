@@ -9,7 +9,7 @@ Introduction
 
 Pine libraries are publications containing functions that can be reused in indicators and strategies. They are useful when you want to reuse functions without having to copy their code in each script that uses them.
 
-A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts (saved and used from the Pine Editor) can use public or private libraries.
+A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts (saved and used from the Pine Editor) can use public or private libraries. A library can use other libraries, or even previous versions of itself.
 
 
 
@@ -36,6 +36,7 @@ A library script has the following structure::
 where:
 
 - The ``// @description``, ``// @function``, ``// @param`` and ``// @returns`` compiler directives are optional and serve a double purpose: they document the library's code and are used to assemble the default library description authors can use when publishing the library.
+- <function_name> must be unique in the library.
 - <parameter_type> is mandatory (contrary to user-defined function parameters which do not require a type definition.
 - The ``simple`` or ``series`` forms can be used to prefix the parameter's type in order to explictly define the allowed forms to be used as an argument.
 - The <function_code> block cannot use global scope variables unless they are of "constant" form, nor ``request.*()`` functions.
