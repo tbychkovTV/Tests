@@ -26,7 +26,7 @@ A library script has the following structure::
     // @function <function_description>
     // @param <parameter> <parameter_description>
     // @returns <return_value_description>
-    export <function_name>(string str, int n) =>
+    export <function_name>([simple/series] <parameter_type> <parameter_name> [, ...]) =>
         <function_code>
 
     <script_code>    
