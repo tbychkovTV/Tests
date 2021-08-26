@@ -72,7 +72,7 @@ Before we or other Pine coders can reuse this library, we must publish it. After
 
 Note that:
 
-- We leave the library's title as is (the ``title`` argument in our `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement is used.
+- We leave the library's title as is (the ``title`` argument in our `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement is used as the default).
 - A default description is built from the compiler directives we used in our library. We will publish the library wihout retouching it.
 - We chose to publish our library publicly, so it will be visible to all TradingViewers.
 - We do not have the possibility of selecting a visibility other than "Open", which means our library will be published open-source.
