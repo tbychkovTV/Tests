@@ -28,7 +28,7 @@ A library script has the following structure::
     // @function <function_description>
     // @param <parameter> <parameter_description>
     // @returns <return_value_description>
-    export <function_name>([simple/series] <parameter_type> <parameter_name> [, ...]) =>
+    export <function_name>([simple/series] <parameter_type> <parameter_name> [= <default_value>] [, ...]) =>
         <function_code>
 
     <script_code>    
@@ -49,21 +49,21 @@ This is an example library::
     library("AllTimeHighLow", "", true)
 
     // @function Calculates the all-time high of a series.
-    // @param val Series to use.
+    // @param val Series to use (`high` is used if no argument is supplied).
     // @returns The all-time high for the series.
-    export hi(float val) =>
+    export hi(float val = high) =>
         var float ath = val
         ath := math.max(ath, val)
 
     // @function Calculates the all-time low of a series.
-    // @param val Series to use.
+    // @param val Series to use (`low` is used if no argument is supplied).
     // @returns The all-time low for the series.
-    export lo(float val) =>
+    export lo(float val = low) =>
         var float atl = val
         atl := math.min(atl, val)
 
-    plot(hi(high))
-    plot(lo(low))
+    plot(hi())
+    plot(lo())
 
 
 
