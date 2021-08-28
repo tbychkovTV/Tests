@@ -120,8 +120,8 @@ Note that:
 
 
 
-More on library function definitions
-------------------------------------
+Tips
+----
 
 Function definitions in libraries are slightly different than user-defined functions in indicators and strategies. 
 
