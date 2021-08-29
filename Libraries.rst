@@ -133,7 +133,7 @@ With the provision that public libraries are considered to be "public domain", o
 
 - You must obtain permission from the original author, unless the original code meets our "public domain" criteria.
 - You must credit the author in your publication's description. It is also good form to credit in open-source comments where you reuse code.
-- You must make meaningful and significant improvements to the original code base and it must account for a small proportion of your script.
+- You must make significant improvements to the original code base and it must account for a small proportion of your script.
 - Your script must also be published in open-source format, unless explicit permission to that effect was granted by the original author, or unless the reused code is considered public domain AND it constitutes an insignificant part of your codebase.
 
   
