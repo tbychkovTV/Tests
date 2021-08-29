@@ -47,7 +47,7 @@ Note that:
 - <function_name> must be unique in the library.
 - <parameter_type> is mandatory, contrary to user-defined function parameters in non-library scripts, which are typeless.
 - A <default_value> can be defined for a function parameter. If the function is called without an argument for that paremeter, the default value will be used.
-- The <function_code> block **cannot use global scope variables unless they are of "const" form, nor ``request.*()`` functions.**
+- The <function_code> block cannot use global scope variables unless they are of "const" form, nor ``request.*()`` functions.
 - <script_code> can include any code you would normally find in an indicator, including plots.
 
 This is an example library::
