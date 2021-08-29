@@ -127,15 +127,14 @@ Note that:
 House Rules
 ^^^^^^^^^^^
 
-Public libraries are considered public domain code in our [House Rules on Script Publishing](https://www.tradingview.com/house-rules/?solution=43000590599), which entails that, contrary to open-source indicators and strategies, permission is **not** required from its author if you reuse them in your open-source scripts. If you intend to reuse a public library in a closed-source publication (protected or invite-only), explicit permission **is** required from its author.
+Public libraries are considered public domain code in our `House Rules on Script Publishing <https://www.tradingview.com/house-rules/?solution=43000590599>`__, which entails that, contrary to open-source indicators and strategies, permission is **not** required from its author if you reuse them in your open-source scripts. If you intend to reuse a public library in a closed-source publication (protected or invite-only), explicit permission for reuse in that form **is** required from its author.
 
-House Rules on the reuse of open-source are:
+Our House Rules on the reuse of open-source state:
 
-- You must obtain permission from the original author. 
-- Your script must also be published in open-source format, unless explicit permission is granted by the original author, or unless the reused code is public domain AND it constitutes an insignificant part of your codebase. 
-- You must credit the author in your script's description. It is also good form to add a note in your script's comments where you reuse code. 
-- You must make meaningful and significant improvements to the original code. 
-- It should account for a small proportion of your script.
+- You must obtain permission from the original author, unless the original code meets our "public domain" criteria.
+- You must credit the author in your publication's description. It is also good form to add a note in your script's comments where you reuse code. 
+- You must make meaningful and significant improvements to the original code base and it must account for a small proportion of your script.
+- Your script must also be published in open-source format, unless explicit permission was granted by the original author, or unless the reused code is public domain AND it constitutes an insignificant part of your codebase.
 
   
 
