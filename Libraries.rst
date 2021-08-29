@@ -11,7 +11,7 @@ Pine libraries are publications containing functions that can be reused in Pine 
 
 A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts (saved and used from the Pine Editor) can use public or private libraries. A library can use other libraries, or even previous versions of itself.
 
-
+Library programmers should understand Pine's typing nomenclature. If you need to brush up on Pine forms and types, see the User Manual's page on the Type System.
 
 Creating a library
 ------------------
