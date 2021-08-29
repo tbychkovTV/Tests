@@ -99,7 +99,7 @@ where:
 - The <username>/<libraryName>/<libraryVersion> path will uniquely identify the library.
 - The <alias> is the namespace you choose to refer to the library's functions. If you use the ``allTime`` alias as we do in the example below, then you will use ``allTime.<function_mame>()`` in your code to refer to the library's functions.
 
-To use the library we published in the previous section, we could use the following  `import <https://www.tradingview.com/pine-script-reference/v5/#op_import>`__ statement from any type of Pine script::
+To use the library we published in the previous section, we could use the following  `import <https://www.tradingview.com/pine-script-reference/v5/#op_import>`__ statement from any type of script::
 
     import PineCoders/AllTimeHighLow/1 as ath
 
