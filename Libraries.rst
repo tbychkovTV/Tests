@@ -73,7 +73,9 @@ This is an example library::
 Library functions
 ^^^^^^^^^^^^^^^^^
 
-Function definitions in libraries are slightly different than those of user-defined functions in indicators and strategies. In library function signatures (their first line):
+Function definitions in libraries are slightly different than those of user-defined functions in indicators and strategies, and there are constraints as to what can be included in the body of library functions.
+
+In library function signatures (their first line):
 
 - The type of argument expected for each parameter must be explicitly mentioned.
 - A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments.
