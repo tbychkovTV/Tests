@@ -79,7 +79,7 @@ In library function signatures (their first line):
 
 - The `export <https://demo-alerts.xstaging.tv/pine-script-reference/v5/#op_export>`__ keyword is mandatory.
 - The type of argument expected for each parameter must be explicitly mentioned.
-- A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments.
+- A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments (the next section explains their use).
 
 In library function code:
 
@@ -87,6 +87,23 @@ In library function code:
 - You cannot use functions in the ``request.*()`` namespace.
 
 Library functions always return a result that is of "series" form, which entails they cannot be used to calculate values used where "const", "input" or "simple" forms are required. Scripts using a library function to calculate an argument to the ``show_last`` parameter in a `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ call, for example, will not work because an "input int" argument is expected.
+
+
+Argument form restriction
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Arguments supplied by calling code to library functions are, by default, always cast to the "series" form. Since library functions always return results of "series" form also, this is usually not a problem. In special cases, however, your function's code may need to include a Pine built-in that requires a "simple" argument, as is the case with `ta.ema() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}ema>`__'s ``length`` parameter. For those cases, the `simple <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ keyword can be used to restrict the argument's form to the "simple".
+
+Whereas this will not work::
+
+    export emaWrong(float source, int length) =>
+        ema(source, length)
+
+This will::
+
+    export emaRight(float source, simple int length) =>
+        ema(source, length)
+
 
 
 Publishing a library
