@@ -109,7 +109,7 @@ This will::
     export emaRight(float source, simple int length) =>
         ema(source, length)
 
-The `series <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ keyword can also be used to prefix the type of a library function parameter. Because arguments are by default cast to the "series" form, using the `series <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ modifier is redundant; it exists more for completeness.
+The `series <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ keyword can also be used to prefix the type of a library function parameter. However, because arguments are by default cast to the "series" form, using the `series <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ modifier is redundant; it exists more for completeness.
 
 
 
