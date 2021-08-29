@@ -18,7 +18,7 @@ Creating a library
 
 A Pine library is a special kind of script that begins with the `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement, rather than `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ or `strategy() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy>`__. A library contains one or more exportable function definitions, which constitute the only visible part of the library when it is used by another script. Libraries can also use other Pine code like a normal indicator, which will typically serve to demonstrate how to use the library's functions.
 
-A library script has the following structure::
+A library script has the following structure, where one or more exportable functions must be defined::
 
     //@version=5
 
