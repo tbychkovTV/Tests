@@ -16,7 +16,7 @@ A library must be published (privately or publicly) before it can be used in ano
 Creating a library
 ------------------
 
-A Pine library is a special kind of script that begins with the `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement, rather than `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ or `strategy() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy>`__. A library contains one or more exportable function definitions, which constitute the only visible part of the library when it is used by another script. Libraries can also use other Pine code like a normal indicator or strategy, which will typically serve to demonstrate how to use the library's functions. As with indicators or strategies, the chart that is active when you publish a library will appear in both its widget (the small placeholder denoting libraries in the TradingView scripts stream) and script page (the page users see when they click on the widget).
+A Pine library is a special kind of script that begins with the `library() <https://www.tradingview.com/pine-script-reference/v5/#fun_library>`__ declaration statement, rather than `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ or `strategy() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy>`__. A library contains one or more exportable function definitions, which constitute the only visible part of the library when it is used by another script. Libraries can also use other Pine code like a normal indicator, which will typically serve to demonstrate how to use the library's functions. As with indicators or strategies, the chart that is active when you publish a library will appear in both its widget (the small placeholder denoting libraries in the TradingView scripts stream) and script page (the page users see when they click on the widget).
 
 A library script has the following structure::
 
@@ -65,6 +65,11 @@ This is an example library::
 
     plot(hi())
     plot(lo())
+
+
+
+Publishing a library
+--------------------
 
 Before we or other Pine coders can reuse this library, we must publish it. After loading our library on the chart and setting up a clean chart showing our library plots the way we want them, we use the Pine Editor's "Publish Script" button. The "Publish Library" window comes up:
 
