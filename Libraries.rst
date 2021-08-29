@@ -71,7 +71,7 @@ This is an example library::
 Publishing a library
 --------------------
 
-Before we or other Pine coders can reuse this library, we must publish it. After loading our library on the chart and setting up a clean chart showing our library plots the way we want them, we use the Pine Editor's "Publish Script" button. The "Publish Library" window comes up:
+Before we or other Pine coders can reuse this library, we must publish it. After adding our example library on the chart and setting up a clean chart showing our library plots the way we want them, we use the Pine Editor's "Publish Script" button. The "Publish Library" window comes up:
 
 .. image:: images/Libraries-CreatingALibrary-PublishWindow.png
 
@@ -84,6 +84,7 @@ Note that:
 - The list of categories for libraries is different than for indicators and strategies. We have selected the "Statistics and Metrics" category.
 - We have added some custom tags: "all-time", "high" and "low".
 
+The intended users of public libraries are other Pine coders. Your description and code comments should be thoughtfully crafted to help users of your library, and you library should contain code demonstrating how to use your library's functions.
 
 
 Using a library
@@ -121,6 +122,11 @@ Note that:
 - We have chosen to use ``allTime`` as the namespace for the library's functions. When you want to use one of an imported library's functions in your script and you start typing its namespace in the Editor, a popup will appear to help you select the particular function you want to use from the library.
 - We use the library's ``hi()`` and ``lo()`` without and argument, so the default `high <https://www.tradingview.com/pine-script-reference/v5/#var_high>`__ and `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__ built-in variables will be used for their series, respectively.
 - We use a second call to ``allTime.hi()``, but specifying `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ as it argument, so that the highest close in the chart's history will also be plotted.
+
+House Rules
+^^^^^^^^^^^
+
+aaaa
 
 
 
