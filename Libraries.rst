@@ -77,14 +77,9 @@ Function definitions in libraries are slightly different than those of user-defi
 
 In library function signatures (their first line):
 
+- The `export <https://demo-alerts.xstaging.tv/pine-script-reference/v5/#op_export>`__ keyword is mandatory.
 - The type of argument expected for each parameter must be explicitly mentioned.
 - A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments.
-
-Each of the library's function intended for reuse must use the `export <https://demo-alerts.xstaging.tv/pine-script-reference/v5/#op_export>`__ keyword in its definition::
-
-    export print(string txt) => 
-        var table t = table.new(position.middle_right, 1, 1)
-        table.cell(t, 0, 0, txt, bgcolor = color.yellow)
 
 In library function code:
 
