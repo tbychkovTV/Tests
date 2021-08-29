@@ -91,7 +91,7 @@ In library function code:
 - You cannot use variables from the library's global scope unless they are of "const" form.
 - You cannot use functions in the ``request.*()`` namespace.
 
-Library functions always return a result that is of "series" form, which entails they cannot be used to calculate values used where "const", "input" or "simple" forms are required. Scripts using a library function to calculate an argument to the ``show_last`` parameter in a `plot <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ call, for example, will not work because an "input int" argument is expected.
+Library functions always return a result that is of "series" form, which entails they cannot be used to calculate values used where "const", "input" or "simple" forms are required. Scripts using a library function to calculate an argument to the ``show_last`` parameter in a `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ call, for example, will not work because an "input int" argument is expected.
 
 
 Publishing a library
