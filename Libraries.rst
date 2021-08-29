@@ -132,9 +132,9 @@ Note that:
 House Rules
 ^^^^^^^^^^^
 
-Public libraries are considered public domain code in our `House Rules on Script Publishing <https://www.tradingview.com/house-rules/?solution=43000590599>`__, which entails that, contrary to open-source indicators and strategies, permission is **not** required from their author if you reuse their functions in your open-source scripts. If you intend to reuse a public library in a closed-source publication (protected or invite-only), explicit permission for reuse in that form **is** required from its author.
+Public libraries are considered public domain code in our `House Rules on Script Publishing <https://www.tradingview.com/house-rules/?solution=43000590599>`__, which entails that, contrary to open-source indicators and strategies, permission is **not** required from their author if you reuse their functions in your open-source scripts. If you intend to reuse a public library's functions in a public, closed-source publication (protected or invite-only), explicit permission for reuse in that form **is** required from its author.
 
-With the provision that public libraries are considered to be "public domain", our House Rules on the reuse of open-source apply to them:
+With the provision that public Pine libraries are considered to be "public domain", our House Rules on the reuse of open-source apply to them:
 
 - You must obtain permission from the original author, unless the original code meets our "public domain" criteria.
 - You must credit the author in your publication's description. It is also good form to credit in open-source comments where you reuse code.
