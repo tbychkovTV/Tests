@@ -40,7 +40,7 @@ where:
 - <parameter_type> is mandatory, contrary to user-defined function parameters in non-library scripts, which are typeless.
 - The ``simple`` or ``series`` forms can be used to prefix the parameter's type in order to explictly define the allowed forms to be used as an argument.
 - A <default_value> can be defined for a function parameter. If the function is called without an argument for that paremeter, the default value will be used.
-- The <function_code> block **cannot use global scope variables unless they are of "constant" form, nor ``request.*()`` functions.**
+- The <function_code> block **cannot use global scope variables unless they are of "const" form, nor ``request.*()`` functions.**
 
 This is an example library::
 
