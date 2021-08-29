@@ -41,6 +41,7 @@ where:
 - The ``simple`` or ``series`` forms can be used to prefix the parameter's type in order to explictly define the allowed forms to be used as an argument.
 - A <default_value> can be defined for a function parameter. If the function is called without an argument for that paremeter, the default value will be used.
 - The <function_code> block **cannot use global scope variables unless they are of "const" form, nor ``request.*()`` functions.**
+- <script_code> can include any code you would normally find in an indicator, including plots.
 
 This is an example library::
 
