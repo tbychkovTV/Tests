@@ -74,7 +74,9 @@ This is an example library::
 Publishing a library
 --------------------
 
-Before we or other Pine coders can reuse this library, we must publish it. As with indicators or strategies, the chart that is active when you publish a library will appear in both its widget (the small placeholder denoting libraries in the TradingView scripts stream) and script page (the page users see when they click on the widget). After adding our example library on the chart and setting up a clean chart showing our library plots the way we want them, we use the Pine Editor's "Publish Script" button. The "Publish Library" window comes up:
+Before we or other Pine coders can reuse any library, it must be published. If you want to share your library with all TradingViewers, publish it publicly. To use it privately, use a private publication. As with indicators or strategies, the chart that is active when you publish a library will appear in both its widget (the small placeholder denoting libraries in the TradingView scripts stream) and script page (the page users see when they click on the widget).
+
+After adding our example library on the chart and setting up a clean chart showing our library plots the way we want them, we use the Pine Editor's "Publish Script" button. The "Publish Library" window comes up:
 
 .. image:: images/Libraries-CreatingALibrary-PublishWindow.png
 
@@ -87,7 +89,7 @@ Note that:
 - The list of categories for libraries is different than for indicators and strategies. We have selected the "Statistics and Metrics" category.
 - We have added some custom tags: "all-time", "high" and "low".
 
-The intended users of public libraries are other Pine coders; the better you explain and document your library's functions, the more chances other coders will use it. Providing examples demonstrating how to use your library's functions in your publication's code will also help others immensely.
+The intended users of public libraries being other Pine coders, the better you explain and document your library's functions, the more chances others will use them. Providing examples demonstrating how to use your library's functions in your publication's code will also help.
 
 
 Using a library
