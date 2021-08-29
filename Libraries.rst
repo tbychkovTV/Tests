@@ -126,7 +126,7 @@ Note that:
 
 - We have chosen to use ``allTime`` as the alias for the library's functions. When you want to use one of an imported library's functions in your script and you start typing the library's alias in the Editor, a popup will appear to help you select the particular function you want to use from the library.
 - We use the library's ``hi()`` and ``lo()`` functions without and argument, so the default `high <https://www.tradingview.com/pine-script-reference/v5/#var_high>`__ and `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__ built-in variables will be used for their series, respectively.
-- We use a second call to ``allTime.hi()``, but this time using `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ as it argument, so that the highest close in the chart's history will also be plotted.
+- We use a second call to ``allTime.hi()``, but this time using `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ as it argument, so that the highest `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ in the chart's history will also be plotted.
 
 
 House Rules
