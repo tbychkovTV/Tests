@@ -70,6 +70,21 @@ This is an example library::
     plot(lo())
 
 
+Library functions
+^^^^^^^^^^^^^^^^^
+
+Function definitions in libraries are slightly different than those of user-defined functions in indicators and strategies:
+
+- The type of argument expected for each parameter must be explicitly mentioned.
+- A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments.
+
+Each of the library's function intended for reuse must use the `export <https://demo-alerts.xstaging.tv/pine-script-reference/v5/#op_export>`__ keyword in its definition::
+
+    export print(string txt) => 
+        var table t = table.new(position.middle_right, 1, 1)
+        table.cell(t, 0, 0, txt, bgcolor = color.yellow)
+
+
 
 Publishing a library
 --------------------
@@ -140,25 +155,3 @@ With the provision that public Pine libraries are considered to be "public domai
 - You must credit the author in your publication's description. It is also good form to credit in open-source comments.
 - You must make significant improvements to the original code base and it must account for a small proportion of your script.
 - Your script must also be published open-source, unless explicit permission to that effect was granted by the original author, or unless the reused code is considered public domain AND it constitutes an insignificant part of your codebase.
-
-
-
-
-Tips
-----
-
-Function definitions in libraries are slightly different than those of user-defined functions in indicators and strategies:
-
-- The type of argument expected for each parameter must be explicitly mentioned.
-- A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments.
-
-
-
-
-Each of the library's function intended for reuse must use the `export <https://demo-alerts.xstaging.tv/pine-script-reference/v5/#op_export>`__ keyword in its definition::
-
-    export print(string txt) => 
-        var table t = table.new(position.middle_right, 1, 1)
-        table.cell(t, 0, 0, txt, bgcolor = color.yellow)
-
-
