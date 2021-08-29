@@ -4,6 +4,9 @@ Libraries
 .. contents:: :local:
     :depth: 3
 
+
+
+
 Introduction
 ------------
 
@@ -12,6 +15,9 @@ Pine libraries are publications containing functions that can be reused in Pine 
 A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts (saved and used from the Pine Editor) can use public or private libraries. A library can use other libraries, or even previous versions of itself.
 
 Library programmers should be familiar with Pine's typing nomenclature. If you need to brush up on Pine forms and types, see the User Manual's page on the :doc:`/language/Type_system`.
+
+
+
 
 Creating a library
 ------------------
@@ -40,7 +46,6 @@ Note that:
 - The ``// @description``, ``// @function``, ``// @param`` and ``// @returns`` compiler directives are optional and serve a double purpose: they document the library's code and are used to assemble the default library description authors can use when publishing the library.
 - <function_name> must be unique in the library.
 - <parameter_type> is mandatory, contrary to user-defined function parameters in non-library scripts, which are typeless.
-- The ``simple`` or ``series`` forms can be used to prefix the parameter's type in order to explictly define the allowed forms to be used as an argument.
 - A <default_value> can be defined for a function parameter. If the function is called without an argument for that paremeter, the default value will be used.
 - The <function_code> block **cannot use global scope variables unless they are of "const" form, nor ``request.*()`` functions.**
 - <script_code> can include any code you would normally find in an indicator, including plots.
@@ -104,6 +109,9 @@ This will::
     export emaRight(float source, simple int length) =>
         ema(source, length)
 
+The `series <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ keyword can also be used to prefix the type of a library function parameter. Because arguments are by default cast to the "series" form, using the `series <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ modifier is redundant; it exists more for completeness.
+
+
 
 
 Publishing a library
@@ -125,6 +133,8 @@ Note that:
 - We have added some custom tags: "all-time", "high" and "low".
 
 The intended users of public libraries being other Pine coders, the better you explain and document your library's functions, the more chances others will use them. Providing examples demonstrating how to use your library's functions in your publication's code will also help.
+
+
 
 
 Using a library
