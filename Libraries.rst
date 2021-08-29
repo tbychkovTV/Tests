@@ -25,13 +25,15 @@ A library script has the following structure::
     // @description <library_description>
     library(title, shorttitle, overlay, format, precision, scale)
 
+    <script_code>
+
     // @function <function_description>
     // @param <parameter> <parameter_description>
     // @returns <return_value_description>
     export <function_name>([simple/series] <parameter_type> <parameter_name> [= <default_value>] [, ...]) =>
         <function_code>
 
-    <script_code>    
+    <script_code>
 
 where:
 
