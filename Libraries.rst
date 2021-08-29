@@ -35,7 +35,7 @@ A library script has the following structure, where one or more exportable funct
 
     <script_code>
 
-where:
+Note that:
 
 - The ``// @description``, ``// @function``, ``// @param`` and ``// @returns`` compiler directives are optional and serve a double purpose: they document the library's code and are used to assemble the default library description authors can use when publishing the library.
 - <function_name> must be unique in the library.
