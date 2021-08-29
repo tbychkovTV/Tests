@@ -84,7 +84,7 @@ Note that:
 - The list of categories for libraries is different than for indicators and strategies. We have selected the "Statistics and Metrics" category.
 - We have added some custom tags: "all-time", "high" and "low".
 
-The intended users of public libraries are other Pine coders. Your description and code comments should be thoughtfully crafted to help users of your library, and you library should contain code demonstrating how to use your library's functions.
+The intended users of public libraries are other Pine coders; the better you explain and document your library's functions, the more chances other coders will use it. Providing examples demonstrating how to use your library's functions in your publication's code will also help others immensely.
 
 
 Using a library
@@ -136,15 +136,19 @@ With the provision that public libraries are considered to be "public domain", o
 - You must make significant improvements to the original code base and it must account for a small proportion of your script.
 - Your script must also be published in open-source format, unless explicit permission to that effect was granted by the original author, or unless the reused code is considered public domain AND it constitutes an insignificant part of your codebase.
 
-  
-
 
 
 
 Tips
 ----
 
-Function definitions in libraries are slightly different than user-defined functions in indicators and strategies. 
+Function definitions in libraries are slightly different than those of user-defined functions in indicators and strategies:
+
+- The type of argument expected for each parameter must be explicitly mentioned.
+- A ``simple`` or ``series`` form modifier can be specified to restrict the allowable forms of arguments.
+
+
+
 
 Each of the library's function intended for reuse must use the `export <https://demo-alerts.xstaging.tv/pine-script-reference/v5/#op_export>`__ keyword in its definition::
 
