@@ -123,10 +123,21 @@ Note that:
 - We use the library's ``hi()`` and ``lo()`` without and argument, so the default `high <https://www.tradingview.com/pine-script-reference/v5/#var_high>`__ and `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__ built-in variables will be used for their series, respectively.
 - We use a second call to ``allTime.hi()``, but specifying `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ as it argument, so that the highest close in the chart's history will also be plotted.
 
+
 House Rules
 ^^^^^^^^^^^
 
-aaaa
+Public libraries are considered public domain code in our [House Rules on Script Publishing](https://www.tradingview.com/house-rules/?solution=43000590599), which entails that, contrary to open-source indicators and strategies, permission is **not** required from its author if you reuse them in your open-source scripts. If you intend to reuse a public library in a closed-source publication (protected or invite-only), explicit permission **is** required from its author.
+
+House Rules on the reuse of open-source are:
+
+- You must obtain permission from the original author. 
+- Your script must also be published in open-source format, unless explicit permission is granted by the original author, or unless the reused code is public domain AND it constitutes an insignificant part of your codebase. 
+- You must credit the author in your script's description. It is also good form to add a note in your script's comments where you reuse code. 
+- You must make meaningful and significant improvements to the original code. 
+- It should account for a small proportion of your script.
+
+  
 
 
 
