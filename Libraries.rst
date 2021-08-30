@@ -14,7 +14,7 @@ Pine libraries are publications containing functions that can be reused in Pine 
 
 A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts (saved and used from the Pine Editor) can use public or private libraries. A library can use other libraries, or even previous versions of itself.
 
-Library programmers should be familiar with Pine's typing nomenclature. If you need to brush up on Pine forms and types, see the User Manual's page on the :doc:`/language/Type_system`.
+Library programmers should be familiar with Pine's typing nomenclature, scopes and user-defined functions. If you need to brush up on Pine forms and types, see the User Manual's page on the :doc:`/language/Type_system`. For user-defined functions and scopes, see :doc:`/language/Declaring_functions`.
 
 
 
@@ -43,12 +43,10 @@ A library script has the following structure, where one or more exportable funct
 
 Note that:
 
-- The ``// @description``, ``// @function``, ``// @param`` and ``// @returns`` compiler directives are optional and serve a double purpose: they document the library's code and are used to assemble the default library description authors can use when publishing the library.
-- <function_name> must be unique in the library.
+- The ``// @description``, ``// @function``, ``// @param`` and ``// @returns`` compiler directives are optional but we highly recommend you use them. They serve a double purpose: they document the library's code and are used to assemble the default library description authors can use when publishing a library.
+- <function_name> must be unique within the library script.
 - <parameter_type> is mandatory, contrary to user-defined function parameters in non-library scripts, which are typeless.
-- A <default_value> can be defined for a function parameter. If the function is called without an argument for that paremeter, the default value will be used.
-- The <function_code> block cannot use global scope variables unless they are of "const" form, nor ``request.*()`` functions.
-- <script_code> can include any code you would normally find in an indicator, including plots.
+- <script_code> can include any code you would normally use in an indicator, including inputs or plots.
 
 This is an example library::
 
@@ -88,7 +86,7 @@ In library function signatures (their first line):
 
 In library function code:
 
-- You cannot use variables from the library's global scope unless they are of "const" form.
+- You cannot use variables from the library's global scope unless they are of "const" form. This means you cannot use global variables initialized from script inputs, for example, or globally declared arrays.
 - You cannot use functions in the ``request.*()`` namespace.
 
 Library functions always return a result that is of "series" form, which entails they cannot be used to calculate values used where "const", "input" or "simple" forms are required. Scripts using a library function to calculate an argument to the ``show_last`` parameter in a `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ call, for example, will not work because an "input int" argument is expected.
@@ -97,7 +95,7 @@ Library functions always return a result that is of "series" form, which entails
 Argument form restriction
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Arguments supplied by calling code to library functions are, by default, always cast to the "series" form. Since library functions always return results of "series" form also, this is usually not a problem. In special cases, however, your function's code may need to include a Pine built-in that requires a "simple" argument, as is the case with `ta.ema() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}ema>`__'s ``length`` parameter. For those cases, the `simple <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ keyword can be used to restrict the argument's form to the "simple".
+Arguments supplied by calling code to library functions are, by default, always cast to the "series" form for use within the function. Since library functions always return results of "series" form also, this does not usually cause problems. In special cases, however, your function's code may need to use a Pine built-in that requires a "simple" argument, as is the case with `ta.ema() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}ema>`__'s and its ``length`` parameter. For those cases, the `simple <https://www.tradingview.com/pine-script-reference/v5/#op_simple>`__ keyword can be used to restrict an argument's form to "simple".
 
 Whereas this will not work::
 
@@ -169,7 +167,7 @@ This is an indicator that reuses our library::
 
 Note that:
 
-- We have chosen to use ``allTime`` as the alias for the library's functions. When you want to use one of an imported library's functions in your script and you start typing the library's alias in the Editor, a popup will appear to help you select the particular function you want to use from the library.
+- We have chosen to use "allTime" as the alias for the library's functions. When you want to use one of an imported library's functions in your script and you start typing the library's alias in the Editor, a popup will appear to help you select the particular function you want to use from the library.
 - We use the library's ``hi()`` and ``lo()`` functions without and argument, so the default `high <https://www.tradingview.com/pine-script-reference/v5/#var_high>`__ and `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__ built-in variables will be used for their series, respectively.
 - We use a second call to ``allTime.hi()``, but this time using `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ as it argument, to plot the highest `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ in the chart's history.
 
