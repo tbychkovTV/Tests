@@ -26,8 +26,8 @@ The only two functions that were fully renamed are:
 
 The full list of renamed variables, should you need it, can be found in the `Variables, functions, and function arguments name changes`_ section.
 
-Renamed function arguments
---------------------------
+Renamed function parameters
+---------------------------
 Some 'historical' argument names for built-in functions have been changed because they were not descriptive enough. This has no bearing on most scripts, but if you used these arguments in their 'keyword' form, you’ll have to use a different keyword now. For example::
 
   // Valid in v4, not valid in v5:
@@ -188,8 +188,8 @@ Gone are the days when the ``strategy.exit()`` function was allowed to loiter. N
 In v4, it used to compile with a warning (although the function itself did not do anything in the code); now it is no longer valid code and a compilation error will be thrown. If you get this error while converting a strategy to v5, feel free to comment it out or remove it altogether: it didn’t do anything in your code anyway.
 
 
-Variables, functions, and function arguments name changes
----------------------------------------------------------
+All variable, function, and function parameter name changes
+-----------------------------------------------------------
 
 +------------------------------------------------------+--------------------------------------------------------+
 | Pine v4                                              | Pine v5                                                |
