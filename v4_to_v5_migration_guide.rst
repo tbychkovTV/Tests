@@ -1,10 +1,17 @@
 Pine version 5 migration guide
 ==============================
 
-This guide describes how existing Pine v4 features were changed in Pine v5 and what needs to be done to properly convert a ``@version=4`` script to a newer version.
+Introduction
+------------
 
-Converter
----------
+This guide describes how existing Pine v4 features were changed in Pine v5 and what needs to be done to properly convert a script to v5.
+
+The adaptations that will most often be required include:
+
+- Changing `study() <https://www.tradingview.com/pine-script-reference/v4/#fun_study>`__ for `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__
+
+v4 to v5 converter
+------------------
 
 Pine Editor now comes with an utility to automatically convert v4 indicators and strategies to v5. To access it, open a script with ``//@version=4`` in it and select the ``Convert to v5`` option in the ``More`` dropdown menu:
 
