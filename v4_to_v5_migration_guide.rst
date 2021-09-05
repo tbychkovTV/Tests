@@ -6,7 +6,7 @@ Introduction
 
 This guide documents the changes made to Pine from v4 to v5. It will guide you in the adaptation of existing Pine scripts to Pine v5. See our :ref:`here <v5ReleaseNotes> for a list of the **new** features in Pine v5.
 
-The adaptations to older scripts that will most often be required to convert them to v5 are:
+The most frequent adaptations required to convert older scripts to v5 are:
 
 - Changing `study() <https://www.tradingview.com/pine-script-reference/v4/#fun_study>`__ for `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ (the function's signature has not changed).
 - Renaming the function calls to include their new namespace.
