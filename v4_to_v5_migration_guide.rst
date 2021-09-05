@@ -4,11 +4,14 @@ Pine version 5 migration guide
 Introduction
 ------------
 
-This guide describes how existing Pine v4 features were changed in Pine v5 and what needs to be done to properly convert a script to v5.
+This guide documents the changes made to Pine from v4 to v5. It will guide you in the adaptation of existing Pine scripts to Pine v5. See our :ref:`here <v5ReleaseNotes> for a list of the **new** features in Pine v5.
 
-The adaptations that will most often be required include:
+The adaptations to older scripts that will most often be required to convert them to v5 are:
 
-- Changing `study() <https://www.tradingview.com/pine-script-reference/v4/#fun_study>`__ for `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__
+- Changing `study() <https://www.tradingview.com/pine-script-reference/v4/#fun_study>`__ for `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ (the function's signature has not changed).
+- Renaming the function calls to include their new namespace.
+- Restructuring inputs to use the more specialized ``input.*()`` functions.
+- Eliminating uses of the deprecated ``transp`` parameter by using `color.new() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}new>`__ to simultaneously define color and transparency for use with the ``color`` parameter.
 
 v4 to v5 converter
 ------------------
