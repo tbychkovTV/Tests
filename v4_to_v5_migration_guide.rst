@@ -9,7 +9,7 @@ This guide documents the changes made to Pine from v4 to v5. It will guide you i
 The most frequent adaptations required to convert older scripts to v5 are:
 
 - Changing `study() <https://www.tradingview.com/pine-script-reference/v4/#fun_study>`__ for `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__ (the function's signature has not changed).
-- Renaming the function calls to include their new namespace (e.g., `highest() <https://www.tradingview.com/pine-script-reference/v4/#fun_highest>`__ in v4 becomes `ta.highest() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}highest>`__ in v5).
+- Renaming built-in function calls to include their new namespace (e.g., `highest() <https://www.tradingview.com/pine-script-reference/v4/#fun_highest>`__ in v4 becomes `ta.highest() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}highest>`__ in v5).
 - Restructuring inputs to use the more specialized ``input.*()`` functions.
 - Eliminating uses of the deprecated ``transp`` parameter by using `color.new() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}new>`__ to simultaneously define color and transparency for use with the ``color`` parameter.
 
