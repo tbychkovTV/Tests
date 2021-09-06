@@ -17,7 +17,7 @@ The most frequent adaptations required to convert older scripts to v5 are:
 v4 to v5 converter
 ------------------
 
-The Pine Editor includes a utility to automatically convert v4 indicators and strategies to v5. To access it, open a script with ``//@version=4`` in it and select the "Convert to v5" option in the "More" menu identified by three dots at the top-right of the Editor's pane:
+The Pine Editor includes a utility to automatically convert v4 scripts to v5. To access it, open a script with ``//@version=4`` in it and select the "Convert to v5" option in the "More" menu identified by three dots at the top-right of the Editor's pane:
 
 .. image:: images/v4_to_v5_convert_button.png
 
