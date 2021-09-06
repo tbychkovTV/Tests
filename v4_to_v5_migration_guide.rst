@@ -13,31 +13,37 @@ The most frequent adaptations required to convert older scripts to v5 are:
 - Restructuring inputs to use the more specialized ``input.*()`` functions.
 - Eliminating uses of the deprecated ``transp`` parameter by using `color.new() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}new>`__ to simultaneously define color and transparency for use with the ``color`` parameter.
 
+
 v4 to v5 converter
 ------------------
 
-Pine Editor now comes with an utility to automatically convert v4 indicators and strategies to v5. To access it, open a script with ``//@version=4`` in it and select the ``Convert to v5`` option in the ``More`` dropdown menu:
+The Pine Editor includes a utility to automatically convert v4 indicators and strategies to v5. To access it, open a script with ``//@version=4`` in it and select the "Convert to v5" option in the "More" menu identified by three dots at the top-right of the Editor's pane:
 
 .. image:: images/v4_to_v5_convert_button.png
 
 
-Not all scripts can be automatically converted from v4 to v5. If you want to convert the script manually or if your indicator returns a compilation error after conversion, consult the guide below for more information.
+Not all scripts can be automatically converted from v4 to v5. If you want to convert the script manually or if your indicator returns a compilation error after conversion, use the following sections to determine how to complete the conversion.
+
 
 Renamed functions and variables
 -------------------------------
-Many built-in functions and variables were renamed in v5 for clarity and consistency. Most changes simply add a namespace is the addition of the namespace: for example, the ``sma()`` function is now called ``ta.sma()`` in v5. As such, the new name can be easily found by entering the old name and checking the suggestion list:
+
+For clarity and consistency, many built-in functions and variables were renamed in v5. The inclusion of v4 function names in a new namespace is the cause of most changes. For example, the `sma() <https://www.tradingview.com/pine-script-reference/v4/#fun_sma>`__ function in v4 is moved to the ``ta.`` namespace in v5: 
+`ta.sma() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}sma>`__ in v5. Remembering the new namespaces is not necessary; if you type the older name of a function without its namespace in the Editor, a popup showing matching suggestions appears:
 
 .. image:: images/v5_autocomplete.png
  
-The only two functions that were fully renamed are:
+The only two functions whose name changed are:
 
 * ``study()`` was renamed to ``indicator()``.
 * ``tickerid()`` was renamed to ``ticker.new()``.
 
 The full list of renamed variables, should you need it, can be found in the `Variables, functions, and function arguments name changes`_ section.
 
+
 Renamed function parameters
 ---------------------------
+
 Some 'historical' argument names for built-in functions have been changed because they were not descriptive enough. This has no bearing on most scripts, but if you used these arguments in their 'keyword' form, you’ll have to use a different keyword now. For example::
 
   // Valid in v4, not valid in v5:
@@ -49,8 +55,10 @@ Some 'historical' argument names for built-in functions have been changed becaus
 
 The full list of renamed function arguments can be found in the `Variables, functions, and function arguments name changes`_ section.
 
-Removed an rsi() overload
+
+Removed an \`rsi()\` overload
 -----------------------------
+
 Previously, the built-in ``rsi()`` function had two different overloads:
 
 * ``rsi(series float, simple int)`` -> regular RSI calculation
@@ -65,12 +73,16 @@ If you passed a ``series int`` value as the second argument, it only used to wor
 
 If you passed an integer value of a non-series type form, nothing should change for you.
 
+
 Reserved keywords
 -----------------
+
 A number of words have been reserved and are no longer valid as variable and function names: ``text``, ``ellipse``, ``polygon``, ``return``, ``class``, ``struct``, ``throw``, ``try``, ``catch``, ``is``, ``in``, ``range``, ``while``, ``do``. If your v4 indicator uses any of these words as a variable or a function name, rename them for the script to work in v5.
+
 
 Removed iff() and offset()
 --------------------------
+
 The functions ``iff()`` and ``offset()`` have been removed. The code that uses the ``iff()`` function can be rewritten using the ternary operator::
 
     // iff(<condition>, <return if true>, <return if false>)
@@ -99,8 +111,10 @@ The ``offset()`` function can in turn be replaced with the ``[]`` operator::
   // Valid in v4 and v5
   prevClosev5 = close[1]
 
+
 Split input() into several functions
 ------------------------------------
+
 The old ``input()`` function had too many different overloads, each one with its list of different arguments that can be possibly passed to it. For clarity, most of these overloads have now been split into separate functions. Each new function shares its name with an ``input.*`` constant from v4 (with the exception of ``input.integer``, which is replaced by the ``input.int()`` function). The constants themselves have been removed.
 
 For example, to convert an indicator with an input from v4 to v5, where you would use ``input(type = input.symbol)`` before, you should now use the ``input.symbol()`` function instead::
@@ -116,8 +130,10 @@ The basic version of the function (that detects the type automatically based on 
   // Even though "AAPL" is a valid ticker, the input is considered just a string because the type is not specified
   aaplString = input("AAPL", title = "String")
 
+
 Some functions now require named constants instead of raw values
 ----------------------------------------------------------------
+
 In v4, built-in constants were simply variables with pre-defined values of a specific type. For example, the ``barmerge.lookahead_on`` is simply a constant that passes true and has to specific ties to the ``lookahead`` argument of the ``security()`` function. We found this and many other similar cases to be a common source of confusion for users who passed incorrect constants to functions and got unexpected results.
 
 In v5, function parameters that have constants dedicated to them can only use constants instead of raw values. Conversely, constants can no longer be used anywhere but in the parameters they are tied to. For example::
@@ -134,8 +150,10 @@ In v5, function parameters that have constants dedicated to them can only use co
 
 To convert your script from v4 to v5, make sure to replace all variables with constants where necessary.
 
+
 The transp argument has been deprecated
 ----------------------------------------
+
 The ``transp=`` argument that was present in many plot functions in v4 interfered with the rgb functionality and has been deprecated. The ``color.new()`` function can be used to specify the transparency of any color instead.
 
 In previous versions, the ``bgcolor()`` and ``fill()`` functions had an optional ``transp`` arguments with the default value of 90. This means that the code below used to display Bollinger Bands with semi-transparent fill between two bands and semi-transparent backround color where bands cross the chart, even though ``transp`` is not explicitly specified::
@@ -170,6 +188,7 @@ Both these functions no longer have a default ``transp`` value, so we need to mo
  
 Default session for time() and time_close() has been changed
 ------------------------------------------------------------
+
 The default value for the ``session`` argument of the ``time()`` and ``time_close()`` functions has changed. In v4, when you pass a specific session time for any of the two functions mentioned above without specifying the days, the session automatically fills the days as ``23456``, i.e. Monday to Friday. In v5, we have changed this to auto-complete the session as ``1234567`` instead::
 
   // This line of code will behave differently in v4 and v5 on symbols that are traded on the weekends:
@@ -194,6 +213,7 @@ To make sure that your script’s behavior in v5 is consistent with v4, add ``:2
 
 strategy.exit() now must do something
 -------------------------------------
+
 Gone are the days when the ``strategy.exit()`` function was allowed to loiter. Now it must actually have an effect on the strategy itself, and to do so, it should have at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` and ``trail_price`` / ``trail_points``. 
 In v4, it used to compile with a warning (although the function itself did not do anything in the code); now it is no longer valid code and a compilation error will be thrown. If you get this error while converting a strategy to v5, feel free to comment it out or remove it altogether: it didn’t do anything in your code anyway.
 
