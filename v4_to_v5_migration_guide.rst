@@ -29,7 +29,7 @@ Renamed functions and variables
 -------------------------------
 
 For clarity and consistency, many built-in functions and variables were renamed in v5. The inclusion of v4 function names in a new namespace is the cause of most changes. For example, the `sma() <https://www.tradingview.com/pine-script-reference/v4/#fun_sma>`__ function in v4 is moved to the ``ta.`` namespace in v5: 
-`ta.sma() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}sma>`__ in v5. Remembering the new namespaces is not necessary; if you type the older name of a function without its namespace in the Editor, a popup showing matching suggestions appears:
+`ta.sma() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}sma>`__. Remembering the new namespaces is not necessary; if you type the older name of a function without its namespace in the Editor, a popup showing matching suggestions appears:
 
 .. image:: images/v5_autocomplete.png
  
@@ -44,16 +44,16 @@ The full list of renamed variables, should you need it, can be found in the :ref
 Renamed function parameters
 ---------------------------
 
-The parameter names for some built-in functions have been changed because they were not descriptive enough. This has no bearing on most scripts, but if you used these in named arguments in their 'keyword' form, you’ll have to use a different keyword now. For example::
+The parameter names of some built-in functions have been changed because they were not descriptive enough. This has no bearing on most scripts, but if you used these parameter names when calling functions, they will require adaptation. For example::
 
-  // Valid in v4, not valid in v5:
+  // Valid in v4. Not valid in v5.
   timev4 = time(resolution = "1D")
-  // Valid in v5:
+  // Valid in v5.
   timev5 = time(timeframe = "1D")
-  // Valid in both v4 and v5:
+  // Valid in both v4 and v5.
   timeBoth = time("1D")
 
-The full list of renamed function arguments can be found in the `Variables, functions, and function arguments name changes`_ section.
+The full list of renamed function parameters can be found in the :ref:`here <_allVariables>` section.
 
 
 Removed an \`rsi()\` overload
@@ -223,6 +223,9 @@ In v4, it used to compile with a warning (although the function itself did not d
 All variable, function, and function parameter name changes
 -----------------------------------------------------------
 
+Removed functions and variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 +------------------------------------------------------+--------------------------------------------------------+
 | Pine v4                                              | Pine v5                                                |
 +======================================================+========================================================+
@@ -251,6 +254,8 @@ All variable, function, and function parameter name changes
 | ``iff()``                                            | Replaced by the ``?:`` operator                        |
 +------------------------------------------------------+--------------------------------------------------------+
 | ``offset()``                                         | Replaced by the ``[]`` operator                        |
++------------------------------------------------------+--------------------------------------------------------+
+
 +------------------------------------------------------+--------------------------------------------------------+
 |                          **Renamed functions and arguments (without namespace changes)**                      |
 +------------------------------------------------------+--------------------------------------------------------+
