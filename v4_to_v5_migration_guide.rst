@@ -38,13 +38,13 @@ The only two functions whose name changed are:
 * ``study()`` was renamed to ``indicator()``.
 * ``tickerid()`` was renamed to ``ticker.new()``.
 
-The full list of renamed variables, should you need it, can be found in the `Variables, functions, and function arguments name changes`_ section.
+The full list of renamed variables, should you need it, can be found in the :ref:`here <_allVariables>` section.
 
 
 Renamed function parameters
 ---------------------------
 
-Some 'historical' argument names for built-in functions have been changed because they were not descriptive enough. This has no bearing on most scripts, but if you used these arguments in their 'keyword' form, you’ll have to use a different keyword now. For example::
+The parameter names for some built-in functions have been changed because they were not descriptive enough. This has no bearing on most scripts, but if you used these in named arguments in their 'keyword' form, you’ll have to use a different keyword now. For example::
 
   // Valid in v4, not valid in v5:
   timev4 = time(resolution = "1D")
@@ -217,6 +217,8 @@ strategy.exit() now must do something
 Gone are the days when the ``strategy.exit()`` function was allowed to loiter. Now it must actually have an effect on the strategy itself, and to do so, it should have at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` and ``trail_price`` / ``trail_points``. 
 In v4, it used to compile with a warning (although the function itself did not do anything in the code); now it is no longer valid code and a compilation error will be thrown. If you get this error while converting a strategy to v5, feel free to comment it out or remove it altogether: it didn’t do anything in your code anyway.
 
+
+.. _allVariables::
 
 All variable, function, and function parameter name changes
 -----------------------------------------------------------
