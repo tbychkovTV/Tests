@@ -23,7 +23,7 @@ the value returned by functions or the arguments supplied when calling a functio
 
 .. note:: We will often use "type" to refer to the "form type" pair.
 
-The Pine forms are:
+The Pine **forms** are:
 
 - "const" for values known at compile time
 - "input" for values known at input time
@@ -32,7 +32,7 @@ The Pine forms are:
 
 Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Variables of "const", "input" or "simple" form cannot cahnge values once execution of the script has begun.
 
-The Pine types are:
+The Pine **types** are:
 
 - The fundamental types: "int", "float", "bool", "color" and "string"
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
