@@ -47,7 +47,7 @@ The Pine **types** are:
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
 - "void"
 
-Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc. Pine can automatically convert some types into others. The auto-casting rules are: **int 🠆 float 🠆 bool**.
+Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc. Pine can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**.
 
 Before going into more details on forms and types, let's look at why they are important in real-world use. A string can be supplied as the argument for the ``title`` parameter of the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ function, as in::
 
