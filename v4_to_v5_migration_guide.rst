@@ -210,7 +210,7 @@ This change in behavior will not affect scripts running on conventional markets 
 \`strategy.exit()\` now must do something
 -----------------------------------------
 
-Gone are the days when the `strategy.exit() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy{dot}exit>`__ function was allowed to loiter. Now it must actually have an effect on the strategy by using at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` combined with either ``trail_price`` or ``trail_points``. When uses of `strategy.exit() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy{dot}exit>`__ not meeting these criteria trigger an error while converting a strategy to v5, you can saely eliminate these lines, as they didn’t do anything in your code anyway.
+Gone are the days when the `strategy.exit() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy{dot}exit>`__ function was allowed to loiter. Now it must actually have an effect on the strategy by using at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` combined with either ``trail_price`` or ``trail_points``. When uses of `strategy.exit() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy{dot}exit>`__ not meeting these criteria trigger an error while converting a strategy to v5, you can safely eliminate these lines, as they didn’t do anything in your code anyway.
 
 
 
