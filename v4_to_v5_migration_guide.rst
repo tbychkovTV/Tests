@@ -140,7 +140,7 @@ The `input() <https://www.tradingview.com/pine-script-reference/v5/#fun_input>`_
 Some function parameters now require built-in arguments
 -------------------------------------------------------
 
-In v4, built-in constants such as ``plot.style_area`` used as arguments when calling Pine functions, corresponded to pre-defined values of a specific type. For example, the value of ``barmerge.lookahead_on`` was ``true``, so you could use ``true`` instead of the named constant when supplying an argument to the ``lookahead`` parameter in a `security() <https://www.tradingview.com/pine-script-reference/v4/#fun_security>`__ function call. We found this to be a common source of confusion, which caused unsuspecting programmers to produce code yielding unintended results.
+In v4, built-in constants such as ``plot.style_area`` used as arguments when calling Pine functions corresponded to pre-defined values of a specific type. For example, the value of ``barmerge.lookahead_on`` was ``true``, so you could use ``true`` instead of the named constant when supplying an argument to the ``lookahead`` parameter in a `security() <https://www.tradingview.com/pine-script-reference/v4/#fun_security>`__ function call. We found this to be a common source of confusion, which caused unsuspecting programmers to produce code yielding unintended results.
 
 In v5, the use of correct built-in named constants as arguments to function parameters requiring them is mandatory::
 
