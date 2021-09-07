@@ -204,7 +204,7 @@ The default set of days for ``session`` arguments used in the `time() <https://w
   // v5 equivalent of the behavior of `t0` in v5.
   t2 = time("1D", "1000-1200:1234567")
 
-This change in behavior will not affect scripts running on conventional markets that are closed during weekends. If it is important for you to ensure your sessions definitions preserve their v4 behavior in v5 code, add ":23456" to your session strings.
+This change in behavior will not affect scripts running on conventional markets that are closed during weekends. If it is important for you to ensure your session definitions preserve their v4 behavior in v5 code, add ":23456" to your session strings.
 
 
 \`strategy.exit()\` now must do something
