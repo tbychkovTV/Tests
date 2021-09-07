@@ -2,7 +2,7 @@ Type system
 ===========
 
 .. contents:: :local:
-    :depth: 2
+    :depth: 3
 
 .. include:: <isonum.txt>
 
