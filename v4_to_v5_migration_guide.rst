@@ -191,8 +191,8 @@ Both these functions no longer have a default ``transp`` value, so we need to mo
  bgcolor(crossUp ? color.new(color.green, TRANSP) : crossDn ? color.new(color.red, TRANSP) : na)
 
  
-Default session for time() and time_close() has been changed
-------------------------------------------------------------
+Changed the default session for \`time()\` and \`time_close()\`
+---------------------------------------------------------------
 
 The default value for the ``session`` argument of the ``time()`` and ``time_close()`` functions has changed. In v4, when you pass a specific session time for any of the two functions mentioned above without specifying the days, the session automatically fills the days as ``23456``, i.e. Monday to Friday. In v5, we have changed this to auto-complete the session as ``1234567`` instead::
 
