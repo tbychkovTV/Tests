@@ -97,7 +97,7 @@ The `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ an
     // Valid in v4 and v5
     barColorTernary = close >= open ? color.green : color.red
 	
-Note that the ternary operator is evaluated 'lazily'; only the required value is calculated (depending on the condition's evaluation to ``true`` or ``false``). This is different from `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__, which always evaluated both values but returned only the relevant one.
+Note that the ternary operator is evaluated "lazily"; only the required value is calculated (depending on the condition's evaluation to ``true`` or ``false``). This is different from `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__, which always evaluated both values but returned only the relevant one.
 
 Some functions require evaluation on every bar to correctly calculate, so you will need to make speccial provisions for these by pre-evaluating them before the ternary::
 
