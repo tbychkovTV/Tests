@@ -160,7 +160,7 @@ To convert your script from v4 to v5, make sure you use the correct named built-
 Deprecated the \`transp\` parameter
 -----------------------------------
 
-The ``transp=`` parameter used in the signature of many v4 plotting functions was deprecated because it interferes with RGB functionality. Transparency must now be specified along with the color used as an argument to ``color`` and related parameters using the `color.new() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}new>`__ function.
+The ``transp=`` parameter used in the signature of many v4 plotting functions was deprecated because it interfered with RGB functionality. Transparency must now be specified along with the color used as an argument to parameters such as ``color``, ``textcolor``, etc. The `color.new() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}new>`__ or `color.rgb() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}rgb>`__functions will be needed in those cases to join a color and its transparency.
 
 Note that in v4, `bgcolor() <https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor>`__ and `fill() <https://www.tradingview.com/pine-script-reference/v5/#fun_fill>`__ functions had an optional ``transp`` parameter that used a default value of 90. This meant that the code below could display Bollinger Bands with a semi-transparent fill between two bands and a semi-transparent backround color where bands cross price, even though no argument is used for the ``transp`` parameter in its `bgcolor() <https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor>`__ and `fill() <https://www.tradingview.com/pine-script-reference/v5/#fun_fill>`__ calls::
 
