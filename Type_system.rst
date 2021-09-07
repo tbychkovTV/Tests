@@ -87,8 +87,11 @@ Forms
 const
 """""
 
-A *literal* is a special notation for representing a fixed value in Pine. This fixed value itself is an
-expression and such literal expressions are always of one of the 5 following types:
+Values of "const" form are known at compile time, so before your script has any idea of the symbol/timeframe information it is running on. Compilation occurs when you save a script in the Pine Editor, which doesn't even require it to already be running on your chart. "const" variables cannot change during the execution of a script.
+
+Variables of "const" form can be intialized using a *literal* value, or calculated from expressions using only literal values or other variables of "const" form. Pine's style guide recommends using upper case SNAKE_CASE to name variables of "const" form. While it is not a requirement, "const" variables are often declared using the `var <https://www.tradingview.com/pine-script-reference/v5/#op_var>`__ keyword so they are only initialized on the first bar of the dataset. Declaring "const" variables using `var <https://www.tradingview.com/pine-script-reference/v5/#op_var>`__ improves script execution time due to the fact that the variable is not re-initialized on every bar.
+
+These are examples of literal values:
 
     * *literal float* (``3.14``, ``6.02E-23``, ``3e8``)
     * *literal int* (``42``)
@@ -96,25 +99,28 @@ expression and such literal expressions are always of one of the 5 following typ
     * *literal string* (``"A text literal"``)
     * *literal color* (``#FF55C6``)
 
-.. note:: In Pine, the built-in names ``open``, ``high``, ``low``, ``close``, ``volume``, ``time``,
-    ``hl2``, ``hlc3``, ``ohlc4`` are not literals. They are of the *series* form.
+.. note:: In Pine, the built-in variables ``open``, ``high``, ``low``, ``close``, ``volume``, ``time``,
+    ``hl2``, ``hlc3``, ``ohlc4``, etc., are not of "const" form. Because they change bar to bar, they are of *series* form.
 
-Values of the form *const* are ones that:
+The "const" form is a requirement for the arguments to the ``title`` and ``shorttitle`` parameters in `indicator() <https://www.tradingview.com/pine-script-reference/v5/#fun_indicator>`__, for example. All these are valid uses or such arguments::
 
-    * do not change during script execution
-    * are known or can be calculated at compile time
+    //@version=5
+    NAME1 = "My indicator"
+    var NAME2 = "My Indicator"
+    var NAME3 = "My" + "Indicator"
+    var NAME4 = NAME2 + " No. 2"
+    indicator(NAME4, "", true)
+    plot(close)
 
-For example::
+This will trigger a compilation error::
 
-    c1 = 0
-    c2 = c1 + 1
-    c3 = c1 + 1
-    if open > close
-        c3 := 0
+    //@version=5
+    var NAME = "My indicator for " + syminfo.type
+    indicator(NAME, "", true)
+    plot(close)
 
-The type of ``c1`` is *const int* because it is initialized with a *literal int* expression.
-The type of ``c2`` is also *const int* because it is initialized with an arithmetic expression of *const int* type.
-The type of ``c3`` is *series int* because it changes at runtime.
+The reason for the error is that the ``NAME`` variable's calculation depends on the value of `syminfo.type <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo{dot}type>`__ which is a "simple string" (`syminfo.type <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo{dot}type>`__ returns a string corresponding to the sector the chart's symbol belongs to, eg., ``"crypto"``, ``"forex"``, etc.
+
 
 input
 """""
