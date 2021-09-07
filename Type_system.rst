@@ -26,15 +26,15 @@ The Pine forms are:
 
 The Pine types are:
 
-- The fundamental types: "int", "bool", "float", "color" and "string"
+- The fundamental types: "int", "float", "bool", "color" and "string"
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
 - "void"
 
 Both forms and types are organized in a hierarchical structure that determines when one can be used in place of the other. Casting rules define that hierarchy.
 
-The hierarchy of forms is: const 🠆 input 🠆 simple 🠆 series. This means that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
+The hierarchy of forms is: **const 🠆 input 🠆 simple 🠆 series**. This means that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
 
-The hierarchy of types is: int 🠆 float 🠆 bool.
+The hierarchy of types is: **int 🠆 float 🠆 bool**.
 
 Before going into more details on forms and types, let's look at why they are important in real-world use. A string can be supplied as the argument for the ``title`` parameter of the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ function, as in::
 
