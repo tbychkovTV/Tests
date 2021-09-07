@@ -26,10 +26,10 @@ Forms
 
 The Pine **forms** are:
 
-- "const" for values known at compile time
-- "input" for values known at input time
-- "simple" for values known at bar zero
-- "series" for values known on each bar
+- "const" for values known at compile time (when you save a script in the Pine Editor)
+- "input" for values known at input time (when values are changed in a script's "Settings/Inputs" tab)
+- "simple" for values known at bar zero (when the script begins execution on the chart's first historical bar)
+- "series" for values known on each bar (any time during the execution of a script on any bar)
 
 Forms are organized in the following hierarchy: **const < input < simple < series**. This entails that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
 
