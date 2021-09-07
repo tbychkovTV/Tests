@@ -195,33 +195,22 @@ In v5 we need to explictly mention the 90 transparency with the color, yielding:
 Changed the default session for \`time()\` and \`time_close()\`
 ---------------------------------------------------------------
 
-The default value for the ``session`` argument of the ``time()`` and ``time_close()`` functions has changed. In v4, when you pass a specific session time for any of the two functions mentioned above without specifying the days, the session automatically fills the days as ``23456``, i.e. Monday to Friday. In v5, we have changed this to auto-complete the session as ``1234567`` instead::
+The default set of days for ``session`` arguments used in the `time() <https://www.tradingview.com/pine-script-reference/v5/#fun_time>`__ and `time_close() <https://www.tradingview.com/pine-script-reference/v5/#fun_time_close>`__ functions has changed from "23456" (Monday to Friday) to "1234567" (Sunday to Saturday)::
 
-  // This line of code will behave differently in v4 and v5 on symbols that are traded on the weekends:
+  // On symbols that are traded during weekends, this will behave differently in v4 and v5.
   t0 = time("1D", "1000-1200")
-  // This line is equivalent to t0 in v4:
+  // v5 equivalent of the behavior of `t0` in v4.
   t1 = time("1D", "1000-1200:23456")
-  // This line is equivalent to t0 in v5:
+  // v5 equivalent of the behavior of `t0` in v5.
   t2 = time("1D", "1000-1200:1234567")
 
-To make sure that your script’s behavior in v5 is consistent with v4, add ``:23456`` to all ``time()`` and ``time_close()`` calls that specify the session without the days. For an example of how to convert ``time()`` from v4 to v5, see the code below::
-
-  //@version=4
-  study("Lunch Break", overlay=true)
-  isLunch = time(timeframe.period, "1300-1400")
-  bgcolor(isLunch ? color.green : na)
-
-  //@version=5
-  indicator('Lunch Break', overlay=true)
-  isLunch = time(timeframe.period, '1300-1400:23456')
-  bgcolor(isLunch ? color.new(color.green, 90) : na)
+This change in behavior will not affect scripts running on conventional markets that are closed during weekends. If it is important for you to ensure your sessions definitions preserve their v4 behavior in v5 code, add ":23456" to your session strings.
 
 
 \`strategy.exit()\` now must do something
 -----------------------------------------
 
-Gone are the days when the ``strategy.exit()`` function was allowed to loiter. Now it must actually have an effect on the strategy itself, and to do so, it should have at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` and ``trail_price`` / ``trail_points``. 
-In v4, it used to compile with a warning (although the function itself did not do anything in the code); now it is no longer valid code and a compilation error will be thrown. If you get this error while converting a strategy to v5, feel free to comment it out or remove it altogether: it didn’t do anything in your code anyway.
+Gone are the days when the `strategy.exit() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy{dot}exit>`__ function was allowed to loiter. Now it must actually have an effect on the strategy by using at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` combined with either ``trail_price`` or ``trail_points``. When uses of `strategy.exit() <https://www.tradingview.com/pine-script-reference/v5/#fun_strategy{dot}exit>`__ not meeting these criteria trigger an error while converting a strategy to v5, you can saely eliminate these lines, as they didn’t do anything in your code anyway.
 
 
 
