@@ -121,7 +121,7 @@ The `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>
 Split of \`input()\` into several functions
 -------------------------------------------
 
-The ``input()`` was becoming crowded with a plethora of overloads and parameters. We split its functionality into different functions to clear that space and provide a more robust structure to accommodate the additions planned for inputs. Each new function shares its name with an ``input.*`` constant from v4 (with the exception of ``input.integer``, which is replaced by the ``input.int()`` function). The constants themselves have been removed because the ``type`` parameter was deprecated.
+The ``input()`` function was becoming crowded with a plethora of overloads and parameters. We split its functionality into different functions to clear that space and provide a more robust structure to accommodate the additions planned for inputs. Each new function shares its name with an ``input.*`` constant from v4 (with the exception of ``input.integer``, which is replaced by the `input.int() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}int>`__ function). The ``input.*`` constants have been removed because they were used as arguments for the ``type`` parameter, which was deprecated.
 
 To convert, for example, a v4 script using an input of type ``input.symbol``, the `input.symbol() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}symbol>`__ function must be used in v5::
 
