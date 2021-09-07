@@ -88,7 +88,7 @@ A number of words are reserved and cannot be used for variable or function names
 Removed \`iff()\` and \`offset()\`
 ----------------------------------
 
-The `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ and `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>`__ functions have been removed. Code using the ``iff()`` function can be rewritten using the ternary operator::
+The `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ and `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>`__ functions have been removed. Code using the `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ function can be rewritten using the ternary operator::
 
     // iff(<condition>, <return_when_true>, <return_when_false>)
     // Valid in v4, not valid in v5
@@ -110,7 +110,7 @@ Some functions require evaluation on every bar to correctly calculate, so you wi
 	v1 = close > open ? h1 : l1
 	plot(v1)
 
-The ``offset()`` function was deprecated because the more readable ``[]`` operator is equivalent::
+The `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>`__ function was deprecated because the more readable `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ operator is equivalent::
 
   // Valid in v4. Not valid in v5.
   prevClosev4 = offset(close, 1)
