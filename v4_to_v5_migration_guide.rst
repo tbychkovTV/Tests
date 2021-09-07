@@ -38,7 +38,7 @@ The only two functions whose name changed are:
 * ``study()`` was renamed to ``indicator()``.
 * ``tickerid()`` was renamed to ``ticker.new()``.
 
-The full list of renamed variables, should you need it, can be found in the :ref:`here <_allVariables>` section.
+The full list of renamed functions and variables, can be found in the :ref:`here <_allVariables>` section of this guide.
 
 
 Renamed function parameters
@@ -53,31 +53,35 @@ The parameter names of some built-in functions have been changed because they we
   // Valid in both v4 and v5.
   timeBoth = time("1D")
 
-The full list of renamed function parameters can be found in the :ref:`here <_allVariables>` section.
+The full list of renamed function parameters can be found in the :ref:`here <_allVariables>` section of this guide.
 
 
 Removed an \`rsi()\` overload
 -----------------------------
 
-Previously, the built-in ``rsi()`` function had two different overloads:
+In v4, the `rsi() <https://www.tradingview.com/pine-script-reference/v4/#fun_rsi>`__ function had two different overloads:
 
-* ``rsi(series float, simple int)`` -> regular RSI calculation
-* ``rsi(series float, series float)`` -> an overload used in the MFI indicator, did a calculation equivalent to ``100.0 - (100.0 / (1.0 + arg1 / arg2))``
+* ``rsi(series float, simple int)`` for the normal RSI calculation, and
+* ``rsi(series float, series float)`` for an overload used in the MFI indicator, which did a calculation equivalent to ``100.0 - (100.0 / (1.0 + arg1 / arg2))``.
 
-Because of this, a single built-in function did two tasks with different expected results, and it was hard to distinguish which overload would be used at a glance. We’ve found a number of indicators misusing this and getting an incorrect calculations as a result. As such, the second overload has been removed to get rid of ambiguous behavior of the function. 
+This caused a single built-in function to behave in two very different ways and it was difficult to distinguish which overload was used at a glance. A number of indicators misused the function and were displaying incorrect results. To avoid this, the second overload was removed in v5.
 
-Now, the ``rsi()`` function can only take a ``simple int`` value as its second argument.
-If you passed a ``float`` value to the second argument, you can replace the ``rsi()`` call with the following formula: ``100.0 - (100.0 / (1.0 + arg1 / arg2))``. It is equivalent to the calculation that ``rsi(series float, series float)`` did.
+The `ta.rsi() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rsi>`__ function in v5 only accepts a "simple int" argument for its ``length`` parameter.
+If your v4 code used the now deprecated overload of the function with a ``float`` second argument, you can replace the whole ``rsi()`` call with the following formula::
 
-If you passed a ``series int`` value as the second argument, it only used to work in v4 because ``series int`` was automatically cast to ``series float`` and the second overload of the function was used. It did not give the result you would actually expect from the ``rsi(source, length)`` function. Note that the original ``rsi()`` calculation takes previous bars into account, so a length specified as a ``series`` variable is not applicable there, which is why there is no overload for ``rsi(series float, series integer)``, i.e. an ``int`` variable with value that changes from one bar to another can no longer be passed to ``rsi()`` as length.
+    100.0 - (100.0 / (1.0 + arg1 / arg2))
 
-If you passed an integer value of a non-series type form, nothing should change for you.
+It is equivalent to the calculation that the overloaded ``rsi(series float, series float)`` did.
+
+Note that when your v4 code used a "series int" value as the second argument to `rsi() <https://www.tradingview.com/pine-script-reference/v4/#fun_rsi>`__, it was automatically cast to "series float" and the second overload of the function was used. While this was syntactically correct, it most probably did **not** yield the result you expected. In v5, `ta.rsi() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rsi>`__ requires a "simple int" for the argument to ``length``, which precludes dynamic (or "series") lengths. The reason for this is that RSI calculations use the `ta.rma() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rma>`__ moving average, which is similar to `ta.ema() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}ema>`__ in that it depends on a length-dependent recursive process which uses the values of previous bars. This makes it impossible to achieve correct results with a length that could vary bar to bar.
+
+If your v4 code used a length that was "const int", "input int" or "simple int", no changes are required.
 
 
 Reserved keywords
 -----------------
 
-A number of words have been reserved and are no longer valid as variable and function names: ``text``, ``ellipse``, ``polygon``, ``return``, ``class``, ``struct``, ``throw``, ``try``, ``catch``, ``is``, ``in``, ``range``, ``while``, ``do``. If your v4 indicator uses any of these words as a variable or a function name, rename them for the script to work in v5.
+A number of words are reserved and cannot be used for variable or function names. They are: ``text``, ``ellipse``, ``polygon``, ``return``, ``class``, ``struct``, ``throw``, ``try``, ``catch``, ``is``, ``in``, ``range``, ``do``. If your v4 indicator uses any of these, rename your variable or function for the script to work in v5.
 
 
 Removed iff() and offset()
