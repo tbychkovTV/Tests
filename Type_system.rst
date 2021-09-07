@@ -18,8 +18,10 @@ and in-depth knowledge of its subtleties will allow you to exploit the full pote
 Forms and types
 ^^^^^^^^^^^^^^^
 
-The type system uses the *form-type* pair to qualify the type of all values, be they literals, a variable, the result of an expression, 
+The type system uses the *form type* pair to qualify the type of all values, be they literals, a variable, the result of an expression, 
 the value returned by functions or the arguments supplied when calling a function. The *form* expresses when a value is known. The *type* denotes the nature of a value.
+
+.. note:: We will often use "type" to refer to the "form type" pair.
 
 The Pine forms are:
 
