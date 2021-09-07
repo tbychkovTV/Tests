@@ -6,6 +6,7 @@ Type system
 
 .. include:: <isonum.txt>
 
+
 Introduction
 ------------
 
@@ -13,6 +14,9 @@ Pine's type system is important because it determines what sort of values can be
 While it is possible to write very simple scripts without knowing anything about the type system, 
 a reasonable understanding of it is necessary to achieve any degree of profiency with the language, 
 and in-depth knowledge of its subtleties will allow you to exploit the full potential of Pine.
+
+Forms and types
+^^^^^^^^^^^^^^^
 
 The type system uses the *form-type* pair to qualify the type of all values, be they literals, a variable, the result of an expression, 
 the value returned by functions or the arguments supplied when calling a function. The *form* expresses when a value is known. The *type* denotes the nature of a value.
@@ -24,11 +28,15 @@ The Pine forms are:
 - "simple" for values known at bar zero
 - "series" for values known on each bar
 
+Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Variables of "const", "input" or "simple" form cannot cahnge values once execution of the script has begun.
+
 The Pine types are:
 
 - The fundamental types: "int", "float", "bool", "color" and "string"
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
 - "void"
+
+Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc.
 
 Both forms and types are organized in a hierarchical structure that determines when one can be used in place of the other. Casting rules define that hierarchy.
 
@@ -42,9 +50,12 @@ Before going into more details on forms and types, let's look at why they are im
 
 If you look at the Reference Manual entry for `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ (clicking on the name will bring you there), you will see that the ``title`` parameter requires a "const string" argument (an argument is the value used for a parameter when calling a function). The form required is thus "const", and the type, "string". The "const" requirement tells us we cannot use 
 
+Time series
+^^^^^^^^^^^
 
-Type forms
-----------
+
+Forms
+-----
 
 Literal
 ^^^^^^^
