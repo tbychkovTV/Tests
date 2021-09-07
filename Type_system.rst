@@ -31,9 +31,11 @@ The Pine **forms** are:
 - "simple" for values known at bar zero (when the script begins execution on the chart's first historical bar)
 - "series" for values known on each bar (any time during the execution of a script on any bar)
 
-Forms are organized in the following hierarchy: **const < input < simple < series**. This entails that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
+Forms are organized in the following hierarchy: **const < input < simple < series**.
 
-Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. This is the case for values such as `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ or `hlc3 <https://www.tradingview.com/pine-script-reference/v5/#var_hlc3>`__ or any variable calculated using such values. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
+This entails that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed. Furthermore, once a variable acquires a form, that state is irreversible; it can never be converted back to a lesser form. A variable of "series" for can thus never be converted back to a "simple" form for use with a function that requires arguments of that form.
+
+Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Such values include `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ or `hlc3 <https://www.tradingview.com/pine-script-reference/v5/#var_hlc3>`__ or any variable calculated using values of "series" form. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
 
 
 Types
@@ -45,12 +47,7 @@ The Pine **types** are:
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
 - "void"
 
-Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc.
-
-Both forms and types are organized in a hierarchical structure that determines when one can be used in place of the other. Casting rules define that hierarchy.
-
-
-The hierarchy of types is: **int 🠆 float 🠆 bool**.
+Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc. Pine can automatically convert some types into others. The auto-casting rules are: **int 🠆 float 🠆 bool**.
 
 Before going into more details on forms and types, let's look at why they are important in real-world use. A string can be supplied as the argument for the ``title`` parameter of the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ function, as in::
 
