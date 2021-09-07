@@ -93,11 +93,11 @@ Variables of "const" form can be intialized using a *literal* value, or calculat
 
 These are examples of literal values:
 
-- *literal float* (``3.14``, ``6.02E-23``, ``3e8``)
-- *literal int* (``42``)
-- *literal bool* (``true``, ``false``)
-- *literal string* (``"A text literal"``)
-- *literal color* (``#FF55C6``)
+- *literal float*: ``3.14``, ``6.02E-23``, ``3e8``
+- *literal int*: ``42``
+- *literal bool*: ``true``, ``false``
+- *literal string*: ``"A text literal"``
+- *literal color*: ``#FF55C6``
 
 .. note:: In Pine, the built-in variables ``open``, ``high``, ``low``, ``close``, ``volume``, ``time``,
     ``hl2``, ``hlc3``, ``ohlc4``, etc., are not of "const" form. Because they change bar to bar, they are of *series* form.
