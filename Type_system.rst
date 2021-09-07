@@ -47,7 +47,9 @@ The Pine **types** are:
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
 - "void"
 
-Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc. Pine can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**.
+Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc.
+
+The Pine compiler can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**. See the 
 
 
 .. _series:
@@ -426,6 +428,8 @@ There is also a special syntax for calling functions that return tuples. For exa
 
 where the value of local variables ``sum`` and ``mul`` will be written to the ``s`` and ``m`` variables of the outer scope.
 
+
+.. _typeCasting::
 
 Type casting
 ------------
