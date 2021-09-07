@@ -53,7 +53,7 @@ The parameter names of some built-in functions have been changed because they we
   timev4 = time(resolution = "1D")
   // Valid in v5.
   timev5 = time(timeframe = "1D")
-  // Valid in both v4 and v5.
+  // Valid in v4 and v5.
   timeBoth = time("1D")
 
 The full list of renamed function parameters can be found in the :ref:`here <_allVariables>` section of this guide.
@@ -88,80 +88,81 @@ A number of words are reserved and cannot be used for variable or function names
 Removed \`iff()\` and \`offset()\`
 ----------------------------------
 
-The functions ``iff()`` and ``offset()`` have been removed. The code that uses the ``iff()`` function can be rewritten using the ternary operator::
+The `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ and `offset() <https://www.tradingview.com/pine-script-reference/v4/#fun_offset>`__ functions have been removed. Code using the ``iff()`` function can be rewritten using the ternary operator::
 
-    // iff(<condition>, <return if true>, <return if false>)
+    // iff(<condition>, <return_when_true>, <return_when_false>)
     // Valid in v4, not valid in v5
     barColorIff = iff(close >= open, color.green, color.red)
-    // <condition> ? <return if true> : <return if false>
+    // <condition> ? <return_when_true> : <return_when_false>
     // Valid in v4 and v5
     barColorTernary = close >= open ? color.green : color.red
 	
-Note that the ternary operator is evaluated 'lazily', so only one statement of the two is executed (depending on the condition). This is different from ``iff()``, which always executed both statements (but returned only the relevant one). Some functions rely on being executed on every bar, so you will need to handle these cases separately, for example by moving both branches to separate variables that are calculated on every bar and then returning these variables from the ternary operator instead::
+Note that the ternary operator is evaluated 'lazily'; only the required value is calculated (depending on the condition's evaluation to ``true`` or ``false``). This is different from `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__, which always evaluated both statements but returned only the relevant one.
 
-	// `iff()` in v4
-	// the way `iff()` works, `highest()` and `lowest()` are calculated on every bar
+Some functions require evaluation on every bar to correctly calculate, so you will need to make speccial provisions for these by pre-evaluating them before the ternary::
+
+	// `iff()` in v4: `highest()` and `lowest()` are calculated on every bar
 	v1 = iff(close > open, highest(10), lowest(10)) 
 	plot(v1)
-	// the same in v5, with both functions being calculated on every bar
+	// In v5: forced evaluation on every bar prior to the ternary statement.
 	h1 = ta.highest(10)
 	l1 = ta.lowest(10)
 	v1 = close > open ? h1 : l1
 	plot(v1)
 
-The ``offset()`` function can in turn be replaced with the ``[]`` operator::
+The ``offset()`` function was deprecated because the more readable ``[]`` operator is equivalent::
 
-  // Valid in v4, not valid in v5
+  // Valid in v4. Not valid in v5.
   prevClosev4 = offset(close, 1)
-  // Valid in v4 and v5
+  // Valid in v4 and v5.
   prevClosev5 = close[1]
 
 
-Split \`input()\` into several functions
-----------------------------------------
+Split of \`input()\` into several functions
+-------------------------------------------
 
-The old ``input()`` function had too many different overloads, each one with its list of different arguments that can be possibly passed to it. For clarity, most of these overloads have now been split into separate functions. Each new function shares its name with an ``input.*`` constant from v4 (with the exception of ``input.integer``, which is replaced by the ``input.int()`` function). The constants themselves have been removed.
+The ``input()`` was becoming crowded with a plethora of overloads and parameters. We split its functionality into different functions to clear that space and provide a more robust structure to accommodate the additions planned for inputs. Each new function shares its name with an ``input.*`` constant from v4 (with the exception of ``input.integer``, which is replaced by the ``input.int()`` function). The constants themselves have been removed because the ``type`` parameter was deprecated.
 
-For example, to convert an indicator with an input from v4 to v5, where you would use ``input(type = input.symbol)`` before, you should now use the ``input.symbol()`` function instead::
+To convert, for example, a v4 script using an input of type ``input.symbol``, the `input.symbol() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}symbol>`__ function must be used in v5::
 
-  // Valid in v4, not valid in v5
+  // Valid in v4. Not valid in v5.
   aaplTicker = input("AAPL", type = input.symbol)
   // Valid in v5
   aaplTicker = input.symbol("AAPL")
 
-The basic version of the function (that detects the type automatically based on the default value) still exists, but without most of its parameters::
+The `input() <https://www.tradingview.com/pine-script-reference/v5/#fun_input>`__ function persists in v5, but in a simpler form, with less parameters. It has the advantage of automatically detecting input types "bool/color/int/float/string/source" from the argument used for ``defval``::
 
-  // Valid in v4 and v5
-  // Even though "AAPL" is a valid ticker, the input is considered just a string because the type is not specified
-  aaplString = input("AAPL", title = "String")
+  // Valid in v4 and v5.
+  // While "AAPL" is a valid symbol, it is only a string here because `input.symbol()` is not used.
+  tickerString = input("AAPL", title = "Ticker string")
 
 
 Some function parameters now require built-in arguments
 -------------------------------------------------------
 
-In v4, built-in constants were simply variables with pre-defined values of a specific type. For example, the ``barmerge.lookahead_on`` is simply a constant that passes true and has to specific ties to the ``lookahead`` argument of the ``security()`` function. We found this and many other similar cases to be a common source of confusion for users who passed incorrect constants to functions and got unexpected results.
+In v4, built-in constants such as ``plot.style_area`` used as arguments when calling Pine functions, corresponded to pre-defined values of a specific type. For example, the value of ``barmerge.lookahead_on`` was ``true``, so you could use ``true`` instead of the named constant when supplying an argument to the ``lookahead`` parameter in a `security() <https://www.tradingview.com/pine-script-reference/v4/#fun_security>`__ function call. We found this to be a common source of confusion, which caused unsuspecting programmers to produce code yielding unintended results.
 
-In v5, function parameters that have constants dedicated to them can only use constants instead of raw values. Conversely, constants can no longer be used anywhere but in the parameters they are tied to. For example::
+In v5, the use of correct built-in named constants as arguments to function parameters requiring them is mandatory::
 
-  // Not valid in v5: lookahead has a constant tied to it
+  // Not valid in v5: `true` is used as an argument for `lookahead`.
   request.security(syminfo.tickerid, "1D", close, lookahead = true)
-  // Valid: using proper constant
+  // Valid in v5: uses a named constant instead of `true`.
   request.security(syminfo.tickerid, "1D", close, lookahead = barmerge.lookahead_on)
 
-  // Will compile in v4 because plot.style_columns is equal to 5
-  // Won’t compile in v5
+  // Would compile in v4 because `plot.style_columns` was equal to 5.
+  // Won’t compile in v5.
   a = 2 * plot.style_columns
   plot(a)
 
-To convert your script from v4 to v5, make sure to replace all variables with constants where necessary.
+To convert your script from v4 to v5, make sure you use the correct named built-in constants as function arguments.
 
 
-Deprecated the \`transp\` argument
-----------------------------------
+Deprecated the \`transp\` parameter
+-----------------------------------
 
-The ``transp=`` argument that was present in many plot functions in v4 interfered with the rgb functionality and has been deprecated. The ``color.new()`` function can be used to specify the transparency of any color instead.
+The ``transp=`` parameter used in the signature of many v4 plotting functions was deprecated because it interferes with RGB functionality. Transparency must now be specified along with the color used as an argument to ``color`` and related parameters using the `color.new() <https://www.tradingview.com/pine-script-reference/v5/#fun_color{dot}new>`__ function.
 
-In previous versions, the ``bgcolor()`` and ``fill()`` functions had an optional ``transp`` arguments with the default value of 90. This means that the code below used to display Bollinger Bands with semi-transparent fill between two bands and semi-transparent backround color where bands cross the chart, even though ``transp`` is not explicitly specified::
+Note that in v4, `bgcolor() <https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor>`__ and `fill() <https://www.tradingview.com/pine-script-reference/v5/#fun_fill>`__ functions had an optional ``transp`` parameter that used a default value of 90. This meant that the code below could display Bollinger Bands with a semi-transparent fill between two bands and a semi-transparent backround color where bands cross price, even though no argument is used for the ``transp`` parameter in its `bgcolor() <https://www.tradingview.com/pine-script-reference/v5/#fun_bgcolor>`__ and `fill() <https://www.tradingview.com/pine-script-reference/v5/#fun_fill>`__ calls::
 
  //@version=4
  study("Bollinger Bands", overlay=true)
@@ -175,7 +176,7 @@ In previous versions, the ``bgcolor()`` and ``fill()`` functions had an optional
  fill(p1, p2, color = color.green)
  bgcolor(crossUp ? color.green : crossDn ? color.red : na)
 
-Both these functions no longer have a default ``transp`` value, so we need to modify the transparency of the colors themselves to make sure our colors are semi-transparent. This can be done with the ``color.new()`` function. The code below will be a v5 equivalent of the code above::
+In v5 we need to explictly mention the 90 transparency with the color, yielding::
 
  //@version=5
  indicator("Bollinger Bands", overlay=true)
@@ -185,7 +186,7 @@ Both these functions no longer have a default ``transp`` value, so we need to mo
  p2 = plot(lower, color=color.green)
  crossUp = ta.crossover(high, upper)
  crossDn = ta.crossunder(low, lower)
- TRANSP = 90
+ var TRANSP = 90
  // We use `color.new()` to explicitly pass transparency to both functions
  fill(p1, p2, color = color.new(color.green, TRANSP))
  bgcolor(crossUp ? color.new(color.green, TRANSP) : crossDn ? color.new(color.red, TRANSP) : na)
