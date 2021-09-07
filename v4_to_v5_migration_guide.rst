@@ -70,11 +70,9 @@ In v4, the `rsi() <https://www.tradingview.com/pine-script-reference/v4/#fun_rsi
 This caused a single built-in function to behave in two very different ways, and it was difficult to distinguish which one applied because it depended on the type of the second argument. As a result, a number of indicators misused the function and were displaying incorrect results. To avoid this, the second overload was removed in v5.
 
 The `ta.rsi() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rsi>`__ function in v5 only accepts a "simple int" argument for its ``length`` parameter.
-If your v4 code used the now deprecated overload of the function with a ``float`` second argument, you can replace the whole ``rsi()`` call with the following formula::
+If your v4 code used the now deprecated overload of the function with a ``float`` second argument, you can replace the whole ``rsi()`` call with the following formula, which is equivalent::
 
     100.0 - (100.0 / (1.0 + arg1 / arg2))
-
-It is equivalent to the calculation that the overloaded ``rsi(series float, series float)`` did.
 
 Note that when your v4 code used a "series int" value as the second argument to `rsi() <https://www.tradingview.com/pine-script-reference/v4/#fun_rsi>`__, it was automatically cast to "series float" and the second overload of the function was used. While this was syntactically correct, it most probably did **not** yield the result you expected. In v5, `ta.rsi() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rsi>`__ requires a "simple int" for the argument to ``length``, which precludes dynamic (or "series") lengths. The reason for this is that RSI calculations use the `ta.rma() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rma>`__ moving average, which is similar to `ta.ema() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}ema>`__ in that it depends on a length-dependent recursive process which uses the values of previous bars. This makes it impossible to achieve correct results with a length that could vary bar to bar.
 
