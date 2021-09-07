@@ -85,8 +85,8 @@ Reserved keywords
 A number of words are reserved and cannot be used for variable or function names. They are: ``text``, ``ellipse``, ``polygon``, ``return``, ``class``, ``struct``, ``throw``, ``try``, ``catch``, ``is``, ``in``, ``range``, ``do``. If your v4 indicator uses any of these, rename your variable or function for the script to work in v5.
 
 
-Removed iff() and offset()
---------------------------
+Removed \`iff()\` and \`offset()\`
+----------------------------------
 
 The functions ``iff()`` and ``offset()`` have been removed. The code that uses the ``iff()`` function can be rewritten using the ternary operator::
 
@@ -117,8 +117,8 @@ The ``offset()`` function can in turn be replaced with the ``[]`` operator::
   prevClosev5 = close[1]
 
 
-Split input() into several functions
-------------------------------------
+Split \`input()\` into several functions
+----------------------------------------
 
 The old ``input()`` function had too many different overloads, each one with its list of different arguments that can be possibly passed to it. For clarity, most of these overloads have now been split into separate functions. Each new function shares its name with an ``input.*`` constant from v4 (with the exception of ``input.integer``, which is replaced by the ``input.int()`` function). The constants themselves have been removed.
 
@@ -156,8 +156,8 @@ In v5, function parameters that have constants dedicated to them can only use co
 To convert your script from v4 to v5, make sure to replace all variables with constants where necessary.
 
 
-The transp argument has been deprecated
-----------------------------------------
+The \`transp\` argument was deprecated
+--------------------------------------
 
 The ``transp=`` argument that was present in many plot functions in v4 interfered with the rgb functionality and has been deprecated. The ``color.new()`` function can be used to specify the transparency of any color instead.
 
@@ -216,8 +216,8 @@ To make sure that your script’s behavior in v5 is consistent with v4, add ``:2
   bgcolor(isLunch ? color.new(color.green, 90) : na)
 
 
-strategy.exit() now must do something
--------------------------------------
+\`strategy.exit()\` now must do something
+-----------------------------------------
 
 Gone are the days when the ``strategy.exit()`` function was allowed to loiter. Now it must actually have an effect on the strategy itself, and to do so, it should have at least one of the following parameters: ``profit``, ``limit``, ``loss``, ``stop``, or one of the following pairs: ``trail_offset`` and ``trail_price`` / ``trail_points``. 
 In v4, it used to compile with a warning (although the function itself did not do anything in the code); now it is no longer valid code and a compilation error will be thrown. If you get this error while converting a strategy to v5, feel free to comment it out or remove it altogether: it didn’t do anything in your code anyway.
