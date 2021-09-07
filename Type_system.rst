@@ -49,7 +49,7 @@ The Pine **types** are:
 
 Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc.
 
-The Pine compiler can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**. See the 
+The Pine compiler can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**. See the :ref:`here <_typeCasting>` section of this page for more information on type casting.
 
 
 .. _series:
