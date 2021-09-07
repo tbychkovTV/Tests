@@ -99,7 +99,7 @@ The `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__ an
 	
 Note that the ternary operator is evaluated "lazily"; only the required value is calculated (depending on the condition's evaluation to ``true`` or ``false``). This is different from `iff() <https://www.tradingview.com/pine-script-reference/v4/#fun_iff>`__, which always evaluated both values but returned only the relevant one.
 
-Some functions require evaluation on every bar to correctly calculate, so you will need to make speccial provisions for these by pre-evaluating them before the ternary::
+Some functions require evaluation on every bar to correctly calculate, so you will need to make special provisions for these by pre-evaluating them before the ternary::
 
 	// `iff()` in v4: `highest()` and `lowest()` are calculated on every bar
 	v1 = iff(close > open, highest(10), lowest(10)) 
