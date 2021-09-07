@@ -275,7 +275,7 @@ No namespace change
 +------------------------------------------------------+--------------------------------------------------------+
 
 
-ta.* namespace for technical analysis functions and variables
+"ta" namespace for technical analysis functions and variables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 +------------------------------------------------------+--------------------------------------------------------+
@@ -417,7 +417,7 @@ ta.* namespace for technical analysis functions and variables
 +------------------------------------------------------+--------------------------------------------------------+
 
 
-math.* namespace for math-related functions and variables
+"math" namespace for math-related functions and variables
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 +------------------------------------------------------+--------------------------------------------------------+
@@ -473,7 +473,7 @@ math.* namespace for math-related functions and variables
 +------------------------------------------------------+--------------------------------------------------------+
 
 
-request.* namespace for functions that request external data
+"request" namespace for functions that request external data
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 +------------------------------------------------------+--------------------------------------------------------+
@@ -493,7 +493,7 @@ request.* namespace for functions that request external data
 +------------------------------------------------------+--------------------------------------------------------+
 
 
-ticker.* namespace for functions that help create tickers
+"ticker" namespace for functions that help create tickers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 +------------------------------------------------------+--------------------------------------------------------+
@@ -513,7 +513,7 @@ ticker.* namespace for functions that help create tickers
 +------------------------------------------------------+--------------------------------------------------------+
 
 
-str.* namespace for functions that work with strings
+"str" namespace for functions that work with strings
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 
 +------------------------------------------------------+--------------------------------------------------------+
