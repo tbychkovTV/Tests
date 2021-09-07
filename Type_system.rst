@@ -33,7 +33,7 @@ The Pine **forms** are:
 
 Forms are organized in the following hierarchy: **const < input < simple < series**. This entails that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
 
-Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
+Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. This is the case for values such as `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ or `hlc3 <https://www.tradingview.com/pine-script-reference/v5/#var_hlc3>`__ or any variable calculated using such values. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
 
 
 Types
