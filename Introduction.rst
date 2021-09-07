@@ -1,5 +1,5 @@
-Welcome to Pine!
-================
+Welcome to Pine
+===============
 
 .. image:: images/Pine_Script_logo_text.png
    :alt: Pine Script logo
