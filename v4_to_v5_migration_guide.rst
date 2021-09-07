@@ -136,8 +136,8 @@ The basic version of the function (that detects the type automatically based on 
   aaplString = input("AAPL", title = "String")
 
 
-Some functions now require named constants instead of raw values
-----------------------------------------------------------------
+Some function parameters now require built-in arguments
+-------------------------------------------------------
 
 In v4, built-in constants were simply variables with pre-defined values of a specific type. For example, the ``barmerge.lookahead_on`` is simply a constant that passes true and has to specific ties to the ``lookahead`` argument of the ``security()`` function. We found this and many other similar cases to be a common source of confusion for users who passed incorrect constants to functions and got unexpected results.
 
