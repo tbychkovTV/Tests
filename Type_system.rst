@@ -9,11 +9,12 @@ Type system
 Introduction
 ------------
 
-It is essential for any Pine programmer to understand the language's type system because it determines what sort of arguments are allowed to be used when using Pine functions. 
-While it is possible to write very simple scripts without knowing anything about Pine forms and types, 
-it is a requirement in order to achieve any degree of profiency with the language.
+Pine's type system is important because it determines what sort of values can be used when calling Pine functions, which is a requirement to do pretty much anything in Pine.
+While it is possible to write very simple scripts without knowing anything about the type system, 
+a reasonable understanding of it is necessary to achieve any degree of profiency with the language, 
+and in-depth knowledge of its subtleties will allow you to exploit the full potential of Pine.
 
-Pine's type system uses the *form-type* pair to qualify the type of all values, be they a variable, the result of an expression, 
+The type system uses the *form-type* pair to qualify the type of all values, be they literals, a variable, the result of an expression, 
 the value returned by functions or the arguments supplied when calling a function. The *form* expresses when a value is known. The *type* denotes the nature of a value.
 
 The Pine forms are:
