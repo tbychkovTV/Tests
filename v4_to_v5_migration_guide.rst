@@ -41,7 +41,7 @@ The only two functions whose name changed are:
 * ``study()`` was renamed to ``indicator()``.
 * ``tickerid()`` was renamed to ``ticker.new()``.
 
-The full list of renamed functions and variables, can be found in the :ref:`here <_allVariables>` section of this guide.
+The full list of renamed functions and variables can be found in the :ref:`here <_allVariables>` section of this guide.
 
 
 Renamed function parameters
