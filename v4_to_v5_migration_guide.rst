@@ -156,8 +156,8 @@ In v5, function parameters that have constants dedicated to them can only use co
 To convert your script from v4 to v5, make sure to replace all variables with constants where necessary.
 
 
-The \`transp\` argument was deprecated
---------------------------------------
+Deprecated the \`transp\` argument
+----------------------------------
 
 The ``transp=`` argument that was present in many plot functions in v4 interfered with the rgb functionality and has been deprecated. The ``color.new()`` function can be used to specify the transparency of any color instead.
 
