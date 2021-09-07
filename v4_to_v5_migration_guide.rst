@@ -67,7 +67,7 @@ In v4, the `rsi() <https://www.tradingview.com/pine-script-reference/v4/#fun_rsi
 * ``rsi(series float, simple int)`` for the normal RSI calculation, and
 * ``rsi(series float, series float)`` for an overload used in the MFI indicator, which did a calculation equivalent to ``100.0 - (100.0 / (1.0 + arg1 / arg2))``.
 
-This caused a single built-in function to behave in two very different ways and it was difficult to distinguish which overload was used at a glance. A number of indicators misused the function and were displaying incorrect results. To avoid this, the second overload was removed in v5.
+This caused a single built-in function to behave in two very different ways, and it was difficult to distinguish which one applied because it depended on the type of the second argument. As a result, a number of indicators misused the function and were displaying incorrect results. To avoid this, the second overload was removed in v5.
 
 The `ta.rsi() <https://www.tradingview.com/pine-script-reference/v5/#fun_ta{dot}rsi>`__ function in v5 only accepts a "simple int" argument for its ``length`` parameter.
 If your v4 code used the now deprecated overload of the function with a ``float`` second argument, you can replace the whole ``rsi()`` call with the following formula::
