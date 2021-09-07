@@ -1,6 +1,9 @@
 Pine version 5 migration guide
 ==============================
 
+.. contents:: :local:
+    :depth: 2
+
 Introduction
 ------------
 
