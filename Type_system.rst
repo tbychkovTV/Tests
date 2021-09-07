@@ -15,13 +15,14 @@ While it is possible to write very simple scripts without knowing anything about
 a reasonable understanding of it is necessary to achieve any degree of profiency with the language, 
 and in-depth knowledge of its subtleties will allow you to exploit the full potential of Pine.
 
-Forms and types
-^^^^^^^^^^^^^^^
-
 The type system uses the *form type* pair to qualify the type of all values, be they literals, a variable, the result of an expression, 
 the value returned by functions or the arguments supplied when calling a function. The *form* expresses when a value is known. The *type* denotes the nature of a value.
 
 .. note:: We will often use "type" to refer to the "form type" pair.
+
+
+Forms
+^^^^^
 
 The Pine **forms** are:
 
@@ -30,7 +31,13 @@ The Pine **forms** are:
 - "simple" for values known at bar zero
 - "series" for values known on each bar
 
-Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Variables of "const", "input" or "simple" form cannot cahnge values once execution of the script has begun.
+Forms are organized in the following hierarchy: **const < input < simple < series**. This entails that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
+
+Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
+
+
+Types
+^^^^^
 
 The Pine **types** are:
 
@@ -42,7 +49,6 @@ Each type refers to the nature of the value contained in a variable: ``1`` is of
 
 Both forms and types are organized in a hierarchical structure that determines when one can be used in place of the other. Casting rules define that hierarchy.
 
-The hierarchy of forms is: **const 🠆 input 🠆 simple 🠆 series**. This means that whenever a "series" form is required, you can also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed.
 
 The hierarchy of types is: **int 🠆 float 🠆 bool**.
 
@@ -52,15 +58,21 @@ Before going into more details on forms and types, let's look at why they are im
 
 If you look at the Reference Manual entry for `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ (clicking on the name will bring you there), you will see that the ``title`` parameter requires a "const string" argument (an argument is the value used for a parameter when calling a function). The form required is thus "const", and the type, "string". The "const" requirement tells us we cannot use 
 
+
+.. _series:
+
 Time series
 ^^^^^^^^^^^
 
 
-Forms
------
+Examples
+--------
 
-Literal
-^^^^^^^
+Forms
+^^^^^
+
+Const
+"""""
 
 A *literal* is a special notation for representing a fixed value in Pine. This fixed value itself is an
 expression and such literal expressions are always of one of the 5 following types:
@@ -73,9 +85,6 @@ expression and such literal expressions are always of one of the 5 following typ
 
 .. note:: In Pine, the built-in names ``open``, ``high``, ``low``, ``close``, ``volume``, ``time``,
     ``hl2``, ``hlc3``, ``ohlc4`` are not literals. They are of the *series* form.
-
-Const
-^^^^^
 
 Values of the form *const* are ones that:
 
@@ -95,7 +104,7 @@ The type of ``c2`` is also *const int* because it is initialized with an arithme
 The type of ``c3`` is *series int* because it changes at runtime.
 
 Input
-^^^^^
+"""""
 
 Values of the form *input* are ones that:
 
@@ -110,7 +119,7 @@ For example::
 The type of ``p`` variable is *input integer*.
 
 Simple
-^^^^^^
+""""""
 
 Values of the form *simple* are ones that:
 
@@ -122,10 +131,8 @@ the `syminfo.mintick <https://www.tradingview.com/pine-script-reference/v4/#var_
 built-in variable is a *simple float*. The word *simple* is usually omitted when referring to this form,
 so we use *float* rather than *simple float*.
 
-.. _series:
-
 Series
-^^^^^^
+""""""
 
 Values of the form *series* are ones that:
 
@@ -150,11 +157,11 @@ series itself. For example::
 
 .. note:: The ``[]`` operator also returns a value of the *series* form.
 
-Fundamental types
------------------
+Types
+^^^^^
 
 int
-^^^
+"""
 
 Integer literals must be written in decimal notation.
 For example::
@@ -173,7 +180,7 @@ There are 5 forms of int type in Pine:
     * *series int*
 
 float
-^^^^^
+"""""
 
 Floating-point literals contain a
 delimiter (the symbol ``.``) and may also contain the symbol ``e`` (which means
@@ -202,7 +209,7 @@ There are 5 forms of float type in Pine:
 The internal precision of floats in Pine is 1e-10.
 
 bool
-^^^^
+""""
 
 There are only two literals representing *bool* values::
 
@@ -219,7 +226,7 @@ There are 5 forms of bool type in Pine:
 
 
 color
-^^^^^
+"""""
 
 Color literals have the following format: ``#`` followed by 6 or 8
 hexadecimal digits matching RGB or RGBA value. The first two digits
@@ -287,7 +294,7 @@ Here is an example::
 
 
 string
-^^^^^^
+""""""
 
 String literals may be enclosed in single or double quotation marks.
 Examples::
@@ -318,7 +325,7 @@ There are 5 forms of string type in Pine:
 
 
 line and label
-^^^^^^^^^^^^^^
+""""""""""""""
 
 New drawing objects were introduced in Pine v4. These objects are created with the
 `line.new <https://www.tradingview.com/pine-script-reference/v4/#fun_line{dot}new>`__
@@ -327,7 +334,7 @@ functions. Their type is *series line* and *series label*, respectively.
 There is only one form of the *line* and *label* types in Pine: *series*.
 
 plot and hline
-^^^^^^^^^^^^^^
+""""""""""""""
 
 A few function annotations (in particular ``plot`` and ``hline``) return
 values which represent objects created on the chart. The function
@@ -338,7 +345,7 @@ passed to the `fill <https://www.tradingview.com/pine-script-reference/v4/#fun_f
 function to color the area in between them.
 
 array
------
+"""""
 
 Arrays in Pine are identified by an *array id*. There is no single type representing an array id, 
 but rather an overloaded version of a subset of fundamental Pine types which reflects the type of an array's elements. 
@@ -350,7 +357,7 @@ These type names are constructed by appending the ``[]`` suffix to one of the fo
 - ``color[]``
 
 void
-----
+""""
 
 There is a *void* type in Pine Script. Most functions and annotation functions which produce a *side effect*
 return a void result. E.g.,
@@ -415,10 +422,6 @@ Type casting
 There is an automatic type-casting mechanism in Pine Script.
 In the following picture, an arrow denotes the Pine compiler's ability to automatically cast one type to
 another:
-
-.. image:: images/Type_cast_rules_v4.svg
-    :width: 1024px
-    :height: 768px
 
 For example::
 
