@@ -61,7 +61,7 @@ Take the built-in `open <https://www.tradingview.com/pine-script-reference/v5/#v
 
 While time series may remind programmers familiar with other languages of arrays, they are totally different. Associating time series with the notion of arrays will be detrimental to your understanding of this key Pine concept. Besides, Pine does use an array data structure, which is completely different than a time series.
 
-Time series in Pine, combined with its special type of runtime engine and built-in functions, are what makes it easy to compute the running total of `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ values without using a `for <https://www.tradingview.com/pine-script-reference/v5/#op_for>`__ loop, with only ``cum(close)``.
+Time series in Pine, combined with its special type of runtime engine and built-in functions, are what makes it easy to compute the running total of `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ values without using a `for <https://www.tradingview.com/pine-script-reference/v5/#op_for>`__ loop, with only ``ta.cum(close)`` or the mean of the difference between last 14 `high <https://www.tradingview.com/pine-script-reference/v5/#var_high>`__ and `low <https://www.tradingview.com/pine-script-reference/v5/#var_low>`__ values as ``ta.sma(high - low, 14).
 
 
 Examples
