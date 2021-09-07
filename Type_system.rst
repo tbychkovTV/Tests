@@ -49,21 +49,28 @@ The Pine **types** are:
 
 Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc. Pine can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**.
 
-Before going into more details on forms and types, let's look at why they are important in real-world use. A string can be supplied as the argument for the ``title`` parameter of the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ function, as in::
-
-    plot(hl2, "HiLo Average")
-
-If you look at the Reference Manual entry for `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ (clicking on the name will bring you there), you will see that the ``title`` parameter requires a "const string" argument (an argument is the value used for a parameter when calling a function). The form required is thus "const", and the type, "string". The "const" requirement tells us we cannot use 
-
 
 .. _series:
 
 Time series
 ^^^^^^^^^^^
 
+Much of the power of Pine stems from the fact that it is designed to process *time series* efficiently. Time series are the fundamental structure Pine uses to store values, where each value is tethered to a point in time (which is what a chart bar represents). Take the built-in `open <https://www.tradingview.com/pine-script-reference/v5/#var_open>`__ variable. It contains the "open" price of each bar in the dataset. If your script is running on a 5min chart, then each value in the `open <https://www.tradingview.com/pine-script-reference/v5/#var_open>`__ time series is the open price of the consecutive 5min chart bars. To refer to past values in a time series, we use the `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ history-referencing operator. When a script is executing on a given bar, ``open[1]`` refers to the value of the `open <https://www.tradingview.com/pine-script-reference/v5/#var_open>`__ time series on the previous bar.
+
+While time series may remind programmers familiar with other languages of arrays, they are totally different. Associating time series with the notion of arrays will be detrimental to your understanding of this key Pine concept. Besides, Pine does use an array data structure, which is completely different.
+
+Time series in Pine, combined with its special type of runtime engine and built-in functions, are what allow you to use ``cum(close)`` to compute the running total of `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ values without using a `for <https://www.tradingview.com/pine-script-reference/v5/#op_for>`__ loop, as your script executes bar to bar.
+
 
 Examples
 --------
+
+Before going into more details on forms and types, let's look at why they are important in real-world use. A string can be supplied as the argument for the ``title`` parameter of the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ function, as in::
+
+    plot(hl2, "HiLo Average")
+
+If you look at the Reference Manual entry for `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ (clicking on the name will bring you there), you will see that the ``title`` parameter requires a "const string" argument (an argument is the value used for a parameter when calling a function). The form required is thus "const", and the type, "string". The "const" requirement tells us we cannot use 
+
 
 Forms
 ^^^^^
