@@ -71,7 +71,7 @@ Examples
 Forms
 ^^^^^
 
-Const
+const
 """""
 
 A *literal* is a special notation for representing a fixed value in Pine. This fixed value itself is an
@@ -103,7 +103,7 @@ The type of ``c1`` is *const int* because it is initialized with a *literal int*
 The type of ``c2`` is also *const int* because it is initialized with an arithmetic expression of *const int* type.
 The type of ``c3`` is *series int* because it changes at runtime.
 
-Input
+input
 """""
 
 Values of the form *input* are ones that:
@@ -118,7 +118,7 @@ For example::
 
 The type of ``p`` variable is *input integer*.
 
-Simple
+simple
 """"""
 
 Values of the form *simple* are ones that:
@@ -131,7 +131,7 @@ the `syminfo.mintick <https://www.tradingview.com/pine-script-reference/v4/#var_
 built-in variable is a *simple float*. The word *simple* is usually omitted when referring to this form,
 so we use *float* rather than *simple float*.
 
-Series
+series
 """"""
 
 Values of the form *series* are ones that:
