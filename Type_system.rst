@@ -46,6 +46,7 @@ The Pine **types** are:
 - The fundamental types: "int", "float", "bool", "color" and "string"
 - The special types: "plot", "hline", "line", "label", "box", "table", "array"
 - "void"
+- tuples
 
 Each type refers to the nature of the value contained in a variable: ``1`` is of type "int", ``1.0`` is of type "float", ``"AAPL"`` is of type "string", etc.
 
