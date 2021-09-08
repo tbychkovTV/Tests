@@ -9,7 +9,6 @@ Libraries
 
 Introduction
 ------------
-.. Too many `use-` in a row: 'reused, useful, used, using' in the first two sentences, 'used, use, used, use, use' in second
 Pine libraries are publications containing functions that can be reused in Pine indicators, strategies, or in other libraries. They are useful to define frequently-used functions so their source code does not have to be included in every script where they are needed.
 
 A library must be published (privately or publicly) before it can be used in another script. All libraries are published open-source. Public scripts can only use public libraries. Private scripts or personal scripts saved in the Pine Editor can use public or private libraries. A library can use other libraries, or even previous versions of itself.
