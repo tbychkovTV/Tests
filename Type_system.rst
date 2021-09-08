@@ -125,7 +125,7 @@ The reason for the error is that the ``NAME`` variable's calculation depends on 
 input
 """""
 
-Values of "input" form are known when the values initialized through ``input.*()`` functions are determined. These functions determine the values that can be change by script users in the script's "Settings/Inputs" tab. When these values are changed, this always triggers a re-execution of the script from the beginning of the chart's history (bar zero), so variables of "input" form are always known when the script begins execution, and they do not change during the script's execution.
+Values of "input" form are known when the values initialized through ``input.*()`` functions are determined. These functions determine the values that can be modified by script users in the script's "Settings/Inputs" tab. When these values are changed, this always triggers a re-execution of the script from the beginning of the chart's history (bar zero), so variables of "input" form are always known when the script begins execution, and they do not change during the script's execution.
 
 .. note:: The `input.source() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}source>`__ function yields a value of "series" type — not "input". This is because built-in variables such as ``open``, ``high``, ``low``, ``close``, ``hl2``, ``hlc3``, ``ohlc4``, etc., are of "series" form.
 
