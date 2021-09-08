@@ -318,15 +318,15 @@ it must be preceded by a backslash. For example::
     "The \"Star\" indicator"
 
 
-
-line and label
-""""""""""""""
+line, label, box and table
+""""""""""""""""""""""""""
 
 New drawing objects were introduced in Pine v4. These objects are created with the
 `line.new <https://www.tradingview.com/pine-script-reference/v4/#fun_line{dot}new>`__
 and `label.new <https://www.tradingview.com/pine-script-reference/v4/#fun_label{dot}new>`__
 functions. Their type is *series line* and *series label*, respectively.
 There is only one form of the *line* and *label* types in Pine: *series*.
+
 
 plot and hline
 """"""""""""""
@@ -339,17 +339,24 @@ type *hline*, represented as a horizontal line. These objects can be
 passed to the `fill <https://www.tradingview.com/pine-script-reference/v4/#fun_fill>`__
 function to color the area in between them.
 
+
 array
 """""
 
-Arrays in Pine are identified by an *array id*. There is no single type representing an array id, 
-but rather an overloaded version of a subset of fundamental Pine types which reflects the type of an array's elements. 
-These type names are constructed by appending the ``[]`` suffix to one of the four fundamental types allowed in arrays:
+Arrays in Pine are identified by an *array ID*. There is no single type representing an array ID, 
+but rather an overloaded version of a subset of Pine types which reflects the type of an array's elements. 
+These type names are constructed by appending the ``[]`` suffix (not to be confused with the `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ history-referencing operator) to one of the Pine types allowed for array elements::
 
 - ``int[]``
 - ``float[]``
 - ``bool[]``
 - ``color[]``
+- ``string[]``
+- ``line[]``
+- ``label[]``
+- ``box[]``
+- ``table[]``
+
 
 void
 """"
