@@ -54,7 +54,7 @@ Each type refers to the nature of the value contained in a variable: ``1`` is of
 
 The Pine compiler can automatically convert some types into others. The auto-casting rules are: **int** |rarr| **float** |rarr| **bool**. See the :ref:`here <_typeCasting>` section of this page for more information on type casting.
 
-While Pine forms are implicit in code, types can be specified when declaring variables, e.g.::
+Except in library function signatures, Pine forms are implicit in code; they are never declared because they are always determined by the compiler. Types, however, can be specified when declaring variables, e.g.::
 
     //@version=5
     indicator("", "", true)
