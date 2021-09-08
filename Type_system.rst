@@ -33,9 +33,9 @@ The Pine **forms** are:
 - "simple" for values known at bar zero (when the script begins execution on the chart's first historical bar)
 - "series" for values known on each bar (any time during the execution of a script on any bar)
 
-Forms are organized in the following hierarchy: **const < input < simple < series**, where "const" is considered a *weaker* form than "input", for example, and "series" *stronger* than "simple".
+Forms are organized in the following hierarchy: **const < input < simple < series**, where "const" is considered a *weaker* form than "input", for example, and "series" *stronger* than "simple". The hierarchy of forms entails that whenever a given form is required, you may also use a weaker form if one exists.
 
-The hierarchy of forms entails that whenever a "series" form is required, you may also use "const", "input" or "simple" forms. When a "const" form is required, however, only that form is allowed. Furthermore, once a variable acquires a stronger form, that state is irreversible; it can never be converted back to a weaker form. A variable of "series" form can thus never be converted back to a "simple" form, for use with a function that requires arguments of that form.
+A calculation's result is always of the strongest form used in the calculation. Furthermore, once a variable acquires a stronger form, that state is irreversible; it can never be converted back to a weaker form. A variable of "series" form can thus never be converted back to a "simple" form, for use with a function that requires arguments of that form.
 
 Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Such values include `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ or `hlc3 <https://www.tradingview.com/pine-script-reference/v5/#var_hlc3>`__ or any variable calculated using values of "series" form. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
 
@@ -129,7 +129,7 @@ This will trigger a compilation error::
     indicator(NAME, "", true)
     plot(close)
 
-The reason for the error is that the ``NAME`` variable's calculation depends on the value of `syminfo.type <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo{dot}type>`__ which is a "simple string" (`syminfo.type <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo{dot}type>`__ returns a string corresponding to the sector the chart's symbol belongs to, eg., ``"crypto"``, ``"forex"``, etc.
+The reason for the error is that the ``NAME`` variable's calculation depends on the value of `syminfo.type <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo{dot}type>`__ which is a "simple string" (`syminfo.type <https://www.tradingview.com/pine-script-reference/v5/#var_syminfo{dot}type>`__ returns a string corresponding to the sector the chart's symbol belongs to, eg., ``"crypto"``, ``"forex"``, etc.).
 
 Note that using the ``:=`` operator to assign a new value to a previously declared "const" variable will transform it into a "simple" variable, e.g., here with ``name1``, for which we do not use an uppercase name because it is not a constant::
 
