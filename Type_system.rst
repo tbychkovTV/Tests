@@ -35,7 +35,7 @@ The Pine **forms** are:
 
 Forms are organized in the following hierarchy: **const < input < simple < series**, where "const" is considered a *weaker* form than "input", for example, and "series" *stronger* than "simple". The hierarchy of forms entails that whenever a given form is required, you may also use a weaker form if one exists.
 
-A calculation's result is always of the strongest form used in the calculation. Furthermore, once a variable acquires a stronger form, that state is irreversible; it can never be converted back to a weaker form. A variable of "series" form can thus never be converted back to a "simple" form, for use with a function that requires arguments of that form.
+An expression's result is always of the strongest form used in the expression's calculation. Furthermore, once a variable acquires a stronger form, that state is irreversible; it can never be converted back to a weaker form. A variable of "series" form can thus never be converted back to a "simple" form, for use with a function that requires arguments of that form.
 
 Note that of all these forms, only the "series" form allows values to change dynamically, bar to bar, during the script's execution over each bar of the chart's history. Such values include `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ or `hlc3 <https://www.tradingview.com/pine-script-reference/v5/#var_hlc3>`__ or any variable calculated using values of "series" form. Variables of "const", "input" or "simple" forms cannot change values once execution of the script has begun.
 
