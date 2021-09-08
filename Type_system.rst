@@ -129,7 +129,7 @@ Values of "input" form are known when the values initialized through ``input.*()
 
 .. note:: The `input.source() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}source>`__ function yields a value of "series" type — not "input". This is because built-in variables such as ``open``, ``high``, ``low``, ``close``, ``hl2``, ``hlc3``, ``ohlc4``, etc., are of "series" form.
 
-The script plots the average `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ of a user-defined symbol and timeframe::
+The script plots the moving average of a user-defined source and period from a symbol and timeframe also determined through inputs::
 
     //@version=5
     indicator("", "", true)
