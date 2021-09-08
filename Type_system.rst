@@ -74,14 +74,8 @@ When you grasp how time series can ba efficiently handled using Pine's syntax an
 
 
 
-Examples
---------
-
-Before going into more details on forms and types, let's look at why they are important in real-world use. A string can be supplied as the argument for the ``title`` parameter of the `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ function, as in::
-
-    plot(hl2, "HiLo Average")
-
-If you look at the Reference Manual entry for `plot() <https://www.tradingview.com/pine-script-reference/v5/#fun_plot>`__ (clicking on the name will bring you there), you will see that the ``title`` parameter requires a "const string" argument (an argument is the value used for a parameter when calling a function). The form required is thus "const", and the type, "string". The "const" requirement tells us we cannot use 
+Using forms and types
+---------------------
 
 
 Forms
