@@ -58,8 +58,8 @@ While Pine forms are implicit in code, types can be specified when declaring var
 
     //@version=5
     indicator("", "", true)
-    int period = 10
-    float ma = ta.sma(close, 100)
+    int periodInput = input.int(100, "Period", minval = 2)
+    float ma = ta.sma(close, periodInput)
     bool xUp = ta.crossover(close, ma)
     color maColor = close > ma ? color.lime : color.fuchsia
     plot(ma, "MA", maColor)
