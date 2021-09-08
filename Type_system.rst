@@ -345,7 +345,7 @@ array
 
 Arrays in Pine are identified by an *array ID*. There is no single type representing an array ID, 
 but rather an overloaded version of a subset of Pine types which reflects the type of an array's elements. 
-These type names are constructed by appending the ``[]`` suffix (not to be confused with the `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ history-referencing operator) to one of the Pine types allowed for array elements::
+These type names are constructed by appending the ``[]`` suffix (not to be confused with the `[] <https://www.tradingview.com/pine-script-reference/v5/#op_[]>`__ history-referencing operator) to one of the Pine types allowed for array elements:
 
 - ``int[]``
 - ``float[]``
