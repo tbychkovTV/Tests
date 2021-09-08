@@ -357,8 +357,8 @@ return a void result. E.g.,
 A void result cannot be used in any arithmetic expression or be assigned to a variable.
 
 
-na value
---------
+\`na\` value
+------------
 
 In Pine there is a special built-in variable ``na``, which is an acronym for *not available*, meaning
 an expression or variable has no value. This is very similar
