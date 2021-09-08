@@ -125,17 +125,29 @@ The reason for the error is that the ``NAME`` variable's calculation depends on 
 input
 """""
 
-Values of the form *input* are ones that:
+Values of "input" form are known when the values initialized through ``input.*()`` functions are determined. These functions determine the values that can be change by script users in the script's "Settings/Inputs" tab. When these values are changed, this always triggers a re-execution of the script from the beginning of the chart's history (bar zero), so variables of "input" form are always known when the script begins execution, and they do not change during the script's execution.
 
-    * do not change during script execution
-    * are unknown at compile time
-    * originate from an `input <https://www.tradingview.com/pine-script-reference/v4/#fun_input>`__ function
+.. note:: The `input.source() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}source>`__ function yields a value of "series" type — not "input". This is because built-in variables such as ``open``, ``high``, ``low``, ``close``, ``hl2``, ``hlc3``, ``ohlc4``, etc., are of "series" form.
 
-For example::
+The script plots the average `close <https://www.tradingview.com/pine-script-reference/v5/#var_close>`__ of a user-defined symbol and timeframe::
 
-    p = input(10, title="Period")
+    //@version=5
+    indicator("", "", true)
+    symbolInput = input.symbol("AAPL", "Symbol")
+    timeframeInput = input.timeframe("D", "Timeframe")
+    sourceInput = input.source(close, "Source")
+    periodInput = input(10, "Period")
+    v = request.security(symbolInput, timeframeInput, ta.sma(sourceInput, periodInput))
+    plot(v)
 
-The type of ``p`` variable is *input integer*.
+Note that:
+
+- The ``symbolInput``, ``timeframeInput`` and ``periodInput`` variables are of "input" form.
+- The ``sourceInput`` variable is of "series" form.
+- Our `request.security() <https://www.tradingview.com/pine-script-reference/v5/#fun_request{dot}security>`__ call is valid because its ``symbol`` and ``timeframe`` parameters require a "simple" argument and the "input" form we use is weaker than "simple". The function's ``expression`` parameter requires a "series" form argument, and that is what form our ``sourceInput`` variable is. Note that because a "series" form is required there, we could have used "const", "input" or "simple" forms as well.
+
+Wherever an "input" form is required, a "const" form can also be used.
+
 
 simple
 """"""
