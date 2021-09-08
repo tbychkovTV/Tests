@@ -143,8 +143,9 @@ The script plots the moving average of a user-defined source and period from a s
 Note that:
 
 - The ``symbolInput``, ``timeframeInput`` and ``periodInput`` variables are of "input" form.
-- The ``sourceInput`` variable is of "series" form.
+- The ``sourceInput`` variable is of "series" form because it is determined from a call to `input.source() <https://www.tradingview.com/pine-script-reference/v5/#fun_input{dot}source>`__.
 - Our `request.security() <https://www.tradingview.com/pine-script-reference/v5/#fun_request{dot}security>`__ call is valid because its ``symbol`` and ``timeframe`` parameters require a "simple" argument and the "input" form we use is weaker than "simple". The function's ``expression`` parameter requires a "series" form argument, and that is what form our ``sourceInput`` variable is. Note that because a "series" form is required there, we could have used "const", "input" or "simple" forms as well.
+- As per our style guide's recommendations, we use the "Input" suffix with our input variables to help readers of our code remember the origin of these variables.
 
 Wherever an "input" form is required, a "const" form can also be used.
 
