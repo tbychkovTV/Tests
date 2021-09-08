@@ -154,10 +154,6 @@ Wherever an "input" form is required, a "const" form can also be used.
 simple
 """"""
 
-Values of the form *simple* are ones that:
-
-    * do not change during script execution
-    * are unknown at compile time
 
 They are values that come from the main chart's symbol information. For example,
 the `syminfo.mintick <https://www.tradingview.com/pine-script-reference/v4/#var_syminfo{dot}mintick>`__
@@ -171,7 +167,8 @@ Values of the form *series* are ones that:
 
     * change during the script execution
     * store a sequence of historical values associated with bars of the main chart's symbol
-    * can be accessed using the ``[]`` operator. Note that only the last value in the series, i.e., the one associated with the current bar, is available for both reading and writing
+
+* can be accessed using the ``[]`` operator. Note that only the last value in the series, i.e., the one associated with the current bar, is available for both reading and writing
 
 The *series* form is the most common form in Pine.
 Examples of built-in *series* variables are: ``open``, ``high``, ``low``,
@@ -190,6 +187,7 @@ series itself. For example::
 
 .. note:: The ``[]`` operator also returns a value of the *series* form.
 
+
 Types
 ^^^^^
 
@@ -204,13 +202,6 @@ For example::
     94572
     100
 
-There are 5 forms of int type in Pine:
-
-    * *literal int*
-    * *const int*
-    * *input int*
-    * *int*
-    * *series int*
 
 float
 """""
@@ -231,14 +222,6 @@ number ``3`` as a floating point number.
 
 .. note:: It's possible to use uppercase ``E`` instead of lowercase ``e``.
 
-There are 5 forms of float type in Pine:
-
-    * *literal float*
-    * *const float*
-    * *input float*
-    * *float*
-    * *series float*
-
 The internal precision of floats in Pine is 1e-10.
 
 bool
@@ -248,14 +231,6 @@ There are only two literals representing *bool* values::
 
     true    // true value
     false   // false value
-
-There are 5 forms of bool type in Pine:
-
-    * *literal bool*
-    * *const bool*
-    * *input bool*
-    * *bool*
-    * *series bool*
 
 
 color
@@ -284,13 +259,6 @@ Examples::
 
 .. note:: Hexadecimal notation is not case-sensitive.
 
-There are 5 forms of color type in Pine:
-
-    * *literal color*
-    * *const color*
-    * *input color*
-    * *color*
-    * *series color*
 
 One might ask how a value can be of type *input color* if it is impossible to use
 `input <https://www.tradingview.com/pine-script-reference/v4/#fun_input>`__ to input a color in Pine. The answer is:
@@ -348,13 +316,6 @@ it must be preceded by a backslash. For example::
     'It\'s an example'
     "The \"Star\" indicator"
 
-There are 5 forms of string type in Pine:
-
-    * *literal string*
-    * *const string*
-    * *input string*
-    * *string*
-    * *series string*
 
 
 line and label
