@@ -135,7 +135,7 @@ Note that using the ``:=`` operator to assign a new value to a previously declar
 
     var name1 = "My Indicator "
     var NAME2 = "No. 2"
-    NAME1 := name1 + NAME2
+    name1 := name1 + NAME2
 
 
 input
