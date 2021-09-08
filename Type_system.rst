@@ -429,13 +429,15 @@ an automatic type-casting rule *series float* |rarr| *series bool* (see the diag
 Sometimes there is no automatic *X* |rarr| *Y* type-casting rule. For these cases, explicit type-casting functions
 were introduced in Pine v4. They are:
 
-    * `int <https://www.tradingview.com/pine-script-reference/v4/#fun_int>`__
-    * `float <https://www.tradingview.com/pine-script-reference/v4/#fun_float>`__
-    * `string <https://www.tradingview.com/pine-script-reference/v4/#fun_string>`__
-    * `bool <https://www.tradingview.com/pine-script-reference/v4/#fun_bool>`__
-    * `color <https://www.tradingview.com/pine-script-reference/v4/#fun_color>`__
-    * `line <https://www.tradingview.com/pine-script-reference/v4/#fun_line>`__
-    * `label <https://www.tradingview.com/pine-script-reference/v4/#fun_label>`__
+    * `int() <https://www.tradingview.com/pine-script-reference/v5/#fun_int>`__
+    * `float() <https://www.tradingview.com/pine-script-reference/v5/#fun_float>`__
+    * `bool() <https://www.tradingview.com/pine-script-reference/v5/#fun_bool>`__
+    * `color() <https://www.tradingview.com/pine-script-reference/v5/#fun_color>`__
+    * `string() <https://www.tradingview.com/pine-script-reference/v5/#fun_string>`__
+    * `line() <https://www.tradingview.com/pine-script-reference/v5/#fun_line>`__
+    * `label() <https://www.tradingview.com/pine-script-reference/v5/#fun_label>`__
+    * `box() <https://www.tradingview.com/pine-script-reference/v5/#fun_box>`__
+    * `table() <https://www.tradingview.com/pine-script-reference/v5/#fun_table>`__
 
 Here is an example::
 
